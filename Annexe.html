@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="Asset/style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="Asset/img/logo-removebg-preview.png" alt="Site Logo">
+        Ugo RADIGUET Portfolio</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="apropos.html">A Propos</a></li>
+            <li><a href="competence.html">Compétences</a></li>
+            <li><a href="realisation.html">Réalisations</a></li>
+            <li><a href="Annexe.html">Document</a></li>
+            <li><a href="veille.html">Veille</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div class="document-container">
+        <div class="document-card">
+            <object data="Asset/PDF/CV-UGO-RADIGUET%20(2).pdf" type="application/pdf" width="100%" height="100%">
+                <p>Le fichier PDF ne peut pas être affiché sur votre navigateur. <a href="Asset/CV/CV.pdf">Cliquez ici pour le télécharger.</a></p>
+            </object>
+            <div class="document-title">CV</div>
+        </div>
+        <div class="document-card">
+            <object data="Asset/PDF/BTS%20SIO%20-%202024%20-%20Attestation%20de%20stage.pdf" type="application/pdf" width="100%" height="100%">
+                <p>Le fichier PDF ne peut pas être affiché sur votre navigateur. <a href="Asset/CV/CV.pdf">Cliquez ici pour le télécharger.</a></p>
+            </object>
+            <div class="document-title">Attestation de Stage 2024</div>
+        </div>
+        <div class="document-card">
+            <object data="Asset/PDF/BTS%20SIO%20-%202025%20-%20Attestation%20de%20stage.pdf" type="application/pdf" width="100%" height="100%">
+                <p>Le fichier PDF ne peut pas être affiché sur votre navigateur. <a href="Asset/CV/CV.pdf">Cliquez ici pour le télécharger.</a></p>
+            </object>
+            <div class="document-title">Attestation de Stage 2025</div>
+        </div>
+        <div class="document-card">
+            <object data="Asset/PDF/Secnumacademie.pdf" type="application/pdf" width="100%" height="100%">
+                <p>Le fichier PDF ne peut pas être affiché sur votre navigateur. <a href="Asset/CV/CV.pdf">Cliquez ici pour le télécharger.</a></p>
+            </object>
+            <div class="document-title">SecNumacadémie ANSII</div>
+        </div>
+        <div class="document-card">
+            <object data="Asset/PDF/Attestation%20Sens%20Cyber.pdf" type="application/pdf" width="100%" height="100%">
+                <p>Le fichier PDF ne peut pas être affiché sur votre navigateur. <a href="Asset/CV/CV.pdf">Cliquez ici pour le télécharger.</a></p>
+            </object>
+            <div class="document-title">Attestation Sens Cyber</div>
+        </div>
+        <div class="document-card">
+            <object data="Asset/PDF/attestation-pix-20250305.pdf" type="application/pdf" width="100%" height="100%">
+                <p>Le fichier PDF ne peut pas être affiché sur votre navigateur. <a href="Asset/CV/CV.pdf">Cliquez ici pour le télécharger.</a></p>
+            </object>
+            <div class="document-title">Attestation Pix</div>
+        </div>
+    </div>
+</main>
+<footer>
+    <p>&copy; 2024 Ugo Radiguet</p>
+</footer>
+<script>
+    document.querySelectorAll('.document-card').forEach(card => {
+        card.addEventListener('click', (event) => {
+            event.stopPropagation();
+            document.querySelectorAll('.document-card').forEach(c => c.classList.remove('focused'));
+            card.classList.add('focused');
+            document.body.style.zoom = "100%";
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.document-card')) {
+            document.querySelectorAll('.document-card').forEach(c => c.classList.remove('focused'));
+            document.body.style.zoom = "initial";
+        }
+    });
+</script>
+</body>
+</html>

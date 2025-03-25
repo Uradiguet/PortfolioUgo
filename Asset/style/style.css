@@ -1,0 +1,731 @@
+/* style.css */
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #20204C;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1A1040;
+    padding: 15px 20px;
+}
+
+header .logo {
+    font-size: 16px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+header .logo img{
+    height: 10%;
+    width: 10%;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.container {
+    position: relative;
+    height: calc(100vh - 60px);
+    display: flex;
+    overflow: hidden;
+}
+
+.image-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 0, 50% 0, 0 100%);
+    z-index: 1;
+}
+
+.image-section img {
+    position: absolute; /* Permet de positionner l'image précisément */
+    top: 0;
+    left: 0;
+    width: auto;
+    height: 180%;
+    object-fit: fill; /* Garantit que l'image remplit tout l'espace sans déformation */
+    image-rendering: crisp-edges;
+    transform: scale(1.2) translateX(-25%); /* Agrandit et décale l'image légèrement à gauche */
+}
+
+.text-section {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #20204C;
+    z-index: 2;
+}
+
+.text-section img {
+    height: 50%;
+    width: 50%;
+}
+
+.diagonal-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background: linear-gradient(to bottom right, transparent 50%, #F4661B);
+    pointer-events: none; /* Évite tout conflit avec les clics */
+}
+
+header nav ul li a:hover {
+    color: #F4661B;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #1A1040;
+
+}
+
+/* From Uiverse.io by KhoroshN */
+.card {
+    position: relative;
+    margin: 5%;
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: lightgrey;
+    border-radius: 1.6em;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 0.8em 3em 0px;
+    transition: all 1s ease-in-out;
+    user-select: none;
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+            circle at 100% 107%,
+            #1A1040 0%,
+            #F4661B 30%,
+            #20204C 60%,
+            #1A1040 100%
+    );
+}
+
+.ui-logo {
+    position: absolute;
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%, 50%);
+    transition: all 0.6s ease-in-out;
+}
+
+.ui-logo .logo-svg {
+    fill: #212121;
+    width: 3em;
+    height: 3em;
+}
+
+.icon {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    margin-top: 2%;
+    margin-right: 2%;
+}
+
+.icon .svg {
+    fill: #F4661B ;
+    width: 100hw;
+    transition: all 0.5s ease-in-out;
+}
+
+.box {
+    position: absolute;
+    padding: 1em;
+    text-align: right;
+    background: rgba(26, 16, 64, 0.7);
+    border-top: 0.2em solid rgb(255, 255, 255);
+    border-right: 0.1em solid white;
+    border-radius: 10% 13% 42% 0%/10% 12% 75% 0%;
+    box-shadow: rgba(100, 100, 111, 0.364) -0.8em 0.8em 3em 0px;
+    transform-origin: bottom left;
+    transition: all 1s ease-in-out;
+}
+
+.box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.box:hover .svg {
+    fill: white;
+}
+
+.box1 {
+    width: 70%;
+    height: 70%;
+    bottom: -70%;
+    left: -70%;
+}
+
+.box1::before {
+    background: radial-gradient(
+            circle at 30% 107%,
+            #0077b5 0%,  /* Bleu LinkedIn */
+            #006699 50%, /* Bleu foncé LinkedIn */
+            #004b75 100%  /* Bleu encore plus foncé pour effet dégradé */
+    );
+}
+
+.box1:hover::before {
+    opacity: 1;
+}
+
+.box1:hover .icon .svg {
+    filter: drop-shadow(0 0 0.5em white);
+}
+
+.box2 {
+    width: 50%;
+    height: 50%;
+    bottom: -50%;
+    left: -50%;
+    transition-delay: 0.2s;
+}
+
+.box2::before {
+    background: radial-gradient(
+            circle at 30% 107%,
+            #333 0%,   /* Gris foncé GitHub */
+            #24292e 90% /* Noir GitHub */
+    );
+}
+
+.box2:hover::before {
+    opacity: 1;
+}
+
+.box2:hover .icon .svg {
+    filter: drop-shadow(0 0 0.5em white);
+}
+
+.box3 {
+    width: 30%;
+    height: 30%;
+    bottom: -30%;
+    left: -30%;
+    transition-delay: 0.4s;
+}
+
+.box3::before {
+    background: radial-gradient(circle at 30% 107%, #969fff 0%, #b349ff 90%);
+}
+
+.box3:hover::before {
+    opacity: 1;
+}
+
+.box3:hover .icon .svg {
+    filter: drop-shadow(0 0 0.5em white);
+}
+
+.box4 {
+    width: 10%;
+    height: 10%;
+    bottom: -10%;
+    left: -10%;
+    transition-delay: 0.6s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+.card:hover .box {
+    bottom: -0.1em;
+    left: -0.1em;
+}
+
+.card:hover .ui-logo {
+    transform: translate(0, 0);
+    bottom: 2em;
+    right: 2em;
+}
+
+/* From Uiverse.io by Dailleer */
+.section-card {
+    position: relative;
+    width: 500px;
+    height: 400px;
+    background: linear-gradient(180deg, rgba(244,102,27,1) 25%, rgba(26,16,64,1) 75%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+
+}
+
+.section-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.section-card:hover .card__content {
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 1;
+}
+
+.card__title {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    font-weight: 700;
+}
+
+.card__description {
+    margin: 10px 0 0;
+    font-size: 14px;
+    color: #777;
+    line-height: 1.4;
+}
+
+/* From Uiverse.io by Creatlydev */
+.button {
+    line-height: 1;
+    text-decoration: none;
+    display: inline-flex;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--clr);
+    color: #fff;
+    border-radius: 10rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    margin-top: 20px;
+    padding-left: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.3s;
+}
+
+.button__icon-wrapper {
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    color: var(--clr);
+    background-color: #fff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.button:hover {
+    background-color: #1A1040;
+    color: #ffffff;
+}
+
+.button:hover .button__icon-wrapper {
+    color: #1A1040;
+}
+
+.button__icon-svg--copy {
+    position: absolute;
+    transform: translate(-150%, 150%);
+}
+
+.button:hover .button__icon-svg:first-child {
+    transition: transform 0.3s ease-in-out;
+    transform: translate(150%, -150%);
+}
+
+.button:hover .button__icon-svg--copy {
+    transition: transform 0.3s ease-in-out 0.1s;
+    transform: translate(0);
+}
+
+.Formation, .Stage, .Personnel{
+    margin:2%;
+}
+
+/* From Uiverse.io by Juanes200122 */
+.containerCompetence {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    margin-inline: auto;
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    background: #1A1040;
+    padding: 10px 20px;
+    border-radius: 7px;
+}
+
+.containerCompetence .skill-box {
+    width: 100%;
+    margin: 25px 0;
+}
+
+.skill-box .title {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.skill-box .skill-bar {
+    height: 8px;
+    width: 100%;
+    border-radius: 6px;
+    margin-top: 6px;
+    background: rgba(0,0,0,0.1);
+}
+
+.skill-bar .skill-per {
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 90%;
+    border-radius: 6px;
+    background: #F4661B;
+    animation: progress 0.4s ease-in-out forwards;
+    opacity: 0;
+}
+
+.skill-per.html {
+
+    width: 100%;
+    animation-delay: 0.1s;
+}
+
+.skill-per.css {
+
+    width: 90%;
+    animation-delay: 0.2s;
+}
+
+.skill-per.javascript {
+
+    width: 60%;
+    animation-delay: 0.3s;
+}
+
+.skill-per.java{
+    width: 40%;
+    animation-delay: 0.4s;
+}
+
+.skill-per.php {
+    width: 60%;
+    animation-delay: 0.5s;
+}
+
+.skill-per.react {
+    width: 15%;
+    animation-delay: 0.6s;
+}
+
+.skill-per.kotlin {
+    width: 20%;
+    animation-delay: 0.7s;
+}
+
+@keyframes progress {
+    0% {
+        width: 0;
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.skill-per .tooltip {
+    position: absolute;
+    right: -14px;
+    top: -28px;
+    font-size: 9px;
+    font-weight: 500;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: #F4661B;
+    z-index: 1;
+}
+
+.tooltip::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    height: 10px;
+    width: 10px;
+    z-index: -1;
+    background-color: #F4661B;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+
+/* From Uiverse.io by ashwin_5681 */
+.carde {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.carde p {
+    font-size: 1.2em;
+    color: white;
+}
+
+.slider {
+    width: 100%;
+    height: var(--height);
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, #000 10% 90%, transparent);
+}
+.slider .list {
+    display: flex;
+    width: 100%;
+    min-width: calc(var(--width) * var(--quantity));
+    position: relative;
+}
+.slider .list .item {
+    width: var(--width);
+    height: var(--height);
+    position: absolute;
+    left: 100%;
+    animation: autoRun 10s linear infinite;
+    transition: filter 0.5s;
+    animation-delay: calc(
+            (10s / var(--quantity)) * (var(--position) - 1) - 10s
+    ) !important;
+}
+.slider .list .item img {
+    width: 100%;
+}
+@keyframes autoRun {
+    from {
+        left: 100%;
+    }
+    to {
+        left: calc(var(--width) * -1);
+    }
+}
+.slider:hover .item {
+    animation-play-state: paused !important;
+    filter: grayscale(1);
+}
+.slider .item:hover {
+    filter: grayscale(0);
+}
+.slider[reverse="true"] .item {
+    animation: reversePlay 10s linear infinite;
+}
+@keyframes reversePlay {
+    from {
+        left: calc(var(--width) * -1);
+    }
+    to {
+        left: 100%;
+    }
+}
+
+/* Form Styles */
+.form {
+    max-width: 600px;
+    margin: 20px auto; /* Add margin to the top and bottom */
+    padding: 20px;
+    max-height: 40%;
+    background: #1A1040;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.input, .input01 {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: #20204C;
+    color: white;
+    transition: border-color 0.3s;
+    margin-right: 20px; /* Add margin to the right side */
+}
+
+.flex {
+    display: flex;
+    gap: 50px;
+}
+
+label {
+    display: block;
+    margin-bottom: 25px;
+    position: relative;
+    color: white;
+}
+
+.input:focus, .input01:focus {
+    border-color: #F4661B;
+    outline: none;
+}
+
+label span {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    padding: 0 5px;
+    color: #999;
+    transition: top 0.3s, font-size 0.3s;
+}
+
+.input:focus + span, .input:not(:placeholder-shown) + span,
+.input01:focus + span, .input01:not(:placeholder-shown) + span {
+    top: -10px;
+    font-size: 12px;
+    color: #F4661B;
+}
+
+.fancy {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #F4661B;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.fancy:hover {
+    background: #1A1040;
+    color: #ffffff;
+}
+
+.fancy .top-key, .fancy .bottom-key-1, .fancy .bottom-key-2 {
+    display: none;
+}
+
+
+.document-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.document-card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    background: #1A1040;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.document-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.document-card object {
+    width: 100%;
+    height: 85%;
+    border: none;
+}
+
+.document-card.focused {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    z-index: 1000;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+}
+
+.document-title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background: #F4661B;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 0 0 10px 10px;
+}
