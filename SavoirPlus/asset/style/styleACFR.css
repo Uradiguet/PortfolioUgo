@@ -54,8 +54,6 @@ footer {
     justify-content: center;
     align-items: center;
     text-align: center;
-    position: absolute;
-    bottom: 0;
     width: 100%;
     background-color: #1A1040;
     color: white;
@@ -131,4 +129,20 @@ button:hover {
 
 .container:hover .card:not(:hover) {
     filter: blur(5px);
+}
+
+.tip{
+    font-weight: bolder;
+}
+
+.sub-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+
+.sub-container img{
+    width: 50%;
+    height: 50%;
 }

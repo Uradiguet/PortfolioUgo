@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <title>Veille Informationnelle</title>
   <link rel="stylesheet" href="Asset/style/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -21,23 +21,80 @@
       <li><a href="Annexe.html">Document</a></li>
       <li><a href="veille.html">Veille</a></li>
       <li><a href="contact.html">Contact</a></li>
-
     </ul>
   </nav>
 </header>
-<main>
-  <div class="container">
-    <!-- Section gauche contenant l'image -->
-    <div class="image-section">
-      <img src="Asset/img/photo2.jpg" alt="Image de présentation">
+
+<main style="max-width: 1000px; margin: auto; padding: 40px 20px;">
+  <section class="veille-intro">
+    <h1 style="text-align: center; font-size: 32px; border-bottom: 2px solid #F4661B; padding-bottom: 10px;">Veille Informationnelle : IA et Programmation</h1>
+    <p style="text-align: justify; margin-top: 20px;">
+      Dans le cadre de ma formation en BTS SIO, je réalise une veille technologique sur les domaines de l'intelligence artificielle et de la programmation. Cette veille me permet de rester informé sur les dernières tendances, outils, langages et innovations dans ces secteurs en constante évolution.
+    </p>
+  </section>
+
+  <section class="veille-tools">
+    <h2 class="section-title">Outils de veille utilisés</h2>
+    <ul>
+      <li>Google Alertes (mots-clés : "intelligence artificielle", "IA", "deep learning", "frameworks JavaScript")</li>
+      <li>Feedly (flux RSS de sites tech : Le Big Data, Developpez.com, Journal du Net, etc.)</li>
+      <li>Twitter/X (comptes de développeurs et chercheurs IA)</li>
+      <li>GitHub (exploration des projets open-source populaires)</li>
+      <li>Reddit (communautés : r/MachineLearning, r/programming)</li>
+    </ul>
+  </section>
+
+  <section class="veille-topics">
+    <h2 class="section-title">Thématiques surveillées</h2>
+    <ul>
+      <li>Évolution des langages de programmation (Python, JavaScript, Rust...)</li>
+      <li>Nouveautés dans l’intelligence artificielle (LLM, IA générative, etc.)</li>
+      <li>Cybersécurité liée aux IA</li>
+      <li>Automatisation & DevOps</li>
+      <li>Frameworks récents (Next.js, Astro, etc.)</li>
+    </ul>
+  </section>
+
+  <section class="veille-articles">
+    <h2 class="section-title">Articles récents analysés</h2>
+
+    <div class="real-card">
+      <h3>GPT-4 Turbo : plus puissant et moins cher</h3>
+      <p>Publié sur OpenAI, novembre 2024</p>
+      <p>
+        OpenAI a lancé GPT-4 Turbo, une version améliorée de son modèle d’IA. Plus rapide, moins cher et avec une mémoire contextuelle plus grande. Cela ouvre des perspectives concrètes pour les assistants virtuels.
+      </p>
+      <a href="https://openai.com" class="btn-orange" target="_blank">Lire l'article</a>
     </div>
-    <!-- Section droite contenant le texte -->
-    <div class="text-section">
-      <img src="Asset/img/logo-removebg-preview.png" alt="Site Logo">
+
+    <div class="real-card">
+      <h3>Astro 4.0 : révolution du site statique dynamique</h3>
+      <p>Publié sur Astro.build, mars 2025</p>
+      <p>
+        Le framework Astro continue de s’imposer dans la création de sites web ultra-rapides. Il permet de combiner des composants React, Vue, Svelte dans un seul projet. Parfait pour les développeurs front-end modernes.
+      </p>
+      <a href="https://astro.build" class="btn-orange" target="_blank">Lire l'article</a>
     </div>
-    <!-- Diagonale orange -->
-    <div class="diagonal-line"></div>
-  </div>
+  </section>
+
+  <section class="veille-rss">
+    <h2 class="section-title">Flux d'actualités en direct</h2>
+    <div id="rss-feed"></div>
+    <!-- start feedwind code -->
+    <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="172060/"></script>
+    <!-- end feedwind code -->
+  </section>
+
+  <section class="veille-conclusion">
+    <h2 class="section-title">Conclusion</h2>
+    <p>
+      Cette veille me permet de rester à jour dans un secteur qui évolue très vite. Elle m’aide à développer mes compétences, à anticiper les évolutions du marché et à adapter mes apprentissages aux besoins actuels du monde professionnel.
+    </p>
+  </section>
 </main>
+
+<footer>
+  <p>&copy; 2024 Ugo Radiguet</p>
+</footer>
 </body>
 </html>

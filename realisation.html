@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="Asset/style/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Réalisations - Ugo Radiguet</title>
+    <link rel="stylesheet" href="Asset/style/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
     <div class="logo">
-        <img src="Asset/img/logo-removebg-preview.png" alt="Site Logo">
-        Ugo RADIGUET Portfolio</div>
+        <img src="Asset/img/logo-removebg-preview.png" alt="Logo" />
+        Ugo RADIGUET Portfolio
+    </div>
     <nav>
         <ul>
             <li><a href="index.html">Accueil</a></li>
@@ -21,188 +22,76 @@
             <li><a href="Annexe.html">Document</a></li>
             <li><a href="veille.html">Veille</a></li>
             <li><a href="contact.html">Contact</a></li>
-
         </ul>
     </nav>
 </header>
-<main>
-  <div class="container">
-          <section class="Formation">
-              <h2>Réalisations en Formation</h2>
-              <div class="section-card">
-                  <img src="./Asset/img/icons8-photo-100.png" width="250">
-                  <div class="card__content">
-                      <p class="card__title">Album Photo</p>
-                      <p class="card__description">
-                          J'ai fais un site d'album photo en 2024 avec plusieurs fonctionnalités.
-                      </p>
-                      <button href="#" class="button" style="--clr: #F4661B">
-                          <span class="button__icon-wrapper">
-                            <svg
-                                    viewBox="0 0 14 15"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="button__icon-svg"
-                                    width="10"
-                            >
-                              <path
-                                      d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                                      fill="currentColor"
-                              ></path>
-                            </svg>
 
-                            <svg
-                                    viewBox="0 0 14 15"
-                                    fill="none"
-                                    width="10"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="button__icon-svg button__icon-svg--copy"
-                            >
-                              <path
-                                      d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                                      fill="currentColor"
-                              ></path>
-                            </svg>
-                          </span>
-                          En savoir plus
-                      </button>
-                  </div>
-              </div>
-          </section>
-      <hr>
-          <section class="Stage">
-              <h2>Réalisation en Stage</h2>
-              <div class="section-card">
-                  <img src="./Asset/img/ACFR.PNG" width="250">
-                  <div class="card__content">
-                      <p class="card__title">Archiving Consulting FR</p>
-                      <p class="card__description">
-                          J'ai fais et publier le site de l'entreprise en 2024 (premier Stage) et fait une refonte en 2025. (Second Stage)
-                      </p>
-                      <a href="./SavoirPlus/ACFR.html">
-                      <button href="#" class="button" style="--clr: #F4661B">
-                          <span class="button__icon-wrapper">
-                            <svg
-                                    viewBox="0 0 14 15"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="button__icon-svg"
-                                    width="10"
-                            >
-                              <path
-                                      d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                                      fill="currentColor"
-                              ></path>
-                            </svg>
+<main class="realisation-layout">
+    <!-- FORMATION -->
+    <section class="realisation-column">
+        <h2 class="section-title">Réalisations en Formation</h2>
+        <div class="real-card">
+            <img src="Asset/img/icons8-photo-100.png" alt="Album Photo">
+            <h3>Album Photo</h3>
+            <p>Création d'une application d'albums photo</p>
+            <a href="./SavoirPlus/Albums.html" class="btn-orange">En savoir plus</a>
+        </div>
+        <div class="real-card">
+            <img src="Asset/img/ChatGPT%20Image%201%20avr.%202025,%2009_32_22.png" alt="Album Photo">
+            <h3>App de gestion de Budget</h3>
+            <p>Création d'une application de gestion de budget</p>
+            <a href="./SavoirPlus/Budget.html" class="btn-orange">En savoir plus</a>
+        </div>
+        <div class="real-card">
+            <img src="Asset/img/ChatGPT%20Image%201%20avr.%202025,%2009_36_18.png" alt="Album Photo">
+            <h3>App de Todolist</h3>
+            <p>Création d'une application de Todo Liste</p>
+            <a href="./SavoirPlus/todo.html" class="btn-orange">En savoir plus</a>
+        </div>
+        <div class="real-card">
+            <img src="Asset/img/ea2bf48e-16ea-4c1d-a5dd-b22ae38a46d6.png" alt="Kanban">
+            <h3>App de Kanban</h3>
+            <p>Création d'une application de Kanban</p>
+            <a href="./SavoirPlus/kanban.html" class="btn-orange">En savoir plus</a>
+        </div>
+    </section>
 
-                            <svg
-                                    viewBox="0 0 14 15"
-                                    fill="none"
-                                    width="10"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="button__icon-svg button__icon-svg--copy"
-                            >
-                              <path
-                                      d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                                      fill="currentColor"
-                              ></path>
-                            </svg>
-                          </span>
-                          En savoir plus
-                      </button>
-                      </a>
-                  </div>
-              </div>
-          </section>
-      <hr>
-              <section class="Personnel">
-                  <h2>Réalisations Personnelle</h2>
-                  <div class="section-card">
-                      <img src="./Asset/img/icons8-généalogie-100.png" width="250">
-                      <div class="card__content">
-                          <p class="card__title">Site Généalogie</p>
-                          <p class="card__description">
-                              J'ai fais un site de généalogie pour ma famille en 2024.
-                          </p>
-                          <a href="./SavoirPlus/Personnelles.html">
-                          <button href="#" class="button" style="--clr: #F4661B">
-                              <span class="button__icon-wrapper">
-                                <svg
-                                        viewBox="0 0 14 15"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="button__icon-svg"
-                                        width="10"
-                                >
-                                  <path
-                                          d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                                          fill="currentColor"
-                                  ></path>
-                                </svg>
+    <!-- STAGE -->
+    <section class="realisation-column">
+        <h2 class="section-title">Réalisation en Stage</h2>
+        <div class="real-card">
+            <img src="Asset/img/ACFR.PNG" alt="ACFR">
+            <h3>Archiving Consulting FR</h3>
+            <p>Site réalisé en 2024 (1er stage) et refonte en 2025 (2e stage).</p>
+            <a href="./SavoirPlus/ACFR.html" class="btn-orange">En savoir plus</a>
+        </div>
+    </section>
 
-                                <svg
-                                        viewBox="0 0 14 15"
-                                        fill="none"
-                                        width="10"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="button__icon-svg button__icon-svg--copy"
-                                >
-                                  <path
-                                          d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                                          fill="currentColor"
-                                  ></path>
-                                </svg>
-                              </span>
-                              En savoir plus
-                          </button>
-                          </a>
-                      </div>
-                  </div>
-                  <div class="section-card">
-                      <img src="./Asset/img/icons8-dice-64.png" width="250">
-                      <div class="card__content">
-                          <p class="card__title">Site de personnage pour mes Jeux De Roles (JDR)</p>
-                          <p class="card__description">
-                              J'ai fais un site qui répertorie les personnages que j'ai créé dans différent univers pour mes JDR en 2023.
-                          </p>
-                          <a href="./SavoirPlus/Personnelles.html">
-                              <button href="#" class="button" style="--clr: #F4661B">
-                              <span class="button__icon-wrapper">
-                                <svg
-                                        viewBox="0 0 14 15"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="button__icon-svg"
-                                        width="10"
-                                >
-                                  <path
-                                          d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                                          fill="currentColor"
-                                  ></path>
-                                </svg>
-
-                                <svg
-                                        viewBox="0 0 14 15"
-                                        fill="none"
-                                        width="10"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="button__icon-svg button__icon-svg--copy"
-                                >
-                                  <path
-                                          d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
-                                          fill="currentColor"
-                                  ></path>
-                                </svg>
-                              </span>
-                                  En savoir plus
-                              </button>
-                          </a>
-                      </div>
-              </section>
-  </div>
-    <footer>
-        <p>&copy; 2024 Ugo Radiguet</p>
-    </footer>
+    <!-- PERSONNELLES -->
+    <section class="realisation-column">
+        <h2 class="section-title">Réalisations Personnelles</h2>
+        <div class="real-card">
+            <img src="Asset/img/icons8-généalogie-100.png" alt="Généalogie">
+            <h3>Site Généalogie</h3>
+            <p>Site de généalogie créé pour ma famille (2024).</p>
+            <a href="SavoirPlus/Genealogy.html" class="btn-orange">En savoir plus</a>
+        </div>
+        <div class="real-card">
+            <img src="Asset/img/ChatGPT%20Image%201%20avr.%202025,%2009_23_11.png" alt="JDR">
+            <h3>Personnages JDR</h3>
+            <p>Répertoire de mes personnages pour jeux de rôles (2023).</p>
+            <a href="SavoirPlus/JDR.html" class="btn-orange">En savoir plus</a>
+        </div>
+        <div class="real-card">
+            <img src="Asset/img/ChatGPT%20Image%201%20avr.%202025,%2009_21_16.png" alt="JDR">
+            <h3>Simulation de gestion d'une fédération de catch</h3>
+            <p>Simulation de gestion d'une fédération de catch (2025).</p>
+            <a href="SavoirPlus/wrestling.html" class="btn-orange">En savoir plus</a>
+        </div>
+    </section>
 </main>
 </body>
+<footer>
+    <p>&copy; 2024 Ugo Radiguet</p>
+</footer>
 </html>
