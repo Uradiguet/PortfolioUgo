@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: 'Roboto', Arial, sans-serif;
-    background-color: #20204C;
+    background-color: #0C1A1A;
     color: white;
 }
 
@@ -10,7 +10,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1A1040;
+    background-color: #0C1A1A;
     padding: 15px 20px;
 }
 
@@ -43,7 +43,7 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    color: #F4661B;
+    color: #6ACFC7;
 }
 
 footer {
@@ -53,7 +53,7 @@ footer {
     align-items: center;
     text-align: center;
     width: 100%;
-    background-color: #1A1040;
+    background-color: #0C1A1A;
     color: white;
 }
 
@@ -65,18 +65,18 @@ button {
     transform: translateX(-50%);
     width: 150px;
     height: 60px;
-    border: 3px solid #F4661B;
+    border: 3px solid #6ACFC7;
     border-radius: 45px;
     transition: all 0.3s;
     cursor: pointer;
     color: white;
-    background: #1A1040;
+    background: #0C1A1A;
     font-size: 1.2em;
     font-weight: 550;
 }
 
 button:hover {
-    background: #F4661B;
+    background: #6ACFC7;
     color: white;
     font-size: 1.5em;
 }
@@ -90,7 +90,7 @@ button:hover {
 }
 
 .card {
-    background-color: #1A1040;
+    background-color: #0C1A1A;
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -100,16 +100,16 @@ button:hover {
 }
 
 .card.orange {
-    background-color: #F4661B;
+    background-color: #6ACFC7;
 }
 
 .card.blue {
-    background-color: #1A1040;
+    background-color: #0C1A1A;
 }
 
 .card.white {
     background-color: #FFFFFF;
-    color: #1A1040;
+    color: #0C1A1A;
 }
 
 .card p {
@@ -118,7 +118,7 @@ button:hover {
 }
 
 .card.white p {
-    color: #1A1040;
+    color: #0C1A1A;
 }
 
 .card:hover {
@@ -129,18 +129,64 @@ button:hover {
     filter: blur(5px);
 }
 
-.tip{
+.tip {
     font-weight: bolder;
 }
 
-.sub-container{
+.sub-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 50px;
 }
 
-.sub-container img{
+.sub-container img {
     width: 50%;
     height: 50%;
+}
+
+.slider {
+    width: 1200px;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 30px auto;
+    border: 2px solid #6ACFC7;
+    border-radius: 12px;
+    background-color: #0C1A1A;
+}
+
+.slides {
+    display: flex;
+    width: max-content;
+    transition: transform 0.8s ease-in-out;
+}
+
+.slides img {
+    width: 1200px;
+    height: auto;
+    flex-shrink: 0;
+    display: block;
+}
+
+.slider-footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.view-site {
+    width: 160px;
+    height: 50px;
+    border: 3px solid #6ACFC7;
+    border-radius: 45px;
+    background: #0C1A1A;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 550;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-site:hover {
+    background: #6ACFC7;
+    font-size: 1.3em;
 }

@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio</title>
   <link rel="stylesheet" href="./asset/style/styleACFR.css">
+  <link rel="icon" type="image/png" href="../Asset/img/logo-removebg-preview.png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -74,15 +75,25 @@
       </div>
     </div>
     <div class="sub-container">
-      <!-- ScreenShot -->
-        <div class="card white">
-            <p class="tip">Visuel du site</p>
-            <img src="../Asset/img/ACFRCapture.PNG" alt="ACFR">
+      <div class="card white">
+        <p class="tip">Visuels du site</p>
+
+        <div class="slider">
+          <div class="slides">
+            <img src="../Asset/img/ACFRCapture.PNG" alt="Capture 1">
+            <img src="../Asset/img/ACFRCapture2.PNG" alt="Capture 2">
+            <img src="../Asset/img/ACFRCapture3.PNG" alt="Capture 3">
+          </div>
         </div>
+
+        <div class="slider-footer">
+          <a target="_blank" href="https://archiving-consulting.fr/">
+            <button class="view-site">Voir le site</button>
+          </a>
+        </div>
+      </div>
     </div>
-    <a target="_blank" href="https://archiving-consulting.fr/">
-      <button>Voir le site</button>
-    </a>
+
   </section>
 
 </main>
@@ -90,4 +101,18 @@
 <footer>
   <p>&copy; 2024 Ugo Radiguet</p>
 </footer>
+
+<script>
+  let currentIndex = 0;
+  const slides = document.querySelector('.slides');
+  const totalSlides = document.querySelectorAll('.slides img').length;
+
+  function autoSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    slides.style.transform = `translateX(-${currentIndex * 1200}px)`;
+  }
+
+  setInterval(autoSlide, 4000); // Toutes les 4 secondes
+</script>
+
 </html>

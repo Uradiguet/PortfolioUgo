@@ -1,19 +1,19 @@
-/* style.css */
+/* Palette : Vert Cardin (#0C1A1A) & Sarcelle Duveteuse (#6ACFC7) */
+
 body {
     margin: 0;
-    font-family: 'Roboto', Arial, sans-serif;
-    background-color: #20204C;
+    font-family: 'Outfit', Arial, sans-serif;
+    background-color: #0C1A1A;
     color: white;
     display: flex;
     flex-direction: column;
-
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1A1040;
+    background-color: #0C1A1A;
     padding: 15px 20px;
 }
 
@@ -24,7 +24,7 @@ header .logo {
     align-items: center;
 }
 
-header .logo img{
+header .logo img {
     height: 10%;
     width: 10%;
 }
@@ -43,6 +43,11 @@ header nav ul li {
 header nav ul li a {
     text-decoration: none;
     color: white;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #6ACFC7;
 }
 
 .container {
@@ -63,14 +68,14 @@ header nav ul li a {
 }
 
 .image-section img {
-    position: absolute; /* Permet de positionner l'image précisément */
+    position: absolute;
     top: 0;
     left: 0;
     width: auto;
     height: 180%;
-    object-fit: fill; /* Garantit que l'image remplit tout l'espace sans déformation */
+    object-fit: fill;
     image-rendering: crisp-edges;
-    transform: scale(1.2) translateX(-25%); /* Agrandit et décale l'image légèrement à gauche */
+    transform: scale(1.2) translateX(-25%);
 }
 
 .text-section {
@@ -84,7 +89,7 @@ header nav ul li a {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #20204C;
+    background-color: #0C1A1A;
     z-index: 2;
 }
 
@@ -100,22 +105,39 @@ header nav ul li a {
     width: 100%;
     height: 100%;
     z-index: 3;
-    background: linear-gradient(to bottom right, transparent 50%, #F4661B);
-    pointer-events: none; /* Évite tout conflit avec les clics */
+    background: linear-gradient(to bottom right, transparent 50%, #6ACFC7);
+    pointer-events: none;
 }
 
-header nav ul li a:hover {
-    color: #F4661B;
-}
-
-footer{
+footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #1A1040;
+    background-color: #0C1A1A;
+    padding: 10px;
+    color: white;
 }
+
+.btn-orange {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #6ACFC7;
+    color: #0C1A1A;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: background 0.3s ease;
+}
+
+.btn-orange:hover {
+    background-color: #87eae3;
+    color: #0C1A1A;
+}
+
+/* Ajout futur : autres composants, cartes, barres de compétences... */
+
 
 /* From Uiverse.io by KhoroshN */
 .card {
@@ -129,7 +151,7 @@ footer{
     background: lightgrey;
     border-radius: 1.6em;
     overflow: hidden;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 0.8em 3em 0px;
+    box-shadow: #6ACFC7 0px 0.8em 3em 0px;
     transition: all 1s ease-in-out;
     user-select: none;
 }
@@ -139,10 +161,10 @@ footer{
     inset: 0;
     background: radial-gradient(
             circle at 100% 107%,
-            #1A1040 0%,
-            #F4661B 30%,
-            #20204C 60%,
-            #1A1040 100%
+            #0C1A1A 0%,
+            #6ACFC7 30%,
+            #0C1A1A 60%,
+            #0C1A1A 100%
     );
 }
 
@@ -169,7 +191,7 @@ footer{
 }
 
 .icon .svg {
-    fill: #F4661B ;
+    fill: #0C1A1A ;
     width: 100hw;
     transition: all 0.5s ease-in-out;
 }
@@ -178,7 +200,7 @@ footer{
     position: absolute;
     padding: 1em;
     text-align: right;
-    background: rgba(26, 16, 64, 0.7);
+    background: #6ACFC7;
     border-top: 0.2em solid rgb(255, 255, 255);
     border-right: 0.1em solid white;
     border-radius: 10% 13% 42% 0%/10% 12% 75% 0%;
@@ -302,7 +324,7 @@ footer{
 .realisation-column {
     flex: 1;
     padding: 0 20px;
-    border-right: 1px solid #F4661B;
+    border-right: 1px solid #6ACFC7;
 }
 
 .realisation-column:last-child {
@@ -315,13 +337,13 @@ footer{
     text-align: center;
     font-size: 28px;
     margin-bottom: 30px;
-    border-bottom: 2px solid #F4661B;
+    border-bottom: 2px solid #6ACFC7;
     padding-bottom: 10px;
 }
 
 /* Cartes */
 .real-card {
-    background: linear-gradient(180deg, #F4661B 10%, #1A1040 90%);
+    background: linear-gradient(180deg, #6ACFC7 10%, #0C1A1A 90%);
     border-radius: 12px;
     padding: 20px;
     text-align: center;
@@ -332,7 +354,7 @@ footer{
 
 .real-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(255, 102, 0, 0.4);
+    box-shadow: 0 12px 24px #6ACFC7;
 }
 
 .real-card img {
@@ -356,7 +378,7 @@ footer{
     display: inline-block;
     margin-top: 15px;
     padding: 10px 20px;
-    background-color: #F4661B;
+    background-color: #6ACFC7;
     color: white;
     text-decoration: none;
     border-radius: 30px;
@@ -364,7 +386,7 @@ footer{
 }
 
 .btn-orange:hover {
-    background-color: #FF7F3F;
+    background-color: #87eae3;
 }
 
 @media (max-width: 992px) {
@@ -388,7 +410,7 @@ footer{
     display: inline-block;
     margin-top: 15px;
     padding: 10px 20px;
-    background-color: #F4661B;
+    background-color: #6ACFC7;
     color: white;
     text-decoration: none;
     border-radius: 30px;
@@ -396,7 +418,7 @@ footer{
 }
 
 .btn-orange:hover {
-    background-color: #FF7F3F;
+    background-color: #87eae3;
 }
 
 /* From Uiverse.io by Creatlydev */
@@ -435,12 +457,12 @@ footer{
 }
 
 .button:hover {
-    background-color: #1A1040;
+    background-color: #0C1A1A;
     color: #ffffff;
 }
 
 .button:hover .button__icon-wrapper {
-    color: #1A1040;
+    color: #0C1A1A;
 }
 
 .button__icon-svg--copy {
@@ -469,7 +491,7 @@ footer{
     position: relative;
     max-width: 500px;
     width: 100%;
-    background: #1A1040;
+    background: #0C1A1A;
     padding: 10px 20px;
     border-radius: 7px;
 }
@@ -500,7 +522,7 @@ footer{
     height: 100%;
     width: 90%;
     border-radius: 6px;
-    background: #F4661B;
+    background: #6ACFC7;
     animation: progress 0.4s ease-in-out forwards;
     opacity: 0;
 }
@@ -563,7 +585,7 @@ footer{
     color: #fff;
     padding: 2px 6px;
     border-radius: 3px;
-    background: #F4661B;
+    background: #6ACFC7;
     z-index: 1;
 }
 
@@ -575,7 +597,7 @@ footer{
     height: 10px;
     width: 10px;
     z-index: -1;
-    background-color: #F4661B;
+    background-color: #6ACFC7;
     transform: translateX(-50%) rotate(45deg);
 }
 
@@ -657,7 +679,7 @@ footer{
     margin: 20px auto; /* Add margin to the top and bottom */
     padding: 20px;
     max-height: 40%;
-    background: #1A1040;
+    background: #0C1A1A;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     color: white;
@@ -669,7 +691,7 @@ footer{
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    background: #20204C;
+    background: #0C1A1A;
     color: white;
     transition: border-color 0.3s;
     margin-right: 20px; /* Add margin to the right side */
@@ -688,7 +710,7 @@ label {
 }
 
 .input:focus, .input01:focus {
-    border-color: #F4661B;
+    border-color: #6ACFC7;
     outline: none;
 }
 
@@ -706,13 +728,13 @@ label span {
 .input01:focus + span, .input01:not(:placeholder-shown) + span {
     top: -10px;
     font-size: 12px;
-    color: #F4661B;
+    color: #6ACFC7;
 }
 
 .fancy {
     display: inline-block;
     padding: 10px 20px;
-    background: #F4661B;
+    background: #6ACFC7;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -722,7 +744,7 @@ label span {
 }
 
 .fancy:hover {
-    background: #1A1040;
+    background: #0C1A1A;
     color: #ffffff;
 }
 
@@ -743,7 +765,7 @@ label span {
     position: relative;
     width: 300px;
     height: 400px;
-    background: #1A1040;
+    background: #0C1A1A;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -777,7 +799,7 @@ label span {
     bottom: 0;
     width: 100%;
     padding: 10px;
-    background: #F4661B;
+    background: #6ACFC7;
     color: white;
     text-align: center;
     font-weight: bold;
@@ -787,13 +809,13 @@ label span {
 .veille-rss {
     padding: 40px 20px;
     text-align: center;
-    background-color: #1A1040;
+    background-color: #0C1A1A;
 }
 
 .veille-rss h2 {
     color: white;
     font-size: 28px;
     margin-bottom: 20px;
-    border-bottom: 2px solid #F4661B;
+    border-bottom: 2px solid #6ACFC7;
     padding-bottom: 10px;
 }
