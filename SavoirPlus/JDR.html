@@ -18,6 +18,7 @@
       <li><a href="../index.html">Accueil</a></li>
       <li><a href="../apropos.html">A Propos</a></li>
       <li><a href="../competence.html">Compétences</a></li>
+      <li><a href="../experience.html">Experience</a></li>
       <li><a href="../realisation.html">Réalisations</a></li>
       <li><a href="../Annexe.html">Document</a></li>
       <li><a href="../veille.html">Veille</a></li>
@@ -30,25 +31,32 @@
   <section class="presentation">
     <div class="container">
       <div class="card orange">
-        <p class="tip">Album Photo</p>
+        <p class="tip">JDR Characters repository</p>
         <p class="second-text">
-          Projet de première année de BTS SIO : réalisation d'un site d'album photo avec différentes fonctionnalités.
+          Projet personnel (débuté en Juillet 2024), qui à pour but de répertorier des personnages de ma création pour des parties de Jeux De Rôles (JDR), dans différents univers fictifs.
         </p>
       </div>
       <div class="card blue">
-        <p class="tip">Différentes fonctionnalités</p>
-        <p class="second-text">Fonction d'ajout et de suppression d'albums.<br>Fonction d'ajout de photo dans un ou plusieurs albums précis.<br>Modification de l'emplacement d'une photo, du nom d'un album</p>
+        <p class="tip">Langages et Framework utilisé</p>
+        <p class="second-text">Ce site statique est codé en PHP, CSS et Javascript et le framework utilisé est TailwindCSS.</p>
       </div>
       <div class="card white">
-        <p class="tip">Gestion de base de données</p>
-        <p class="second-text">Gestion de la base de données 'Albums' avec différentes table : Photos, Comporter et Albums</p>
+        <p class="tip">Les images du site</p>
+        <p class="second-text">Le site à des représentation visuels des personnages, tous cela grâce aux générateurs d'images MidJourney et ChatGPT-4o</p>
       </div>
     </div>
     <div class="sub-container">
       <!-- ScreenShot -->
       <div class="card white">
         <p class="tip">Visuel du site</p>
-        <img src="../Asset/img/AlbumsCapture.PNG" alt="Albums Capture">
+        <div class="slider">
+          <div class="slides">
+            <img src="../Asset/img/OCCapture1.PNG.png" alt="Capture 1">
+            <img src="../Asset/img/OCCapture2.PNG.png" alt="Capture 2">
+            <img src="../Asset/img/OCCapture3.PNG.png" alt="Capture 3">
+            <img src="../Asset/img/OCCapture4.PNG.png" alt="Capture 4">
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -56,6 +64,20 @@
 </main>
 </body>
 <footer>
-  <p>&copy; 2024 Ugo Radiguet</p>
+  <p>&copy; 2025 Ugo Radiguet</p>
 </footer>
+
+<script>
+  let currentIndex = 0;
+  const slides = document.querySelector('.slides');
+  const totalSlides = document.querySelectorAll('.slides img').length;
+
+  function autoSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    slides.style.transform = `translateX(-${currentIndex * 1200}px)`;
+  }
+
+  setInterval(autoSlide, 4000); // Toutes les 4 secondes
+</script>
+
 </html>

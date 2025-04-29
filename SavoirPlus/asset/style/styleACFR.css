@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     margin: 0;
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: 'Outfit', Arial, sans-serif;
     background-color: #0C1A1A;
     color: white;
 }
@@ -141,8 +141,8 @@ button:hover {
 }
 
 .sub-container img {
-    width: 50%;
-    height: 50%;
+    width: 75%;
+    height: auto;
 }
 
 .slider {
