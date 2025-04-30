@@ -72,7 +72,7 @@ header nav ul li a:hover {
     top: 0;
     left: 0;
     width: auto;
-    height: 180%;
+    height: 200%;
     object-fit: fill;
     image-rendering: crisp-edges;
     transform: scale(1.2) translateX(-25%);
