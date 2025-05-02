@@ -1,0 +1,102 @@
+<!-- Modify your ACFR.html file -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="./asset/style/styleACFR.css">
+  <link rel="icon" type="image/png" href="../Asset/img/logo-removebg-preview.png">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="logo">
+    <img src="../Asset/img/logo-removebg-preview.png" alt="Site Logo">
+    Ugo RADIGUET Portfolio</div>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../apropos.html">A Propos</a></li>
+      <li><a href="../competence.html">Compétences</a></li>
+      <li><a href="../experience.html">Experience</a></li>
+      <li><a href="../realisation.html">Réalisations</a></li>
+      <li><a href="../Annexe.html">Document</a></li>
+      <li><a href="../veille.html">Veille</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+
+    </ul>
+  </nav>
+</header>
+<main>
+  <section class="presentation">
+    <div class="container">
+      <div class="card orange">
+        <p class="tip">Archiving Consulting FR</p>
+        <p class="second-text">
+          Réalisation d'un Portfolio web en première année, dans le cadre d'un projet semestriel en Atelier Pro (Octobre 2023 - Décembre 2023).
+        </p>
+      </div>
+      <div class="card blue">
+        <p class="tip">Langages, Framework et outils</p>
+        <p class="second-text">
+          Les langages et framework utilisés :
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>PHP</li>
+          <li>Symphony</li>
+        </ul>
+        Les outils utilisés :
+        <ul>
+          <li>VsCode</li>
+          <li>GitHub</li>
+          <li>Font Awesome</li>
+        </ul>
+        </p>
+      </div>
+      <div class="card white">
+        <p class="tip">Déploiement du site</p>
+        <p class="second-text">Déploiment sur VM via Proxmox</p>
+      </div>
+    </div>
+    <div class="sub-container">
+      <div class="card white">
+        <p class="tip">Visuels du site</p>
+
+        <div class="slider">
+          <div class="slides">
+            <img src="../Asset/img/PortfolioCapture1.PNG" alt="Capture 1">
+            <img src="../Asset/img/PortfolioCapture2.PNG" alt="Capture 2">
+            <img src="../Asset/img/PortfolioCapture3.PNG" alt="Capture 3">
+            <img src="../Asset/img/PortfolioCapture4.PNG" alt="Capture 4">
+            <img src="../Asset/img/PortfolioCapture5.PNG" alt="Capture 5">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+</main>
+</body>
+<footer>
+  <p>&copy; 2025 Ugo Radiguet</p>
+</footer>
+
+<script>
+  let currentIndex = 0;
+  const slides = document.querySelector('.slides');
+  const totalSlides = document.querySelectorAll('.slides img').length;
+
+  function autoSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    slides.style.transform = `translateX(-${currentIndex * 1200}px)`;
+  }
+
+  setInterval(autoSlide, 4000); // Toutes les 4 secondes
+</script>
+
+</html>
