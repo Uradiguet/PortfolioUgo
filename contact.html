@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Portfolio - Contact</title>
     <link rel="stylesheet" href="Asset/style/style.css">
     <link rel="icon" type="image/png" href="./Asset/img/logo-removebg-preview.png">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
@@ -35,26 +35,31 @@
     </section>
 
     <div class="container">
-        <form class="form" action="contact.html" method="post" mailto="ugo.radiguet@sts-sio-caen.info" enctype="text/plain">
+        <!-- Solution 1: Utilisation d'un service de formulaire tiers -->
+        <form class="form" action="https://formsubmit.co/ugo.radiguet@sts-sio-caen.info" method="POST">
+            <!-- Solution 2: Ajout des attributs name et modification de l'action -->
+            <input type="hidden" name="_next" value="https://votresite.com/merci.html">
+            <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
+
             <div class="flex">
                 <label>
-                    <input required placeholder=" " type="text" class="input">
+                    <input required placeholder=" " type="text" class="input" name="prenom">
                     <span>Prénom</span>
                 </label>
 
                 <label>
-                    <input required placeholder=" " type="text" class="input">
+                    <input required placeholder=" " type="text" class="input" name="nom">
                     <span>Nom</span>
                 </label>
             </div>
 
             <label>
-                <input required placeholder=" " type="email" class="input">
+                <input required placeholder=" " type="email" class="input" name="email">
                 <span>Email</span>
             </label>
 
             <label>
-                <textarea required rows="3" placeholder=" " class="input01"></textarea>
+                <textarea required rows="3" placeholder=" " class="input01" name="message"></textarea>
                 <span>Message</span>
             </label>
 
