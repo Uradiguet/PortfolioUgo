@@ -1047,3 +1047,191 @@ label span {
         border-left: 0;
     }
 }
+/* Styles spécifiques pour la page des passions */
+.passion-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.passion-title {
+    text-align: center;
+    color: white;
+    font-size: 2.8rem;
+    margin-bottom: 60px;
+    position: relative;
+    font-weight: 700;
+}
+
+.passion-title::after {
+    content: '';
+    display: block;
+    width: 200px;
+    height: 4px;
+    background: linear-gradient(90deg, #6ACFC7, transparent);
+    margin: 20px auto 0;
+    border-radius: 2px;
+}
+
+.passion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 0 auto;
+}
+
+.passion-card {
+    background: linear-gradient(145deg, #0C1A1A 0%, #1a2e2e 100%);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(106, 207, 199, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.passion-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(106, 207, 199, 0.3);
+    border-color: #6ACFC7;
+}
+
+.passion-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #6ACFC7, #0C1A1A);
+}
+
+.passion-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(106, 207, 199, 0.15);
+    border-radius: 50%;
+    border: 2px solid #6ACFC7;
+    box-shadow: 0 4px 15px rgba(106, 207, 199, 0.3);
+    transition: all 0.4s ease;
+}
+
+.passion-icon img {
+    width: 60px; /* Ajustez selon vos besoins */
+    height: 60px;
+    object-fit: contain; /* Pour conserver les proportions */
+    border-radius: 50%; /* Optionnel : pour un effet rond comme les icônes Font Awesome */
+}
+
+.passion-icon i {
+    font-size: 2.8rem;
+    color: #fff;
+    transition: all 0.4s ease;
+}
+
+.passion-card:hover .passion-icon {
+    background-color: rgba(106, 207, 199, 0.3);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(106, 207, 199, 0.5);
+}
+
+.passion-card h3 {
+    color: #6ACFC7;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.passion-card p {
+    color: #ddd;
+    text-align: center;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    margin-bottom: 0;
+}
+
+.back-button-container {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.btn-orange i {
+    margin-right: 8px;
+}
+
+/* Animation pour les cartes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.passion-card {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+/* Délais d'animation pour chaque carte */
+.passion-card:nth-child(1) { animation-delay: 0.1s; }
+.passion-card:nth-child(2) { animation-delay: 0.2s; }
+.passion-card:nth-child(3) { animation-delay: 0.3s; }
+.passion-card:nth-child(4) { animation-delay: 0.4s; }
+.passion-card:nth-child(5) { animation-delay: 0.5s; }
+.passion-card:nth-child(6) { animation-delay: 0.6s; }
+.passion-card:nth-child(7) { animation-delay: 0.7s; }
+.passion-card:nth-child(8) { animation-delay: 0.8s; }
+.passion-card:nth-child(9) { animation-delay: 0.9s; }
+.passion-card:nth-child(10) { animation-delay: 1s; }
+.passion-card:nth-child(11) { animation-delay: 1.1s; }
+.passion-card:nth-child(12) { animation-delay: 1.2s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .passion-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+
+    .passion-title {
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+    }
+
+    .passion-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .passion-icon i {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .passion-container {
+        padding: 40px 15px;
+    }
+
+    .passion-card {
+        padding: 25px;
+    }
+
+    .passion-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .passion-card p {
+        font-size: 1rem;
+    }
+}
