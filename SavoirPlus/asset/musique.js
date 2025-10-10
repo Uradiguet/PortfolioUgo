@@ -54,6 +54,73 @@ const trackList = [
         path: "../Asset/Musique/L'Éclat du Combat.mp3",
         cover: "../Asset/Musique/Cover/C9.jpeg"
     },
+    {
+        title: "Loucas, Le Démon du CCTV",
+        artist: "Ugo RADIGUET",
+        path: "../Asset/Musique/Loucas, Le Démon du CCTV.mp3",
+        cover: "../Asset/Musique/Cover/C10.jpeg"
+    },
+    {
+        title: "Victoria, Démon de la Richesse",
+        artist: "Ugo RADIGUET",
+        path: "../Asset/Musique/Victoria, Démon de la Richesse.mp3",
+        cover: "../Asset/Musique/Cover/C11.jpeg"
+    },
+    {
+        title: "Ugo, le démon du Net",
+        artist: "Ugo RADIGUET",
+        path: "../Asset/Musique/Ugo, le démon du Net.mp3",
+        cover: "../Asset/Musique/Cover/C12.jpeg"
+    },
+    {
+        title: "A Saga dos Radiguet",
+        artist: "Ugo RADIGUET",
+        path: "../Asset/Musique/A Saga dos Radiguet.mp3",
+        cover: "../Asset/Musique/Cover/C13.jpeg"
+    },
+    {
+        title: "Code Samurai",
+        artist: "Ugo RADIGUET",
+        path: "../Asset/Musique/Code Samurai.mp3",
+        cover: "../Asset/Musique/Cover/C14.jpeg"
+    },
+    {
+        title: "RPZ Rêve Électrique",
+        artist: "Ugo RADIGUET",
+        path: "../Asset/Musique/RPZ Rêve Électrique.mp3",
+        cover: "../Asset/Musique/Cover/C15.jpeg"
+    },
+    {
+        title: "Skyline Reverie",
+        artist: "Ugo RADIGUET",
+        path: "../Asset/Musique/Skyline Reverie.mp3",
+        cover: "../Asset/Musique/Cover/C16.jpeg"
+    },
+    {
+        title: "Ring of Fire",
+        artist: "Ugo RADIGUET",
+        path: "../Asset/Musique/Ring of Fire.mp3",
+        cover: "../Asset/Musique/Cover/C17.jpeg"
+    },
+    {
+        title: "疾風の軌跡",
+        artist: "Ugo RADIGUET",
+        path: "../Asset/Musique/疾風の軌跡 (Shippū no Kiseki - Trail of the Gale).mp3",
+        cover: "../Asset/Musique/Cover/C18.jpeg"
+    },
+    {
+        title: "Containment Breach",
+        artist: "Ugo RADIGUET",
+        path: "../Asset/Musique/Containment Breach.mp3",
+        cover: "../Asset/Musique/Cover/C19.jpeg"
+    },
+    {
+        title: "Victoria, Démon de la Richesse V2",
+        artist: "Ugo RADIGUET",
+        path: "../Asset/Musique/Victoria, Démon de la Richesse (2).mp3",
+        cover: "../Asset/Musique/Cover/C20.jpeg"
+    },
+
     // Ajoutez d'autres morceaux ici
 ];
 
