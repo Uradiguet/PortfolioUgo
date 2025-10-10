@@ -4,55 +4,55 @@ const trackList = [
         title: "戦士の夢",
         artist: "Ugo RADIGUET",
         path: "../Asset/Musique/戦士の夢 (Warrior's Dream).mp3",
-        cover: "../Asset/Musique/Cover/C1.JPEG"
+        cover: "../Asset/Musique/Cover/C1.jpeg"
     },
     {
         title: "L'Homme De L'Ombre",
         artist: "Ugo RADIGUET",
         path: "../Asset/Musique/L'Homme De L'Ombre.mp3",
-        cover: "../Asset/Musique/Cover/C2.JPEG"
+        cover: "../Asset/Musique/Cover/C2.jpeg"
     },
     {
         title: "サックスは出たとこ勝負",
         artist: "Ugo RADIGUET",
         path: "../Asset/Musique/サックスは出たとこ勝負.mp3",
-        cover: "../Asset/Musique/Cover/C3.JPEG"
+        cover: "../Asset/Musique/Cover/C3.jpeg"
     },
     {
         title: "サックスは出たとこ勝負 v2",
         artist: "Ugo RADIGUET",
         path: "../Asset/Musique/サックスは出たとこ勝負 (2).mp3",
-        cover: "../Asset/Musique/Cover/C4.JPEG"
+        cover: "../Asset/Musique/Cover/C4.jpeg"
     },
     {
         title: "Victory Tango",
         artist: "Ugo RADIGUET",
         path: "../Asset/Musique/Victory Tango.mp3",
-        cover: "../Asset/Musique/Cover/C5.JPEG"
+        cover: "../Asset/Musique/Cover/C5.jpeg"
     },
     {
         title: "NxW The Animation",
         artist: "Ugo RADIGUET",
         path: "../Asset/Musique/NxW_ The Animation.mp3",
-        cover: "../Asset/Musique/Cover/C6.JPEG"
+        cover: "../Asset/Musique/Cover/C6.jpeg"
     },
     {
         title: "Queen of the Ring",
         artist: "Ugo RADIGUET",
         path: "../Asset/Musique/Queen of the Ring.mp3",
-        cover: "../Asset/Musique/Cover/C7.JPEG"
+        cover: "../Asset/Musique/Cover/C7.jpeg"
     },
     {
         title: "Unbreakable Force",
         artist: "Ugo RADIGUET",
         path: "../Asset/Musique/Unbreakable Force.mp3",
-        cover: "../Asset/Musique/Cover/C8.JPEG"
+        cover: "../Asset/Musique/Cover/C8.jpeg"
     },
     {
         title: "L'Éclat du Combat",
         artist: "Ugo RADIGUET",
         path: "../Asset/Musique/L'Éclat du Combat.mp3",
-        cover: "../Asset/Musique/Cover/C9.JPEG"
+        cover: "../Asset/Musique/Cover/C9.jpeg"
     },
     // Ajoutez d'autres morceaux ici
 ];
