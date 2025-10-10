@@ -117,7 +117,7 @@ const trackList = [
     {
         title: "Victoria, Démon de la Richesse V2",
         artist: "Ugo RADIGUET",
-        path: "../Asset/Musique/Victoria, Démon de la Richesse (2).mp3",
+        path: "../Asset/Musique/Victoria, Démon de la Richesse (1).mp3",
         cover: "../Asset/Musique/Cover/C20.jpeg"
     },
 
