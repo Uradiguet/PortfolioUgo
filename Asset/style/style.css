@@ -822,23 +822,99 @@ label span {
 
 
 
-.contact-header {
-    text-align: center;
-    margin-top: 40px;
+/* --- NOUVEAUX STYLES POUR LA PAGE CONTACT --- */
+
+/* Conteneur principal pour la grille */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Deux colonnes de taille égale */
+    gap: 50px;
+    max-width: 1200px; /* Augmente la taille max pour un meilleur rendu */
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* Styles pour les colonnes */
+.form-column {
+    /* Le formulaire est déjà stylisé par .form */
+    display: flex;
+    justify-content: center;
+}
+
+.info-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligne le contenu en haut */
+    align-items: center;
+}
+
+/* Le .carde est déjà défini et a un style sobre pour contenir les infos */
+.info-column .carde {
+    background: #0C1A1A; /* Remplacement du fond par le Vert Cardin */
+    border: 1px solid #6ACFC7;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 0 15px rgba(106, 207, 199, 0.2); /* Ombre légère avec couleur accent */
+}
+
+/* Styles pour les éléments de contact direct (email, tel...) */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: left;
+    gap: 15px;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.contact-item p {
+    font-size: 1.1rem;
+    margin: 0;
     color: white;
 }
 
-.contact-header h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #6ACFC7;
-    display: inline-block;
-    padding-bottom: 5px;
+/* Surcharger l'animation pour les boutons de la page de contact */
+main .button:hover .button__icon-svg:first-child {
+    /* Annule la translation qui faisait disparaître l'icône originale */
+    transform: translate(0, 0) !important;
+    transition: none !important; /* Retire l'effet de transition */
 }
 
-.contact-header p {
-    font-size: 18px;
-    color: #ccc;
+/* S'assurer que l'icône de copie, si elle était présente, reste invisible */
+main .button:hover .button__icon-svg--copy {
+    transform: translate(-150%, 150%) !important;
+    transition: none !important;
+}
+
+/* Conteneur pour les boutons sociaux */
+.social-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Responsive pour mobile/tablette */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* Passage à une seule colonne */
+        gap: 40px;
+    }
+
+    .info-column .carde {
+        margin-top: 0;
+    }
+}
+
+/* Correction pour .form qui doit être contenu par .form-column */
+.form-column .form {
+    margin: 0; /* Supprime le margin auto qui perturbe la grille */
 }
 
 .container {
@@ -879,24 +955,6 @@ label span {
     left: 120%;
 }
 
-@media screen and (max-width: 600px) {
-    .flex {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .form {
-        padding: 10px;
-    }
-
-    .contact-header h1 {
-        font-size: 28px;
-    }
-
-    .contact-header p {
-        font-size: 16px;
-    }
-}
 
 /* Style spécifique pour la frise chronologique */
 .timeline-container {
@@ -1234,4 +1292,38 @@ label span {
     .passion-card p {
         font-size: 1rem;
     }
+}
+
+.styled-list {
+    list-style: none; /* Enlève les puces par défaut */
+    padding: 0;
+    margin: 0;
+}
+
+.styled-list li {
+    padding: 10px 0 10px 30px;
+    position: relative;
+    font-size: 1.05rem;
+    color: #ddd;
+    border-bottom: 1px dashed rgba(106, 207, 199, 0.1);
+}
+
+.styled-list li:last-child {
+    border-bottom: none;
+}
+
+.styled-list li::before {
+    content: "\2022"; /* Point de puce */
+    color: #6ACFC7; /* Couleur de la puce */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    position: absolute;
+    left: 10px;
+    font-size: 1.2em;
+}
+
+.styled-list li strong {
+    color: #6ACFC7; /* Mise en valeur des mots-clés dans la liste */
 }

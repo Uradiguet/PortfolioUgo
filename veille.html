@@ -1,91 +1,106 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Veille Informationnelle</title>
-  <link rel="stylesheet" href="Asset/style/style.css">
-  <link rel="icon" type="image/png" href="./Asset/img/logo-removebg-preview.png">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille Informationnelle</title>
+    <link rel="stylesheet" href="Asset/style/style.css">
+    <link rel="icon" type="image/png" href="./Asset/img/logo-removebg-preview.png">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
-  <div class="logo">
-    <img src="Asset/img/logo-removebg-preview.png" alt="Site Logo">
-    Ugo RADIGUET Portfolio</div>
-  <nav>
-    <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="apropos.html">A Propos</a></li>
-      <li><a href="competence.html">Compétences</a></li>
-      <li><a href="experience.html">Experience</a></li>
-      <li><a href="realisation.html">Réalisations</a></li>
-      <li><a href="Annexe.html">Document</a></li>
-      <li><a href="veille.html">Veille</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+    <div class="logo">
+        <img src="Asset/img/logo-removebg-preview.png" alt="Site Logo">
+        Ugo RADIGUET Portfolio</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="apropos.html">A Propos</a></li>
+            <li><a href="competence.html">Compétences</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="realisation.html">Réalisations</a></li>
+            <li><a href="Annexe.html">Document</a></li>
+            <li><a href="veille.html">Veille</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 </header>
 
-<main style="max-width: 1000px; margin: auto; padding: 40px 20px;">
-  <section class="veille-intro">
-    <h1 style="text-align: center; font-size: 32px; border-bottom: 2px solid #6ACFC7; padding-bottom: 10px;">Veille Informationnelle : IA et Programmation</h1>
-    <p style="text-align: justify; margin-top: 20px;">
-      Dans le cadre de ma formation en BTS SIO, je réalise une veille technologique sur les domaines de l'intelligence artificielle et de la programmation. Cette veille me permet de rester informé sur les dernières tendances, outils, langages et innovations dans ces secteurs en constante évolution.
-    </p>
-  </section>
+<main class="containerCompetence" style="max-width: 1000px; margin-top: 50px; background: none; padding: 10px 20px;">
 
-  <section class="veille-tools">
-    <h2 class="section-title">Outils de veille utilisés</h2>
-    <ul>
-      <li>Feedly (flux RSS de sites tech : Le Big Data, Developpez.com, Journal du Net, etc.)</li>
-      <li>Twitter/X (comptes de développeurs et comptes de journaux spécialisé dans l'IA et la programmation)</li>
-      <li>GitHub (exploration des projets open-source populaires)</li>
-      <li>Reddit (communautés : r/MachineLearning, r/programming)</li>
-    </ul>
-  </section>
+    <section class="veille-intro" style="margin-bottom: 40px;">
+        <h1 class="timeline-title" style="margin-bottom: 20px; font-size: 36px; display: block; width: 100%; text-align: center;">Veille Informationnelle : IA et Programmation</h1>
+        <p style="text-align: justify; margin-top: 20px; font-size: 1.1rem; color: #ddd;">
+            Dans le cadre de ma formation en BTS SIO, je réalise une **veille technologique** sur les domaines de l'intelligence artificielle et de la programmation. Cette démarche proactive me permet de rester informé sur les dernières tendances, outils, langages et innovations dans ces secteurs en constante évolution.
+        </p>
+    </section>
 
-  <section class="veille-topics">
-    <h2 class="section-title">Thématiques surveillées</h2>
-    <ul>
-      <li>Évolution des langages de programmation (Python, JavaScript, Rust...)</li>
-      <li>Nouveautés dans l’intelligence artificielle (LLM, IA générative, etc.)</li>
-      <li>Cybersécurité liée aux IA</li>
-      <li>Frameworks récents (Next.js, Astro, etc.)</li>
-    </ul>
-  </section>
+    <hr style="border-top: 1px solid rgba(106, 207, 199, 0.3); margin: 40px 0;">
 
-  <section class="veille-articles">
-    <h2 class="section-title">Articles récents analysés</h2>
+    <div class="realisation-layout" style="padding: 0; gap: 40px; border: none;">
 
-    <div class="real-card">
-      <h3>GPT-4 Turbo : plus puissant et moins cher</h3>
-      <p>Publié sur OpenAI, novembre 2024</p>
-      <p>
-        OpenAI a lancé GPT-4 Turbo, une version améliorée de son modèle d’IA. Plus rapide, moins cher et avec une mémoire contextuelle plus grande. Cela ouvre des perspectives concrètes pour les assistants virtuels.
-      </p>
-      <a href="https://openai.com" class="btn-orange" target="_blank">Lire l'article</a>
+        <div class="realisation-column" style="border-right: 1px solid #6ACFC7;">
+            <h2 class="section-title">Outils de veille utilisés</h2>
+            <ul class="styled-list">
+                <li><strong>Feedly</strong> (flux RSS de sites tech : Le Big Data, Developpez.com, Journal du Net, etc.)</li>
+                <li><strong>Twitter/X</strong> (comptes de développeurs et journaux spécialisés)</li>
+                <li><strong>GitHub</strong> (exploration des projets open-source populaires)</li>
+                <li><strong>Reddit</strong> (communautés : r/MachineLearning, r/programming)</li>
+            </ul>
+        </div>
+
+        <div class="realisation-column" style="border-right: none;">
+            <h2 class="section-title">Thématiques surveillées</h2>
+            <ul class="styled-list">
+                <li>Évolution des langages de programmation (Python, JavaScript, Rust...)</li>
+                <li>Nouveautés dans l’<strong>Intelligence Artificielle</strong> (LLM, IA générative, etc.)</li>
+                <li><strong>Cybersécurité</strong> liée aux IA et applications web</li>
+                <li>Frameworks et bibliothèques récents (Next.js, Astro, React, etc.)</li>
+            </ul>
+        </div>
     </div>
 
-    <div class="real-card">
-      <h3>Astro 4.0 : révolution du site statique dynamique</h3>
-      <p>Publié sur Astro.build, mars 2025</p>
-      <p>
-        Le framework Astro continue de s’imposer dans la création de sites web ultra-rapides. Il permet de combiner des composants React, Vue, Svelte dans un seul projet. Parfait pour les développeurs front-end modernes.
-      </p>
-      <a href="https://astro.build" class="btn-orange" target="_blank">Lire l'article</a>
-    </div>
-  </section>
+    <hr style="border-top: 1px solid rgba(106, 207, 199, 0.3); margin: 40px 0;">
 
-  <section class="veille-rss">
-    <h2 class="section-title">Flux d'actualités en direct</h2>
-    <div id="rss-feed"></div>
-    <!-- start feedwind code --> <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="172060/"></script> <!-- end feedwind code -->
-  </section>
+    <section class="veille-articles">
+        <h2 class="section-title">Articles d'analyse</h2>
+
+        <div class="real-card">
+            <h3>GPT-4 Turbo : plus puissant et moins cher</h3>
+            <p style="color: #6ACFC7; font-weight: bold; margin-bottom: 10px;">Publié sur OpenAI, novembre 2024</p>
+            <p>
+                OpenAI a lancé <strong>GPT-4 Turbo</strong>, une version améliorée de son modèle d’IA. Plus rapide, moins cher et avec une mémoire contextuelle plus grande. Cela ouvre des perspectives concrètes pour les assistants virtuels et les applications d'entreprise.
+            </p>
+            <a href="https://openai.com" class="btn-orange" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Lire l'article
+            </a>
+        </div>
+
+        <div class="real-card">
+            <h3>Astro 4.0 : révolution du site statique dynamique</h3>
+            <p style="color: #6ACFC7; font-weight: bold; margin-bottom: 10px;">Publié sur Astro.build, mars 2025</p>
+            <p>
+                Le framework <strong>Astro</strong> continue de s’imposer dans la création de sites web ultra-rapides grâce à son concept "Island Architecture". Il permet de combiner des composants React, Vue, Svelte dans un seul projet. Parfait pour les développeurs front-end modernes.
+            </p>
+            <a href="https://astro.build" class="btn-orange" target="_blank">
+                <i class="fas fa-external-link-alt"></i>
+                Lire l'article
+            </a>
+        </div>
+    </section>
+
+    <hr style="border-top: 1px solid rgba(106, 207, 199, 0.3); margin: 40px 0;">
+
+    <section class="veille-rss">
+        <h2 class="section-title">Flux d'actualités en direct (Veille en temps réel)</h2>
+        <div id="rss-feed" style="margin-top: 30px;">
+            <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading" data-fw-param="172060/"></script> </div>
+    </section>
 </main>
 
 <footer>
-  <p>&copy; 2025 Ugo Radiguet</p>
+    <p>&copy; 2025 Ugo Radiguet</p>
 </footer>
 </body>
 </html>

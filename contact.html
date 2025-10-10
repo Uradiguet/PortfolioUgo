@@ -30,40 +30,89 @@
 
 <main>
     <section class="contact-header">
-        <h1>Contactez-moi</h1>
-        <p>Une question, une collaboration ? Remplissez ce formulaire !</p>
+        <h1 class="section-title" style="margin-bottom: 30px;">Contactez-moi</h1>
+        <p>Une question, une collaboration ? Remplissez ce formulaire ou utilisez les contacts directs ci-dessous !</p>
     </section>
 
-    <div class="container">
-        <!-- Solution 1: Utilisation d'un service de formulaire tiers -->
-        <form class="form" action="https://formsubmit.co/ugo.radiguet@sts-sio-caen.info" method="POST">
+    <div class="contact-grid">
 
-            <div class="flex">
+        <div class="form-column">
+            <form class="form" action="https://formsubmit.co/..." method="POST">
+                <div class="flex">
+                    <label>
+                        <input required placeholder=" " type="text" class="input" name="prenom">
+                        <span>Prénom</span>
+                    </label>
+
+                    <label>
+                        <input required placeholder=" " type="text" class="input" name="nom">
+                        <span>Nom</span>
+                    </label>
+                </div>
+
                 <label>
-                    <input required placeholder=" " type="text" class="input" name="prenom">
-                    <span>Prénom</span>
+                    <input required placeholder=" " type="email" class="input" name="email">
+                    <span>Email</span>
                 </label>
 
                 <label>
-                    <input required placeholder=" " type="text" class="input" name="nom">
-                    <span>Nom</span>
+                    <textarea required rows="3" placeholder=" " class="input01" name="message"></textarea>
+                    <span>Message</span>
                 </label>
+
+                <button class="fancy" type="submit">
+                    Envoyer
+                </button>
+            </form>
+        </div>
+
+        <div class="info-column">
+            <div class="carde">
+                <h2 style="color: #6ACFC7; margin-bottom: 20px; font-size: 1.5em;">Me contacter directement</h2>
+
+                <div class="contact-item">
+                    <span class="contact-icon" style="color: #6ACFC7;"><i class="fas fa-envelope"></i></span>
+                    <p>ugo.radiguet@sts-sio-caen.info</p>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-icon" style="color: #6ACFC7;"><i class="fas fa-phone"></i></span>
+                    <p>+33 6 XX XX XX XX</p>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-icon" style="color: #6ACFC7;"><i class="fas fa-map-marker-alt"></i></span>
+                    <p>Caen, Normandie, France</p>
+                </div>
+
+                <hr style="border-top: 1px solid rgba(106, 207, 199, 0.3); margin: 20px 0;">
+
+                <h2 style="color: #6ACFC7; margin-bottom: 20px; font-size: 1.5em;">Réseaux Sociaux</h2>
+
+                <div class="social-links">
+
+                    <a href="https://www.linkedin.com/in/ugo-radiguet-225487242/" class="button" style="--clr: #0077b5;">
+        <span class="button__icon-wrapper">
+            <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" class="button__icon-svg">
+                <path d="M24,3H6C4.34,3,3,4.34,3,6v18c0,1.66,1.34,3,3,3h18c1.66,0,3-1.34,3-3V6C27,4.34,25.66,3,24,3z M10,23H7V12h3V23z M8.5,10.5
+                    C7.67,10.5,7,9.83,7,9s0.67-1.5,1.5-1.5S10,8.17,10,9S9.33,10.5,8.5,10.5z M23,23h-3v-5.5c0-1.66-1.34-3-3-3s-3,1.34-3,3V23h-3V12h3
+                    v1.71c0.88-1.03,2.16-1.71,3.5-1.71c2.76,0,5,2.24,5,5V23z"/>
+            </svg>
+        </span>
+                        LinkedIn
+                    </a>
+
+                    <a href="https://github.com/Uradiguet" class="button" style="--clr: #333;">
+        <span class="button__icon-wrapper">
+            <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" class="button__icon-svg">
+                <path d="M15 3C8.373 3 3 8.373 3 15c0 5.304 3.438 9.8 8.207 11.385.6.11.82-.26.82-.58v-2.12c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.35-1.76-1.35-1.76-1.1-.75.08-.74.08-.74 1.22.08 1.87 1.25 1.87 1.25 1.08 1.86 2.83 1.32 3.52 1 .11-.79.42-1.32.76-1.62-2.67-.3-5.47-1.33-5.47-5.91 0-1.31.47-2.39 1.24-3.23-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.92 1.24 3.23 0 4.59-2.8 5.61-5.47 5.91.43.37.82 1.1.82 2.22v3.29c0 .32.22.69.83.57C23.57 24.8 27 20.3 27 15c0-6.627-5.373-12-12-12z"/>
+            </svg>
+        </span>
+                        GitHub
+                    </a>
+                </div>
             </div>
-
-            <label>
-                <input required placeholder=" " type="email" class="input" name="email">
-                <span>Email</span>
-            </label>
-
-            <label>
-                <textarea required rows="3" placeholder=" " class="input01" name="message"></textarea>
-                <span>Message</span>
-            </label>
-
-            <button class="fancy" type="submit">
-                Envoyer
-            </button>
-        </form>
+        </div>
     </div>
 </main>
 
