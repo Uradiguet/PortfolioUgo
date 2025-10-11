@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="./Asset/img/logo-removebg-preview.png">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://westerbay.github.io/Open-Site-Counter/register.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 <header>
@@ -29,19 +30,51 @@
     </nav>
 </header>
 <main>
+    <button id="halloween-toggle" style="
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        z-index: 100;
+        padding: 10px 15px;
+        background-color: #ff6600; /* Orange Halloween */
+        color: white;
+        border: 2px solid #0C1A1A;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    " onmouseover="this.style.backgroundColor='#ffa500';" onmouseout="this.style.backgroundColor='#ff6600';">
+        <i class="fas fa-ghost"></i> Mode Halloween
+    </button>
     <div class="container">
-        <!-- Section gauche contenant l'image -->
         <div class="image-section">
             <img src="Asset/img/photo2.jpg" alt="Image de présentation">
         </div>
-        <!-- Section droite contenant le texte -->
         <div class="text-section">
             <img src="Asset/img/logo-removebg-preview.png" alt="Site Logo">
         </div>
-        <!-- Diagonale orange -->
         <div class="diagonal-line"></div>
     </div>
 </main>
+<script>
+    document.getElementById('halloween-toggle').addEventListener('click', function() {
+        document.body.classList.toggle('halloween-theme');
+        // Optionnel : stocker le choix dans localStorage pour le conserver entre les pages/sessions
+        if (document.body.classList.contains('halloween-theme')) {
+            localStorage.setItem('theme', 'halloween');
+            this.innerHTML = '<i class="fas fa-sun"></i> Mode Normal';
+        } else {
+            localStorage.setItem('theme', 'normal');
+            this.innerHTML = '<i class="fas fa-ghost"></i> Mode Halloween';
+        }
+    });
+
+    // Appliquer le thème sauvegardé au chargement
+    if (localStorage.getItem('theme') === 'halloween') {
+        document.body.classList.add('halloween-theme');
+        document.getElementById('halloween-toggle').innerHTML = '<i class="fas fa-sun"></i> Mode Normal';
+    }
+</script>
 </body>
 <footer>
     <p>&copy; 2025 Ugo Radiguet</p>

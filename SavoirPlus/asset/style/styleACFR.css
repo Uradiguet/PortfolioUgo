@@ -4,6 +4,7 @@ body {
     font-family: 'Outfit', Arial, sans-serif;
     background-color: #0C1A1A;
     color: white;
+    transition: background-color 0.5s;
 }
 
 header {
@@ -295,4 +296,373 @@ button:hover {
     width: 18px;
     height: 18px;
     border: 3px solid #0C1A1A;
+}
+
+body.halloween-theme {
+    background-color: #1a1a1a; /* Noir très sombre pour Halloween */
+}
+
+body.halloween-theme header {
+    background-color: #1a1a1a;
+}
+
+body.halloween-theme .logo {
+    color: #ff6600; /* Texte orange vif */
+}
+
+body.halloween-theme header nav ul li a:hover {
+    color: #ff6600; /* Surlignage orange */
+}
+
+body.halloween-theme .text-section {
+    background-color: #1a1a1a; /* Fond noir sombre */
+}
+
+body.halloween-theme .diagonal-line {
+    /* Changement de la couleur de la diagonale */
+    background: linear-gradient(to bottom right, transparent 50%, #ff6600); /* Orange Halloween */
+}
+
+body.halloween-theme footer {
+    background-color: #1a1a1a; /* Fond noir sombre */
+}
+
+/* Éléments communs */
+body.halloween-theme .btn-orange {
+    background-color: #ff6600; /* Bouton orange */
+    color: #1a1a1a; /* Texte sombre sur bouton orange */
+}
+
+body.halloween-theme .btn-orange:hover {
+    background-color: #ffa500; /* Orange plus clair au survol */
+}
+body.halloween-theme .fancy {
+    background-color: #ff6600;
+    color: #1a1a1a;
+}
+body.halloween-theme .fancy:hover {
+    background: #1a1a1a;
+    color: #ff6600;
+}
+body.halloween-theme .input:focus + span, body.halloween-theme .input:not(:placeholder-shown) + span,
+body.halloween-theme .input01:focus + span, body.halloween-theme .input01:not(:placeholder-shown) + span {
+    color: #ff6600;
+}
+body.halloween-theme .input:focus, body.halloween-theme .input01:focus {
+    border-color: #ff6600;
+}
+body.halloween-theme .info-column .carde {
+    border: 1px solid #ff6600;
+    box-shadow: 0 0 15px rgba(255, 102, 0, 0.2);
+}
+body.halloween-theme .contact-item .contact-icon {
+    color: #ff6600 !important;
+}
+
+/* Page Experience */
+body.halloween-theme .timeline::after {
+    background-color: #ff6600;
+}
+
+body.halloween-theme .timeline-title {
+    border-bottom: 2px solid #ff6600;
+}
+
+body.halloween-theme .timeline-content {
+    background: linear-gradient(180deg, #ff6600 10%, #1a1a1a 90%);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+body.halloween-theme .timeline-content:hover {
+    box-shadow: 0 12px 24px #ff6600;
+}
+
+body.halloween-theme .left .timeline-content::after {
+    border-left: 10px solid #ff6600;
+}
+
+body.halloween-theme .right .timeline-content::after {
+    border-right: 10px solid #ff6600;
+}
+
+body.halloween-theme .diploma-tag {
+    background-color: #1a1a1a;
+    color: #ff6600;
+    border: 1px solid #ff6600;
+}
+
+/* Page Compétences */
+body.halloween-theme .containerCompetence {
+    background: #1a1a1a;
+}
+body.halloween-theme .skill-bar .skill-per {
+    background: #ff6600;
+}
+body.halloween-theme .skill-per .tooltip {
+    color: #1a1a1a;
+    background: #ff6600;
+}
+body.halloween-theme .tooltip::before {
+    background-color: #ff6600;
+}
+body.halloween-theme .carde {
+    /* CORRECTION APPLIQUÉE ICI */
+    background: linear-gradient(180deg, #ff6600 25%, #1a1a1a 75%);
+}
+
+/* Page Réalisations & Veille */
+body.halloween-theme .realisation-column {
+    border-right: 1px solid #ff6600;
+}
+body.halloween-theme .real-card {
+    background: linear-gradient(180deg, #ff6600 10%, #1a1a1a 90%);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
+body.halloween-theme .real-card:hover {
+    box-shadow: 0 12px 24px #ff6600;
+}
+
+body.halloween-theme .real-card p {
+    color: #ff6600;
+}
+body.halloween-theme .styled-list li::before {
+    color: #ff6600;
+}
+
+body.halloween-theme .styled-list li strong {
+    color: #ff6600;
+}
+
+/* Page Annexe */
+body.halloween-theme .document-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+body.halloween-theme .document-title {
+    background: #ff6600;
+    color: #1a1a1a;
+}
+body.halloween-theme .document-card.focused {
+    border-color: #ff6600;
+}
+
+/* Page Ugo.html (Passions) */
+body.halloween-theme .passion-card {
+    background: linear-gradient(145deg, #1a1a1a 0%, #2e2e2e 100%);
+    border: 1px solid rgba(255, 102, 0, 0.5);
+}
+body.halloween-theme .passion-card::before {
+    background: linear-gradient(90deg, #ff6600, #1a1a1a);
+}
+body.halloween-theme .passion-card:hover {
+    box-shadow: 0 15px 30px rgba(255, 102, 0, 0.4);
+    border-color: #ff6600;
+}
+body.halloween-theme .passion-card:hover .passion-icon {
+    background-color: rgba(255, 102, 0, 0.2);
+    box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
+}
+body.halloween-theme .passion-card h3 {
+    color: #ff6600;
+}
+body.halloween-theme .passion-icon {
+    background-color: rgba(255, 102, 0, 0.15);
+    border: 2px solid #ff6600;
+    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
+}
+body.halloween-theme .passion-icon i {
+    color: #ff6600;
+}
+body.halloween-theme .btn-orange {
+    background-color: #ff6600; /* Bouton orange */
+    color: #1a1a1a;
+}
+body.halloween-theme .btn-orange:hover {
+    background-color: #ffa500;
+}
+body.halloween-theme .section-title {
+    border-bottom: 2px solid #ff6600;
+}
+
+/* Corrections pour la page A Propos (apropos.html) */
+body.halloween-theme .card {
+    box-shadow: #ff6600 0px 0.8em 3em 0px; /* Ombre de la carte */
+}
+body.halloween-theme .background {
+    background: radial-gradient(
+            circle at 100% 107%,
+            #1a1a1a 0%,
+            #ff6600 30%, /* Couleur d'accentuation */
+            #1a1a1a 60%,
+            #1a1a1a 100%
+    );
+}
+body.halloween-theme .icon .svg {
+    fill: #1a1a1a; /* Couleur du logo sur les boîtes */
+}
+body.halloween-theme .box {
+    background: #ff6600; /* Fond des boîtes d'icônes */
+}
+
+/* Corrections pour la page Contact (contact.html) */
+body.halloween-theme .input:focus, body.halloween-theme .input01:focus {
+    border-color: #ff6600;
+}
+body.halloween-theme .input:focus + span, body.halloween-theme .input:not(:placeholder-shown) + span,
+body.halloween-theme .input01:focus + span, body.halloween-theme .input01:not(:placeholder-shown) + span {
+    color: #ff6600;
+}
+body.halloween-theme .fancy {
+    background: #ff6600;
+    color: #1a1a1a;
+}
+body.halloween-theme .fancy:hover {
+    background-color: #1a1a1a;
+    color: #ff6600;
+}
+body.halloween-theme .info-column .carde {
+    border: 1px solid #ff6600;
+    box-shadow: 0 0 15px rgba(255, 102, 0, 0.2);
+}
+body.halloween-theme .contact-item .contact-icon {
+    color: #ff6600 !important; /* Pour surcharger le style en ligne */
+}
+
+/* Corrections pour la page Compétences (competence.html) */
+body.halloween-theme .containerCompetence {
+    background: #1a1a1a; /* Fond du conteneur de compétences */
+}
+body.halloween-theme .skill-bar .skill-per {
+    background: #ff6600; /* Barres de progression */
+}
+body.halloween-theme .skill-per .tooltip {
+    color: #1a1a1a;
+    background: #ff6600;
+}
+body.halloween-theme .tooltip::before {
+    background-color: #ff6600;
+}
+body.halloween-theme .carde {
+    background: linear-gradient(180deg, #ff6600 25%, #1a1a1a 75%); /* Cartes du slider */
+}
+
+/* Corrections pour la page Réalisations & Veille (realisation.html, veille.html) */
+body.halloween-theme .realisation-column {
+    border-right: 1px solid #ff6600;
+}
+body.halloween-theme .real-card {
+    background: linear-gradient(180deg, #ff6600 10%, #1a1a1a 90%);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+body.halloween-theme .real-card:hover {
+    box-shadow: 0 12px 24px #ff6600;
+}
+body.halloween-theme .styled-list li::before {
+    color: #ff6600;
+}
+body.halloween-theme .styled-list li strong {
+    color: #ff6600;
+}
+
+/* Corrections pour la page Annexe (Annexe.html) */
+body.halloween-theme .document-title {
+    background: #ff6600;
+    color: #1a1a1a;
+}
+body.halloween-theme button {
+    border: 3px solid #ff6600;
+    background: #1a1a1a;
+}
+body.halloween-theme button:hover {
+    background: #ff6600;
+    color: #1a1a1a;
+}
+body.halloween-theme .slider {
+    border: 2px solid #ff6600;
+}
+body.halloween-theme .view-site {
+    border: 3px solid #ff6600;
+    background: #1a1a1a;
+    color: #ff6600;
+}
+body.halloween-theme .view-site:hover {
+    background: #ff6600;
+    color: #1a1a1a;
+}
+/* Adaptation des cartes */
+body.halloween-theme .card.orange {
+    background-color: #ff6600; /* Correction: Orange Halloween */
+    color: #1a1a1a;
+}
+body.halloween-theme .card.orange p {
+    color: #1a1a1a;
+}
+body.halloween-theme .card.blue {
+    background-color: #1a1a1a;
+    border: 1px solid #ff6600;
+}
+body.halloween-theme .card.blue p {
+    color: white;
+}
+body.halloween-theme .card.white {
+    background-color: #1a1a1a; /* Correction: Noir sombre */
+    color: white;
+    border: 1px solid #ff6600;
+}
+body.halloween-theme .card.white p {
+    color: white;
+}
+
+/* Adaptation des boutons et sliders */
+body.halloween-theme button {
+    border: 3px solid #ff6600; /* Bouton général */
+    background: #1a1a1a;
+    color: #ff6600;
+}
+body.halloween-theme button:hover {
+    background: #ff6600;
+    color: #1a1a1a;
+}
+
+body.halloween-theme .slider {
+    border: 2px solid #ff6600;
+}
+body.halloween-theme .view-site {
+    border: 3px solid #ff6600;
+    background: #1a1a1a;
+    color: #ff6600;
+}
+body.halloween-theme .view-site:hover {
+    background: #ff6600;
+    color: #1a1a1a;
+}
+
+/* Adaptation du lecteur de musique (musique.html) */
+body.halloween-theme .music-player {
+    background-color: #1a1a1a;
+    border: 1px solid #ff6600; /* Correction: Bordure orange */
+    box-shadow: 0 4px 20px rgba(255, 102, 0, 0.2); /* Correction: Ombre orange */
+}
+body.halloween-theme #track-title {
+    color: #ff6600; /* Correction: Titre orange */
+}
+body.halloween-theme .track-art img {
+    border: 3px solid #ff6600; /* Correction: Cadre image orange */
+}
+body.halloween-theme .controls button {
+    color: #ff6600; /* Correction: Icônes orange */
+    border: 2px solid #ff6600; /* Correction: Bordure bouton orange */
+}
+body.halloween-theme .controls button:hover {
+    background: #ff6600; /* Correction: Fond orange au survol */
+    color: #1a1a1a;
+}
+body.halloween-theme #seek-slider::-webkit-slider-thumb {
+    background: #ff6600; /* Correction: Curseur orange */
+    border: 3px solid #1a1a1a;
+}
+body.halloween-theme #seek-slider::-moz-range-thumb {
+    background: #ff6600; /* Correction: Curseur orange */
+    border: 3px solid #1a1a1a;
 }

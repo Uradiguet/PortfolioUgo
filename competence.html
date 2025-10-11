@@ -28,7 +28,56 @@
     </nav>
 </header>
 <main>
+    <button id="halloween-toggle" style="
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 100;
+    padding: 10px 15px;
+    background-color: #ff6600; /* Orange Halloween */
+    color: white;
+    border: 2px solid #0C1A1A;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+" onmouseover="this.style.backgroundColor='#ffa500';" onmouseout="this.style.backgroundColor='#ff6600';">
+        <i class="fas fa-ghost"></i> Mode Halloween
+    </button>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('halloween-toggle');
+            const body = document.body;
+
+            function applyTheme(theme) {
+                if (theme === 'halloween') {
+                    body.classList.add('halloween-theme');
+                    if (toggleButton) {
+                        toggleButton.innerHTML = '<i class="fas fa-sun"></i> Mode Normal';
+                    }
+                } else {
+                    body.classList.remove('halloween-theme');
+                    if (toggleButton) {
+                        toggleButton.innerHTML = '<i class="fas fa-ghost"></i> Mode Halloween';
+                    }
+                }
+            }
+
+            // Appliquer le thème sauvegardé au chargement
+            const savedTheme = localStorage.getItem('theme');
+            applyTheme(savedTheme === 'halloween' ? 'halloween' : 'normal');
+
+            // Fonctionnalité de bascule
+            if (toggleButton) {
+                toggleButton.addEventListener('click', function() {
+                    const newTheme = body.classList.contains('halloween-theme') ? 'normal' : 'halloween';
+                    localStorage.setItem('theme', newTheme);
+                    applyTheme(newTheme);
+                });
+            }
+        });
+    </script>
 
     <div class="containerCompetence">
         <div class="skill-box">
@@ -93,7 +142,7 @@
                     <span class="tooltip">30%</span>
                 </span>
             </div>
-    </div>
+        </div>
 
     </div>
     <div id="oui">
@@ -108,8 +157,6 @@ z-index: 80;"
                 <div class="item" style="--position: 1">
                     <div
                             class="carde"
-                            style="background: #6ACFC7;
-                            background: linear-gradient(180deg, #6ACFC7 25%, #0C1A1A 75%);"
                     >
                         <p>Travailler en mode Projet</p>
                     </div>
@@ -117,8 +164,6 @@ z-index: 80;"
                 <div class="item" style="--position: 2">
                     <div
                             class="carde"
-                            style="background: #6ACFC7;
-                            background: linear-gradient(180deg, #6ACFC7 25%, #0C1A1A 75%);"
                     >
                         <p>Gérer le patrimoine informatique</p>
                     </div>
@@ -126,8 +171,6 @@ z-index: 80;"
                 <div class="item" style="--position: 3">
                     <div
                             class="carde"
-                            style="background: #6ACFC7;
-                            background: linear-gradient(180deg, #6ACFC7 25%, #0C1A1A 75%);"
                     >
                         <p>Répondre aux incidents et aux demandes d’assistance et d’évolution</p>
                     </div>
@@ -135,8 +178,6 @@ z-index: 80;"
                 <div class="item" style="--position: 4">
                     <div
                             class="carde"
-                            style="background: #6ACFC7;
-                            background: linear-gradient(180deg, #6ACFC7 25%, #0C1A1A 75%);"
                     >
                         <p>Développer la présence en ligne de l’organisation</p>
                     </div>
@@ -144,8 +185,6 @@ z-index: 80;"
                 <div class="item" style="--position: 5">
                     <div
                             class="carde"
-                            style="background: #6ACFC7;
-                            background: linear-gradient(180deg, #6ACFC7 25%, #0C1A1A 75%);"
                     >
                         <p>Mettre à disposition des utilisateurs un service informatique</p>
                     </div>
@@ -153,8 +192,6 @@ z-index: 80;"
                 <div class="item" style="--position: 6">
                     <div
                             class="carde"
-                            style="background: #6ACFC7;
-                            background: linear-gradient(180deg, #6ACFC7 25%, #0C1A1A 75%);"
                     >
                         <p>Organiser son développement professionnel</p>
                     </div>
