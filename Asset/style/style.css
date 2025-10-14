@@ -95,7 +95,7 @@ header nav ul li a:hover {
 }
 
 .text-section img {
-    height: 50%;
+    height: auto;
     width: 50%;
 }
 
