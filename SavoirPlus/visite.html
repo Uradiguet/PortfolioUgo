@@ -1,112 +1,159 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="./asset/style/styleACFR.css">
-    <link rel="icon" type="image/png" href="../Asset/img/logo-removebg-preview.png">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-<header>
-    <div class="logo">
-        <img src="../Asset/img/logo-removebg-preview.png" alt="Site Logo">
-        Ugo RADIGUET Portfolio</div>
-    <nav>
-        <ul>
-            <li><a href="../index.html">Accueil</a></li>
-            <li><a href="../apropos.html">A Propos</a></li>
-            <li><a href="../competence.html">Compétences</a></li>
-            <li><a href="../experience.html">Experience</a></li>
-            <li><a href="../realisation.html">Réalisations</a></li>
-            <li><a href="../Annexe.html">Document</a></li>
-            <li><a href="../veille.html">Veille</a></li>
-            <li><a href="../contact.html">Contact</a></li>
-
-        </ul>
-    </nav>
-</header>
-<main>
-    <button id="halloween-toggle" style="
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    z-index: 100;
-    padding: 10px 15px;
-    background-color: #ff6600; /* Orange Halloween */
-    color: white;
-    border: 2px solid #0C1A1A;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-" onmouseover="this.style.backgroundColor='#ffa500';" onmouseout="this.style.backgroundColor='#ff6600';">
-        <i class="fas fa-ghost"></i> Mode Halloween
-    </button>
-
+    <title>Visite du Site | Portfolio Ugo Radiguet</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleButton = document.getElementById('halloween-toggle');
-            const body = document.body;
-
-            function applyTheme(theme) {
-                if (theme === 'halloween') {
-                    body.classList.add('halloween-theme');
-                    if (toggleButton) {
-                        toggleButton.innerHTML = '<i class="fas fa-sun"></i> Mode Normal';
-                    }
-                } else {
-                    body.classList.remove('halloween-theme');
-                    if (toggleButton) {
-                        toggleButton.innerHTML = '<i class="fas fa-ghost"></i> Mode Halloween';
-                    }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'vert-cardin': '#0C1A1A',
+                        'vert-cardin-light': '#162e2e',
+                        'sarcelle': '#6ACFC7',
+                        'sarcelle-dark': '#4ba6a0',
+                    },
+                    fontFamily: { sans: ['Space Grotesk', 'sans-serif'] },
                 }
             }
-
-            // Appliquer le thème sauvegardé au chargement
-            const savedTheme = localStorage.getItem('theme');
-            applyTheme(savedTheme === 'halloween' ? 'halloween' : 'normal');
-
-            // Fonctionnalité de bascule
-            if (toggleButton) {
-                toggleButton.addEventListener('click', function() {
-                    const newTheme = body.classList.contains('halloween-theme') ? 'normal' : 'halloween';
-                    localStorage.setItem('theme', newTheme);
-                    applyTheme(newTheme);
-                });
-            }
-        });
+        }
     </script>
-    <section class="presentation">
-        <div class="container">
-            <div class="card orange">
-                <p class="tip">Script de visite du portfolio</p>
-                <p class="second-text">
-                    Projet collaboratif réalisé pour comptabiliser le nombre de visite sur mon portfolio (Début octobre 2025 - Fin octobre 2025).
-                </p>
-            </div>
-            <div class="card blue">
-                <p class="tip">Langage Utilisé</p>
-                <p class="second-text">Script javascript avec graphique et nombre de visite d'un site, créer par un collaborateur nommé Westerbay (Mathis).</p>
-            </div>
-            <div class="card white">
-                <p class="tip">Pour voir le graphique</p>
-                <p class="second-text">Il faut se rendre sur le site de Wester à ce lien : <a href="https://westerbay.github.io/Open-Site-Counter/">Wester Site Counter</a></p>
-            </div>
-        </div>
-        <div class="sub-container">
-            <!-- ScreenShot -->
-            <div class="card white">
-                <p class="tip">Visuel de la collaboration</p>
-                <img src="../Asset/img/VisiteSiteWester.png" alt="Genealogy Capture">
-            </div>
-        </div>
-    </section>
+    
+    <link rel="icon" type="image/png" href="../Asset/img/logo-removebg-preview.png">
+    
+    <style>
+        body { background-color: #0C1A1A; color: #e5e7eb; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0C1A1A; }
+        ::-webkit-scrollbar-thumb { background: #162e2e; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6ACFC7; }
+        .blob { position: fixed; filter: blur(80px); z-index: -1; opacity: 0.4; animation: float 10s infinite alternate; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .glow-box:hover { box-shadow: 0 0 25px rgba(106, 207, 199, 0.15); border-color: #6ACFC7; }
+    </style>
+</head>
+<body class="antialiased relative font-sans">
 
-</main>
+    <div class="blob bg-sarcelle w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="blob bg-purple-900 w-80 h-80 rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3"></div>
+
+    <nav class="fixed w-full z-50 top-0 bg-vert-cardin/90 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer group">
+                    <a href="../index.html" class="flex items-center">
+                        <img src="../Asset/img/log-removebg-preview.png" alt="Logo" class="w-10 h-10 group-hover:scale-110 transition-transform">
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="../index.html" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">Accueil</a>
+                        <a href="../index.html#realisations" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">Réalisations</a>
+                        <a href="../index.html#experience" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">Expérience</a>
+                        <a href="../index.html#about" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">À propos</a>
+                        <a href="../index.html#contact" class="px-4 py-2 border border-sarcelle text-sarcelle text-sm font-medium hover:bg-sarcelle hover:text-vert-cardin transition-all duration-300 uppercase tracking-widest">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-vert-cardin border-b border-white/10 absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="../index.html" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">Accueil</a>
+                <a href="../index.html#realisations" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">Réalisations</a>
+                <a href="../index.html#experience" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">Expérience</a>
+                <a href="../index.html#about" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">À propos</a>
+                <a href="../index.html#contact" class="text-sarcelle font-bold block px-3 py-2 text-base">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            
+            <a href="../index.html#realisations" class="inline-flex items-center gap-2 text-sarcelle hover:text-white transition-colors mb-8">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                Retour aux réalisations
+            </a>
+
+            <div class="flex items-center gap-4 mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                    <span class="text-sarcelle">Projet.</span> Visite du Site
+                </h1>
+                <div class="h-px bg-white/20 flex-grow max-w-xs hidden md:block"></div>
+            </div>
+
+            <div class="mb-8">
+                <span class="bg-purple-900/80 text-purple-200 text-xs font-bold px-3 py-1.5 uppercase tracking-wider border border-purple-700/50">Personnel</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                
+                <div class="bg-vert-cardin-light border border-white/5 p-6 hover:border-sarcelle/50 transition-all glow-box">
+                    <div class="w-12 h-12 bg-vert-cardin border border-orange-500/30 flex items-center justify-center mb-4">
+                        <i data-lucide="mouse-pointer-click" class="text-orange-500 w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Script de visite du portfolio</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Projet collaboratif réalisé pour comptabiliser le nombre de visites sur mon portfolio (Début octobre 2025 - Fin octobre 2025).
+                    </p>
+                </div>
+
+                <div class="bg-vert-cardin-light border border-white/5 p-6 hover:border-sarcelle/50 transition-all glow-box">
+                    <div class="w-12 h-12 bg-vert-cardin border border-blue-500/30 flex items-center justify-center mb-4">
+                        <i data-lucide="code-2" class="text-blue-500 w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Langage Utilisé</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Script JavaScript avec graphique et nombre de visites d'un site, créé par un collaborateur nommé Westerbay (Mathis).
+                    </p>
+                </div>
+
+                <div class="bg-vert-cardin-light border border-white/5 p-6 hover:border-sarcelle/50 transition-all glow-box">
+                    <div class="w-12 h-12 bg-vert-cardin border border-sarcelle/30 flex items-center justify-center mb-4">
+                        <i data-lucide="external-link" class="text-sarcelle w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Pour voir le graphique</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Il faut se rendre sur le site de Wester à ce lien :
+                    </p>
+                    <a href="https://westerbay.github.io/Open-Site-Counter/" target="_blank" class="inline-flex items-center gap-2 text-sarcelle hover:text-white transition-colors text-sm">
+                        Wester Site Counter
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-vert-cardin-light border border-white/5 p-6 md:p-8">
+                <h3 class="text-xl font-bold text-white mb-6">Visuel de la collaboration</h3>
+                <div class="max-w-4xl mx-auto">
+                    <img src="../Asset/img/VisiteSiteWester.png" alt="Visite Site Capture" class="w-full border border-white/10">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-vert-cardin-light/30 border-t border-white/5 py-8 text-center">
+        <p class="text-gray-500 text-sm">&copy; 2026 Ugo Radiguet. Designé & Codé avec passion.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    </script>
 </body>
-<footer>
-    <p>&copy; 2025 Ugo Radiguet</p>
-</footer>
 </html>

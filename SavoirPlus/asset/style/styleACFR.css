@@ -1,30 +1,78 @@
-/* General Styles */
+/* ===== VARIABLES CSS - STYLE MODERNE ===== */
+:root {
+    --primary-dark: #0C1A1A;
+    --primary-accent: #6ACFC7;
+    --primary-accent-light: #87eae3;
+    --primary-accent-glow: rgba(106, 207, 199, 0.3);
+    --text-light: #ffffff;
+    --text-muted: #b8c5c5;
+    --glass-bg: rgba(12, 26, 26, 0.85);
+    --glass-border: rgba(106, 207, 199, 0.2);
+    --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 40px rgba(106, 207, 199, 0.15);
+    --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --border-radius-sm: 8px;
+    --border-radius-md: 16px;
+    --border-radius-lg: 24px;
+    --border-radius-xl: 32px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ===== GENERAL STYLES ===== */
 body {
     margin: 0;
     font-family: 'Outfit', Arial, sans-serif;
-    background-color: #0C1A1A;
-    color: white;
+    background-color: var(--primary-dark);
+    background-image: 
+        radial-gradient(ellipse at 20% 20%, rgba(106, 207, 199, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(106, 207, 199, 0.05) 0%, transparent 50%);
+    background-attachment: fixed;
+    color: var(--text-light);
     transition: background-color 0.5s;
+    min-height: 100vh;
+    line-height: 1.6;
 }
 
+/* ===== HEADER GLASSMORPHISM ===== */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #0C1A1A;
-    padding: 15px 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 18px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
 }
 
 header .logo {
-    font-size: 16px;
-    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-light);
     display: flex;
     align-items: center;
+    gap: 12px;
+    letter-spacing: 0.5px;
 }
 
 header .logo img {
-    height: 10%;
-    width: 10%;
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px var(--primary-accent-glow));
+    transition: var(--transition-fast);
+}
+
+header .logo:hover img {
+    transform: scale(1.1) rotate(5deg);
 }
 
 header nav ul {
@@ -32,21 +80,48 @@ header nav ul {
     display: flex;
     margin: 0;
     padding: 0;
+    gap: 8px;
 }
 
 header nav ul li {
-    margin-left: 20px;
+    margin: 0;
 }
 
 header nav ul li a {
     text-decoration: none;
-    color: white;
+    color: var(--text-muted);
+    padding: 10px 18px;
+    border-radius: var(--border-radius-xl);
+    transition: var(--transition-fast);
+    font-weight: 500;
+    font-size: 15px;
+    position: relative;
+    display: block;
+}
+
+header nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary-accent);
+    border-radius: 2px;
+    transition: var(--transition-fast);
+    transform: translateX(-50%);
 }
 
 header nav ul li a:hover {
-    color: #6ACFC7;
+    color: var(--primary-accent);
+    background: rgba(106, 207, 199, 0.1);
 }
 
+header nav ul li a:hover::before {
+    width: 60%;
+}
+
+/* ===== FOOTER ===== */
 footer {
     display: flex;
     flex-direction: column;
@@ -54,615 +129,733 @@ footer {
     align-items: center;
     text-align: center;
     width: 100%;
-    background-color: #0C1A1A;
-    color: white;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 30px 20px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--glass-border);
+    margin-top: auto;
 }
 
-/* Button Styles */
+/* ===== BOUTON PRINCIPAL ===== */
 button {
     position: absolute;
     bottom: 60px;
     left: 90%;
     transform: translateX(-50%);
-    width: 150px;
+    width: 160px;
     height: 60px;
-    border: 3px solid #6ACFC7;
-    border-radius: 45px;
-    transition: all 0.3s;
+    border: 2px solid var(--primary-accent);
+    border-radius: var(--border-radius-xl);
+    transition: var(--transition-smooth);
     cursor: pointer;
-    color: white;
-    background: #0C1A1A;
-    font-size: 1.2em;
-    font-weight: 550;
+    color: var(--text-light);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-size: 1.1em;
+    font-weight: 600;
+    box-shadow: 0 4px 20px var(--primary-accent-glow);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
 }
 
 button:hover {
-    background: #6ACFC7;
-    color: white;
-    font-size: 1.5em;
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-light));
+    color: var(--primary-dark);
+    transform: translateX(-50%) translateY(-3px);
+    box-shadow: 0 8px 30px var(--primary-accent-glow);
 }
 
-/* Grid Container */
+button:hover::before {
+    left: 100%;
+}
+
+/* ===== GRILLE CONTAINER ===== */
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
+/* ===== CARTES GLASSMORPHISM ===== */
 .card {
-    background-color: #0C1A1A;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    color: var(--text-light);
+    padding: 30px;
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
     text-align: center;
-    transition: filter 0.3s;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-accent), var(--primary-accent-light));
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
 }
 
 .card.orange {
-    background-color: #6ACFC7;
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-light));
+    border-color: transparent;
+}
+
+.card.orange::before {
+    background: linear-gradient(90deg, var(--primary-dark), rgba(12, 26, 26, 0.5));
 }
 
 .card.blue {
-    background-color: #0C1A1A;
+    background: var(--glass-bg);
 }
 
 .card.white {
-    background-color: #FFFFFF;
-    color: #0C1A1A;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--primary-dark);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.card.white::before {
+    background: linear-gradient(90deg, var(--primary-accent), var(--primary-accent-light));
 }
 
 .card p {
-    font-size: 1.2em;
-    color: white;
+    font-size: 1.15em;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.card.orange p {
+    color: var(--primary-dark);
+    font-weight: 500;
 }
 
 .card.white p {
-    color: #0C1A1A;
+    color: var(--primary-dark);
 }
 
 .card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-soft), var(--shadow-glow);
+    border-color: var(--primary-accent);
     filter: none;
 }
 
 .container:hover .card:not(:hover) {
-    filter: blur(5px);
+    filter: blur(3px) brightness(0.7);
+    transform: scale(0.98);
 }
 
 .tip {
-    font-weight: bolder;
+    font-weight: 700;
+    color: var(--primary-accent);
 }
 
+/* ===== SUB-CONTAINER ===== */
 .sub-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 50px;
+    margin: 60px 40px;
+    padding: 20px;
 }
 
 .sub-container img {
     width: 75%;
     height: auto;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
 }
 
+.sub-container img:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-soft), var(--shadow-glow);
+}
+
+/* ===== SLIDER MODERNE ===== */
 .slider {
     width: 1200px;
-    max-width: 100%;
+    max-width: 95%;
     overflow: hidden;
-    margin: 30px auto;
-    border: 2px solid #6ACFC7;
-    border-radius: 12px;
-    background-color: #0C1A1A;
+    margin: 40px auto;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-lg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: var(--shadow-soft);
+    position: relative;
+}
+
+.slider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-accent), var(--primary-accent-light));
+    z-index: 10;
 }
 
 .slides {
     display: flex;
     width: max-content;
-    transition: transform 0.8s ease-in-out;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slides img {
     width: 1200px;
+    max-width: 100%;
     height: auto;
     flex-shrink: 0;
     display: block;
 }
 
 .slider-footer {
-    margin-top: 20px;
+    margin-top: 30px;
     text-align: center;
 }
 
+/* ===== BOUTON VIEW SITE ===== */
 .view-site {
-    width: 160px;
-    height: 50px;
-    border: 3px solid #6ACFC7;
-    border-radius: 45px;
-    background: #0C1A1A;
-    color: white;
-    font-size: 1.2em;
-    font-weight: 550;
+    width: 180px;
+    height: 55px;
+    border: 2px solid var(--primary-accent);
+    border-radius: var(--border-radius-xl);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text-light);
+    font-size: 1.1em;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 20px var(--primary-accent-glow);
+    position: relative;
+    overflow: hidden;
+}
+
+.view-site::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
 }
 
 .view-site:hover {
-    background: #6ACFC7;
-    font-size: 1.3em;
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-light));
+    color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px var(--primary-accent-glow);
 }
 
+.view-site:hover::before {
+    left: 100%;
+}
+
+/* ===== LECTEUR MUSIQUE MODERNE ===== */
 .music-player {
-    /* Style du conteneur principal */
-    background-color: #0C1A1A; /* Fond sombre */
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(106, 207, 199, 0.2); /* Ombre turquoise */
-    width: 320px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 35px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-soft), var(--shadow-glow);
+    width: 360px;
     text-align: center;
-    border: 1px solid #6ACFC7; /* Bordure turquoise */
-    margin: 30px auto; /* Centrer dans la section */
+    border: 1px solid var(--glass-border);
+    margin: 40px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.music-player::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-accent), var(--primary-accent-light));
 }
 
 #track-title {
-    color: #6ACFC7; /* Titre turquoise */
-    margin-bottom: 5px;
-    font-size: 1.4em;
+    color: var(--primary-accent);
+    margin-bottom: 8px;
+    font-size: 1.5em;
     font-weight: 700;
+    letter-spacing: 0.3px;
 }
 
 #track-artist {
-    color: #FFFFFF; /* Artiste blanc */
+    color: var(--text-muted);
     margin-top: 0;
-    font-size: 1em;
+    font-size: 1.05em;
 }
 
 .track-art {
-    margin: 20px 0;
+    margin: 25px 0;
 }
 
 .track-art img {
-    width: 180px;
-    height: 180px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    object-fit: cover; /* S'assurer que l'image couvre bien la zone */
-    border: 3px solid #6ACFC7; /* Cadre turquoise autour de l'image */
+    width: 200px;
+    height: 200px;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-soft);
+    object-fit: cover;
+    border: 3px solid var(--primary-accent);
+    transition: var(--transition-smooth);
 }
 
-/* Style des boutons de contrôle */
+.track-art img:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: var(--shadow-soft), var(--shadow-glow);
+}
+
+/* ===== CONTRÔLES LECTEUR ===== */
 .controls {
-    display: flex; /* Active Flexbox */
-    justify-content: center; /* Centre les boutons horizontalement */
+    display: flex;
+    justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 25px;
+    gap: 15px;
 }
 
 .controls button {
-    /* Style du bouton du lecteur (Play/Pause, Précédent/Suivant) */
-    background: transparent;
-    color: #6ACFC7; /* Couleur des icônes/flèches */
-    border: 2px solid #6ACFC7;
-    padding: 10px 18px;
-    margin: 0 8px;
-    border-radius: 50%; /* Boutons ronds */
+    background: var(--glass-bg);
+    color: var(--primary-accent);
+    border: 2px solid var(--primary-accent);
+    padding: 14px 18px;
+    margin: 0;
+    border-radius: 50%;
     cursor: pointer;
-    font-size: 1.5em;
-    transition: all 0.3s;
-    /* IMPORTANT : Annule le style de bouton général de votre site */
+    font-size: 1.4em;
+    transition: var(--transition-fast);
     position: static;
     left: auto;
     bottom: auto;
     transform: none;
-    width: auto;
-    height: auto;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px var(--primary-accent-glow);
 }
 
 .controls button:hover {
-    background: #6ACFC7; /* Fond turquoise au survol */
-    color: #0C1A1A; /* Texte sombre au survol */
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-light));
+    color: var(--primary-dark);
     transform: scale(1.1);
+    box-shadow: 0 6px 25px var(--primary-accent-glow);
 }
 
-/* Barre de progression et temps */
+/* ===== BARRE DE PROGRESSION ===== */
 .time-bar {
     display: flex;
     align-items: center;
-    margin-top: 20px;
-    color: white;
+    margin-top: 25px;
+    color: var(--text-muted);
     font-size: 0.9em;
+    gap: 12px;
 }
 
 #seek-slider {
     flex-grow: 1;
-    margin: 0 10px;
-    height: 6px;
-    background: #253a3a; /* Fond de la barre de progression (sombre/subtil) */
-    border-radius: 5px;
+    height: 8px;
+    background: rgba(106, 207, 199, 0.15);
+    border-radius: 10px;
     cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
-/* Personnalisation du curseur de la barre de progression (Chrome/Safari) */
 #seek-slider::-webkit-slider-thumb {
-    background: #6ACFC7; /* Curseur turquoise */
-    width: 18px;
-    height: 18px;
-    border: 3px solid #0C1A1A; /* Bordure sombre pour contraste */
+    -webkit-appearance: none;
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-light));
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-dark);
+    cursor: pointer;
+    box-shadow: 0 2px 10px var(--primary-accent-glow);
+    transition: var(--transition-fast);
 }
 
-/* Personnalisation du curseur de la barre de progression (Firefox) */
-#seek-slider::-moz-range-thumb {
-    background: #6ACFC7;
-    width: 18px;
-    height: 18px;
-    border: 3px solid #0C1A1A;
+#seek-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
 }
+
+#seek-slider::-moz-range-thumb {
+    background: linear-gradient(135deg, var(--primary-accent), var(--primary-accent-light));
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-dark);
+    cursor: pointer;
+    box-shadow: 0 2px 10px var(--primary-accent-glow);
+}
+
+/* ================================================================ */
+/* THÈME HALLOWEEN - STYLE MODERNE                                 */
+/* ================================================================ */
 
 body.halloween-theme {
-    background-color: #1a1a1a; /* Noir très sombre pour Halloween */
+    --primary-dark: #1a1a1a;
+    --primary-accent: #ff6600;
+    --primary-accent-light: #ffa500;
+    --primary-accent-glow: rgba(255, 102, 0, 0.3);
+    --glass-bg: rgba(26, 26, 26, 0.85);
+    --glass-border: rgba(255, 102, 0, 0.2);
+    --shadow-glow: 0 0 40px rgba(255, 102, 0, 0.15);
+    background-color: #1a1a1a;
+    background-image: 
+        radial-gradient(ellipse at 20% 20%, rgba(255, 102, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(255, 102, 0, 0.05) 0%, transparent 50%);
 }
 
 body.halloween-theme header {
-    background-color: #1a1a1a;
+    background: rgba(26, 26, 26, 0.85);
+    border-bottom-color: rgba(255, 102, 0, 0.2);
 }
 
 body.halloween-theme .logo {
-    color: #ff6600; /* Texte orange vif */
+    color: #ff6600;
 }
 
 body.halloween-theme header nav ul li a:hover {
-    color: #ff6600; /* Surlignage orange */
+    color: #ff6600;
+    background: rgba(255, 102, 0, 0.1);
 }
 
-body.halloween-theme .text-section {
-    background-color: #1a1a1a; /* Fond noir sombre */
-}
-
-body.halloween-theme .diagonal-line {
-    /* Changement de la couleur de la diagonale */
-    background: linear-gradient(to bottom right, transparent 50%, #ff6600); /* Orange Halloween */
+body.halloween-theme header nav ul li a::before {
+    background: #ff6600;
 }
 
 body.halloween-theme footer {
-    background-color: #1a1a1a; /* Fond noir sombre */
+    background: rgba(26, 26, 26, 0.85);
+    border-top-color: rgba(255, 102, 0, 0.2);
 }
 
-/* Éléments communs */
-body.halloween-theme .btn-orange {
-    background-color: #ff6600; /* Bouton orange */
-    color: #1a1a1a; /* Texte sombre sur bouton orange */
-}
-
-body.halloween-theme .btn-orange:hover {
-    background-color: #ffa500; /* Orange plus clair au survol */
-}
-body.halloween-theme .fancy {
-    background-color: #ff6600;
-    color: #1a1a1a;
-}
-body.halloween-theme .fancy:hover {
-    background: #1a1a1a;
-    color: #ff6600;
-}
-body.halloween-theme .input:focus + span, body.halloween-theme .input:not(:placeholder-shown) + span,
-body.halloween-theme .input01:focus + span, body.halloween-theme .input01:not(:placeholder-shown) + span {
-    color: #ff6600;
-}
-body.halloween-theme .input:focus, body.halloween-theme .input01:focus {
-    border-color: #ff6600;
-}
-body.halloween-theme .info-column .carde {
-    border: 1px solid #ff6600;
-    box-shadow: 0 0 15px rgba(255, 102, 0, 0.2);
-}
-body.halloween-theme .contact-item .contact-icon {
-    color: #ff6600 !important;
-}
-
-/* Page Experience */
-body.halloween-theme .timeline::after {
-    background-color: #ff6600;
-}
-
-body.halloween-theme .timeline-title {
-    border-bottom: 2px solid #ff6600;
-}
-
-body.halloween-theme .timeline-content {
-    background: linear-gradient(180deg, #ff6600 10%, #1a1a1a 90%);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-}
-
-body.halloween-theme .timeline-content:hover {
-    box-shadow: 0 12px 24px #ff6600;
-}
-
-body.halloween-theme .left .timeline-content::after {
-    border-left: 10px solid #ff6600;
-}
-
-body.halloween-theme .right .timeline-content::after {
-    border-right: 10px solid #ff6600;
-}
-
-body.halloween-theme .diploma-tag {
-    background-color: #1a1a1a;
-    color: #ff6600;
-    border: 1px solid #ff6600;
-}
-
-/* Page Compétences */
-body.halloween-theme .containerCompetence {
-    background: #1a1a1a;
-}
-body.halloween-theme .skill-bar .skill-per {
-    background: #ff6600;
-}
-body.halloween-theme .skill-per .tooltip {
-    color: #1a1a1a;
-    background: #ff6600;
-}
-body.halloween-theme .tooltip::before {
-    background-color: #ff6600;
-}
-body.halloween-theme .carde {
-    /* CORRECTION APPLIQUÉE ICI */
-    background: linear-gradient(180deg, #ff6600 25%, #1a1a1a 75%);
-}
-
-/* Page Réalisations & Veille */
-body.halloween-theme .realisation-column {
-    border-right: 1px solid #ff6600;
-}
-body.halloween-theme .real-card {
-    background: linear-gradient(180deg, #ff6600 10%, #1a1a1a 90%);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-}
-
-body.halloween-theme .real-card:hover {
-    box-shadow: 0 12px 24px #ff6600;
-}
-
-body.halloween-theme .real-card p {
-    color: #ff6600;
-}
-body.halloween-theme .styled-list li::before {
-    color: #ff6600;
-}
-
-body.halloween-theme .styled-list li strong {
-    color: #ff6600;
-}
-
-/* Page Annexe */
-body.halloween-theme .document-card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-}
-
-body.halloween-theme .document-title {
-    background: #ff6600;
-    color: #1a1a1a;
-}
-body.halloween-theme .document-card.focused {
-    border-color: #ff6600;
-}
-
-/* Page Ugo.html (Passions) */
-body.halloween-theme .passion-card {
-    background: linear-gradient(145deg, #1a1a1a 0%, #2e2e2e 100%);
-    border: 1px solid rgba(255, 102, 0, 0.5);
-}
-body.halloween-theme .passion-card::before {
-    background: linear-gradient(90deg, #ff6600, #1a1a1a);
-}
-body.halloween-theme .passion-card:hover {
-    box-shadow: 0 15px 30px rgba(255, 102, 0, 0.4);
-    border-color: #ff6600;
-}
-body.halloween-theme .passion-card:hover .passion-icon {
-    background-color: rgba(255, 102, 0, 0.2);
-    box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
-}
-body.halloween-theme .passion-card h3 {
-    color: #ff6600;
-}
-body.halloween-theme .passion-icon {
-    background-color: rgba(255, 102, 0, 0.15);
-    border: 2px solid #ff6600;
-    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
-}
-body.halloween-theme .passion-icon i {
-    color: #ff6600;
-}
-body.halloween-theme .btn-orange {
-    background-color: #ff6600; /* Bouton orange */
-    color: #1a1a1a;
-}
-body.halloween-theme .btn-orange:hover {
-    background-color: #ffa500;
-}
-body.halloween-theme .section-title {
-    border-bottom: 2px solid #ff6600;
-}
-
-/* Corrections pour la page A Propos (apropos.html) */
-body.halloween-theme .card {
-    box-shadow: #ff6600 0px 0.8em 3em 0px; /* Ombre de la carte */
-}
-body.halloween-theme .background {
-    background: radial-gradient(
-            circle at 100% 107%,
-            #1a1a1a 0%,
-            #ff6600 30%, /* Couleur d'accentuation */
-            #1a1a1a 60%,
-            #1a1a1a 100%
-    );
-}
-body.halloween-theme .icon .svg {
-    fill: #1a1a1a; /* Couleur du logo sur les boîtes */
-}
-body.halloween-theme .box {
-    background: #ff6600; /* Fond des boîtes d'icônes */
-}
-
-/* Corrections pour la page Contact (contact.html) */
-body.halloween-theme .input:focus, body.halloween-theme .input01:focus {
-    border-color: #ff6600;
-}
-body.halloween-theme .input:focus + span, body.halloween-theme .input:not(:placeholder-shown) + span,
-body.halloween-theme .input01:focus + span, body.halloween-theme .input01:not(:placeholder-shown) + span {
-    color: #ff6600;
-}
-body.halloween-theme .fancy {
-    background: #ff6600;
-    color: #1a1a1a;
-}
-body.halloween-theme .fancy:hover {
-    background-color: #1a1a1a;
-    color: #ff6600;
-}
-body.halloween-theme .info-column .carde {
-    border: 1px solid #ff6600;
-    box-shadow: 0 0 15px rgba(255, 102, 0, 0.2);
-}
-body.halloween-theme .contact-item .contact-icon {
-    color: #ff6600 !important; /* Pour surcharger le style en ligne */
-}
-
-/* Corrections pour la page Compétences (competence.html) */
-body.halloween-theme .containerCompetence {
-    background: #1a1a1a; /* Fond du conteneur de compétences */
-}
-body.halloween-theme .skill-bar .skill-per {
-    background: #ff6600; /* Barres de progression */
-}
-body.halloween-theme .skill-per .tooltip {
-    color: #1a1a1a;
-    background: #ff6600;
-}
-body.halloween-theme .tooltip::before {
-    background-color: #ff6600;
-}
-body.halloween-theme .carde {
-    background: linear-gradient(180deg, #ff6600 25%, #1a1a1a 75%); /* Cartes du slider */
-}
-
-/* Corrections pour la page Réalisations & Veille (realisation.html, veille.html) */
-body.halloween-theme .realisation-column {
-    border-right: 1px solid #ff6600;
-}
-body.halloween-theme .real-card {
-    background: linear-gradient(180deg, #ff6600 10%, #1a1a1a 90%);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-}
-body.halloween-theme .real-card:hover {
-    box-shadow: 0 12px 24px #ff6600;
-}
-body.halloween-theme .styled-list li::before {
-    color: #ff6600;
-}
-body.halloween-theme .styled-list li strong {
-    color: #ff6600;
-}
-
-/* Corrections pour la page Annexe (Annexe.html) */
-body.halloween-theme .document-title {
-    background: #ff6600;
-    color: #1a1a1a;
-}
+/* Boutons Halloween */
 body.halloween-theme button {
-    border: 3px solid #ff6600;
-    background: #1a1a1a;
+    border-color: #ff6600;
+    background: rgba(26, 26, 26, 0.85);
+    box-shadow: 0 4px 20px rgba(255, 102, 0, 0.3);
 }
+
 body.halloween-theme button:hover {
-    background: #ff6600;
+    background: linear-gradient(135deg, #ff6600, #ffa500);
     color: #1a1a1a;
+    box-shadow: 0 8px 30px rgba(255, 102, 0, 0.4);
 }
-body.halloween-theme .slider {
-    border: 2px solid #ff6600;
+
+/* Cartes Halloween */
+body.halloween-theme .card {
+    background: rgba(26, 26, 26, 0.85);
+    border-color: rgba(255, 102, 0, 0.2);
 }
-body.halloween-theme .view-site {
-    border: 3px solid #ff6600;
-    background: #1a1a1a;
-    color: #ff6600;
+
+body.halloween-theme .card::before {
+    background: linear-gradient(90deg, #ff6600, #ffa500);
 }
-body.halloween-theme .view-site:hover {
-    background: #ff6600;
-    color: #1a1a1a;
+
+body.halloween-theme .card:hover {
+    border-color: #ff6600;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 102, 0, 0.2);
 }
-/* Adaptation des cartes */
+
 body.halloween-theme .card.orange {
-    background-color: #ff6600; /* Correction: Orange Halloween */
-    color: #1a1a1a;
+    background: linear-gradient(135deg, #ff6600, #ffa500);
 }
+
+body.halloween-theme .card.orange::before {
+    background: linear-gradient(90deg, #1a1a1a, rgba(26, 26, 26, 0.5));
+}
+
 body.halloween-theme .card.orange p {
     color: #1a1a1a;
 }
+
 body.halloween-theme .card.blue {
-    background-color: #1a1a1a;
-    border: 1px solid #ff6600;
+    background: rgba(26, 26, 26, 0.85);
+    border-color: rgba(255, 102, 0, 0.3);
 }
-body.halloween-theme .card.blue p {
-    color: white;
-}
+
 body.halloween-theme .card.white {
-    background-color: #1a1a1a; /* Correction: Noir sombre */
+    background: rgba(26, 26, 26, 0.9);
     color: white;
-    border: 1px solid #ff6600;
+    border-color: rgba(255, 102, 0, 0.3);
 }
+
 body.halloween-theme .card.white p {
     color: white;
 }
 
-/* Adaptation des boutons et sliders */
-body.halloween-theme button {
-    border: 3px solid #ff6600; /* Bouton général */
-    background: #1a1a1a;
+body.halloween-theme .tip {
     color: #ff6600;
 }
-body.halloween-theme button:hover {
-    background: #ff6600;
-    color: #1a1a1a;
-}
 
+/* Slider Halloween */
 body.halloween-theme .slider {
-    border: 2px solid #ff6600;
+    border-color: rgba(255, 102, 0, 0.3);
+    background: rgba(26, 26, 26, 0.85);
 }
+
+body.halloween-theme .slider::before {
+    background: linear-gradient(90deg, #ff6600, #ffa500);
+}
+
 body.halloween-theme .view-site {
-    border: 3px solid #ff6600;
-    background: #1a1a1a;
+    border-color: #ff6600;
+    box-shadow: 0 4px 20px rgba(255, 102, 0, 0.3);
+}
+
+body.halloween-theme .view-site:hover {
+    background: linear-gradient(135deg, #ff6600, #ffa500);
+    color: #1a1a1a;
+    box-shadow: 0 8px 30px rgba(255, 102, 0, 0.4);
+}
+
+/* Lecteur musique Halloween */
+body.halloween-theme .music-player {
+    background: rgba(26, 26, 26, 0.85);
+    border-color: rgba(255, 102, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 102, 0, 0.15);
+}
+
+body.halloween-theme .music-player::before {
+    background: linear-gradient(90deg, #ff6600, #ffa500);
+}
+
+body.halloween-theme #track-title {
     color: #ff6600;
 }
-body.halloween-theme .view-site:hover {
-    background: #ff6600;
+
+body.halloween-theme .track-art img {
+    border-color: #ff6600;
+}
+
+body.halloween-theme .track-art img:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 102, 0, 0.3);
+}
+
+body.halloween-theme .controls button {
+    color: #ff6600;
+    border-color: #ff6600;
+    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
+}
+
+body.halloween-theme .controls button:hover {
+    background: linear-gradient(135deg, #ff6600, #ffa500);
+    color: #1a1a1a;
+    box-shadow: 0 6px 25px rgba(255, 102, 0, 0.4);
+}
+
+body.halloween-theme #seek-slider {
+    background: rgba(255, 102, 0, 0.15);
+}
+
+body.halloween-theme #seek-slider::-webkit-slider-thumb {
+    background: linear-gradient(135deg, #ff6600, #ffa500);
+    border-color: #1a1a1a;
+    box-shadow: 0 2px 10px rgba(255, 102, 0, 0.4);
+}
+
+body.halloween-theme #seek-slider::-moz-range-thumb {
+    background: linear-gradient(135deg, #ff6600, #ffa500);
+    border-color: #1a1a1a;
+    box-shadow: 0 2px 10px rgba(255, 102, 0, 0.4);
+}
+
+/* Page Passions Halloween */
+body.halloween-theme .passion-card {
+    background: rgba(26, 26, 26, 0.85);
+    border-color: rgba(255, 102, 0, 0.3);
+}
+
+body.halloween-theme .passion-card::before {
+    background: linear-gradient(90deg, #ff6600, #ffa500);
+}
+
+body.halloween-theme .passion-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 102, 0, 0.3);
+    border-color: #ff6600;
+}
+
+body.halloween-theme .passion-card:hover .passion-icon {
+    background: rgba(255, 102, 0, 0.25);
+    box-shadow: 0 8px 25px rgba(255, 102, 0, 0.4);
+}
+
+body.halloween-theme .passion-card h3 {
+    color: #ff6600;
+}
+
+body.halloween-theme .passion-icon {
+    background: rgba(255, 102, 0, 0.1);
+    border-color: #ff6600;
+    box-shadow: 0 4px 20px rgba(255, 102, 0, 0.3);
+}
+
+body.halloween-theme .passion-icon i {
+    color: #ff6600;
+}
+
+/* Bouton orange Halloween */
+body.halloween-theme .btn-orange {
+    background: linear-gradient(135deg, #ff6600, #ffa500);
+    box-shadow: 0 4px 20px rgba(255, 102, 0, 0.3);
+}
+
+body.halloween-theme .btn-orange:hover {
+    background: linear-gradient(135deg, #ffa500, #ff6600);
+    box-shadow: 0 8px 30px rgba(255, 102, 0, 0.4);
+}
+
+body.halloween-theme .section-title::after {
+    background: linear-gradient(90deg, transparent, #ff6600, transparent);
+}
+
+/* Social card Halloween */
+body.halloween-theme .background {
+    background: radial-gradient(
+            ellipse at 80% 90%,
+            #1a1a1a 0%,
+            #ff6600 35%,
+            #1a1a1a 65%,
+            #1a1a1a 100%
+    );
+}
+
+body.halloween-theme .box {
+    background: linear-gradient(135deg, #ff6600, #ffa500);
+}
+
+/* Formulaires Halloween */
+body.halloween-theme .input:focus, 
+body.halloween-theme .input01:focus {
+    border-color: #ff6600;
+    box-shadow: 0 0 15px rgba(255, 102, 0, 0.3);
+}
+
+body.halloween-theme .input:focus + span, 
+body.halloween-theme .input:not(:placeholder-shown) + span,
+body.halloween-theme .input01:focus + span, 
+body.halloween-theme .input01:not(:placeholder-shown) + span {
+    color: #ff6600;
+}
+
+body.halloween-theme .fancy {
+    background: linear-gradient(135deg, #ff6600, #ffa500);
     color: #1a1a1a;
 }
 
-/* Adaptation du lecteur de musique (musique.html) */
-body.halloween-theme .music-player {
-    background-color: #1a1a1a;
-    border: 1px solid #ff6600; /* Correction: Bordure orange */
-    box-shadow: 0 4px 20px rgba(255, 102, 0, 0.2); /* Correction: Ombre orange */
+body.halloween-theme .fancy:hover {
+    box-shadow: 0 8px 30px rgba(255, 102, 0, 0.4);
 }
-body.halloween-theme #track-title {
-    color: #ff6600; /* Correction: Titre orange */
+
+body.halloween-theme .info-column .carde {
+    border-color: rgba(255, 102, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 102, 0, 0.15);
 }
-body.halloween-theme .track-art img {
-    border: 3px solid #ff6600; /* Correction: Cadre image orange */
+
+body.halloween-theme .contact-icon {
+    color: #ff6600 !important;
 }
-body.halloween-theme .controls button {
-    color: #ff6600; /* Correction: Icônes orange */
-    border: 2px solid #ff6600; /* Correction: Bordure bouton orange */
+
+/* Compétences Halloween */
+body.halloween-theme .containerCompetence {
+    background: rgba(26, 26, 26, 0.85);
+    border-color: rgba(255, 102, 0, 0.2);
 }
-body.halloween-theme .controls button:hover {
-    background: #ff6600; /* Correction: Fond orange au survol */
+
+body.halloween-theme .skill-bar .skill-per {
+    background: linear-gradient(90deg, #ff6600, #ffa500);
+}
+
+body.halloween-theme .skill-per .tooltip {
+    color: #1a1a1a;
+    background: linear-gradient(135deg, #ff6600, #ffa500);
+}
+
+body.halloween-theme .tooltip::before {
+    background: #ff6600;
+}
+
+body.halloween-theme .carde {
+    background: rgba(26, 26, 26, 0.85);
+    border-color: rgba(255, 102, 0, 0.2);
+}
+
+body.halloween-theme .carde::before {
+    background: linear-gradient(90deg, #ff6600, #ffa500);
+}
+
+/* Réalisations Halloween */
+body.halloween-theme .realisation-column {
+    border-right-color: rgba(255, 102, 0, 0.2);
+}
+
+body.halloween-theme .real-card {
+    background: rgba(26, 26, 26, 0.85);
+    border-color: rgba(255, 102, 0, 0.2);
+}
+
+body.halloween-theme .real-card::before {
+    background: linear-gradient(90deg, #ff6600, #ffa500);
+}
+
+body.halloween-theme .real-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 102, 0, 0.2);
+    border-color: #ff6600;
+}
+
+body.halloween-theme .styled-list li::before {
+    color: #ff6600;
+}
+
+body.halloween-theme .styled-list li strong {
+    color: #ff6600;
+}
+
+/* Documents Halloween */
+body.halloween-theme .document-title {
+    background: linear-gradient(135deg, #ff6600, #ffa500);
     color: #1a1a1a;
 }
-body.halloween-theme #seek-slider::-webkit-slider-thumb {
-    background: #ff6600; /* Correction: Curseur orange */
-    border: 3px solid #1a1a1a;
-}
-body.halloween-theme #seek-slider::-moz-range-thumb {
-    background: #ff6600; /* Correction: Curseur orange */
-    border: 3px solid #1a1a1a;
-}
+
+/* ================================================================ */
+/* FIN DU THÈME HALLOWEEN                                          */
+/* ================================================================ */

@@ -1,82 +1,908 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="Asset/style/style.css">
-    <link rel="icon" type="image/png" href="./Asset/img/logo-removebg-preview.png">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://westerbay.github.io/Open-Site-Counter/register.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-<header>
-    <div class="logo">
-        <img src="Asset/img/logo-removebg-preview.png" alt="Site Logo">
-        Ugo RADIGUET Portfolio</div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="apropos.html">A Propos</a></li>
-            <li><a href="competence.html">Compétences</a></li>
-            <li><a href="experience.html">Experience</a></li>
-            <li><a href="realisation.html">Réalisations</a></li>
-            <li><a href="Annexe.html">Document</a></li>
-            <li><a href="veille.html">Veille</a></li>
-            <li><a href="contact.html">Contact</a></li>
+    <title>Portfolio | Ugo Radiguet</title>
+    
+    <!-- Google Fonts: Space Grotesk (Plus design, tech et moderne) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-        </ul>
-    </nav>
-</header>
-<main>
-    <button id="halloween-toggle" style="
-        position: fixed;
-        top: 80px;
-        right: 20px;
-        z-index: 100;
-        padding: 10px 15px;
-        background-color: #ff6600; /* Orange Halloween */
-        color: white;
-        border: 2px solid #0C1A1A;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background-color 0.3s;
-    " onmouseover="this.style.backgroundColor='#ffa500';" onmouseout="this.style.backgroundColor='#ff6600';">
-        <i class="fas fa-ghost"></i> Mode Halloween
-    </button>
-    <div class="container">
-        <div class="image-section">
-            <img src="Asset/img/photo2.jpg" alt="Image de présentation">
-        </div>
-        <div class="text-section">
-            <img src="Asset/img/logo-removebg-preview.png" alt="Site Logo">
-        </div>
-        <div class="diagonal-line"></div>
-    </div>
-</main>
-<script>
-    document.getElementById('halloween-toggle').addEventListener('click', function() {
-        document.body.classList.toggle('halloween-theme');
-        // Optionnel : stocker le choix dans localStorage pour le conserver entre les pages/sessions
-        if (document.body.classList.contains('halloween-theme')) {
-            localStorage.setItem('theme', 'halloween');
-            this.innerHTML = '<i class="fas fa-sun"></i> Mode Normal';
-        } else {
-            localStorage.setItem('theme', 'normal');
-            this.innerHTML = '<i class="fas fa-ghost"></i> Mode Halloween';
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'vert-cardin': '#0C1A1A',
+                        'vert-cardin-light': '#162e2e',
+                        'sarcelle': '#6ACFC7',
+                        'sarcelle-dark': '#4ba6a0',
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'loader': 'loader 2s ease-in-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        loader: {
+                            '0%': { width: '0%' },
+                            '100%': { width: '100%' }
+                        }
+                    }
+                }
+            }
         }
-    });
+    </script>
 
-    // Appliquer le thème sauvegardé au chargement
-    if (localStorage.getItem('theme') === 'halloween') {
-        document.body.classList.add('halloween-theme');
-        document.getElementById('halloween-toggle').innerHTML = '<i class="fas fa-sun"></i> Mode Normal';
-    }
-</script>
+    <style>
+        /* Custom Styles & Utilities */
+        body {
+            background-color: #0C1A1A;
+            color: #e5e7eb;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar customisation */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0C1A1A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #162e2e;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6ACFC7;
+        }
+
+        /* Animations classes triggered by JS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 100ms; }
+        .stagger-2 { transition-delay: 200ms; }
+        .stagger-3 { transition-delay: 300ms; }
+        .stagger-4 { transition-delay: 400ms; }
+
+        /* Glow effects */
+        .glow-text {
+            text-shadow: 0 0 20px rgba(106, 207, 199, 0.3);
+        }
+        
+        .glow-box:hover {
+            box-shadow: 0 0 25px rgba(106, 207, 199, 0.15);
+            border-color: #6ACFC7;
+        }
+
+        /* Blob background */
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: float 10s infinite alternate;
+        }
+
+        /* Typing cursor */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Loader Styles */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background-color: #0C1A1A;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out, visibility 0.5s;
+        }
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body class="antialiased relative font-sans">
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="text-center">
+            <img src="Asset/img/logo-removebg-preview.png" alt="Logo Ugo Radiguet" class="w-40 h-40 mx-auto mb-6 animate-pulse">
+            <div class="w-64 h-1 bg-gray-800 rounded-full overflow-hidden mx-auto">
+                <div class="h-full bg-sarcelle animate-loader shadow-[0_0_15px_#6ACFC7]"></div>
+            </div>
+            <p class="mt-4 text-gray-500 font-mono text-sm animate-pulse">Chargement des expériences...</p>
+        </div>
+    </div>
+
+    <!-- Background Blobs -->
+    <div class="blob bg-sarcelle w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="blob bg-purple-900 w-80 h-80 rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3 animation-delay-2000"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 bg-vert-cardin/90 backdrop-blur-md border-b border-white/5 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer group">
+                    <a href="#home" class="flex items-center">
+                        <img src="Asset/img/logo-removebg-preview.png" alt="Logo" class="w-14 h-14 group-hover:scale-110 transition-transform">
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-sarcelle px-3 py-2 rounded-md text-sm font-medium transition-colors uppercase tracking-widest">Accueil</a>
+                        <a href="#realisations" class="hover:text-sarcelle px-3 py-2 rounded-md text-sm font-medium transition-colors uppercase tracking-widest">Réalisations</a>
+                        <a href="#experience" class="hover:text-sarcelle px-3 py-2 rounded-md text-sm font-medium transition-colors uppercase tracking-widest">Expérience</a>
+                        <a href="#about" class="hover:text-sarcelle px-3 py-2 rounded-md text-sm font-medium transition-colors uppercase tracking-widest">À propos</a>
+                        <a href="#contact" class="px-4 py-2 border border-sarcelle text-sarcelle rounded-none text-sm font-medium hover:bg-sarcelle hover:text-vert-cardin transition-all duration-300 uppercase tracking-widest">Me contacter</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="md:hidden hidden bg-vert-cardin border-b border-white/10 absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-gray-300 hover:text-sarcelle block px-3 py-2 rounded-md text-base font-medium">Accueil</a>
+                <a href="#realisations" class="text-gray-300 hover:text-sarcelle block px-3 py-2 rounded-md text-base font-medium">Réalisations</a>
+                <a href="#experience" class="text-gray-300 hover:text-sarcelle block px-3 py-2 rounded-md text-base font-medium">Expérience</a>
+                <a href="#about" class="text-gray-300 hover:text-sarcelle block px-3 py-2 rounded-md text-base font-medium">À propos</a>
+                <a href="#contact" class="text-sarcelle font-bold block px-3 py-2 rounded-md text-base">Me contacter</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative px-4 pt-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <p class="text-sarcelle font-medium tracking-widest uppercase text-sm reveal stagger-1">Salut, mon nom est</p>
+                <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight reveal stagger-2 tracking-tight">
+                    Ugo <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-sarcelle to-teal-200 glow-text">Radiguet</span>.
+                </h1>
+                <h2 class="text-2xl md:text-3xl text-gray-400 font-light reveal stagger-3">
+                    Je conçois <span id="typewriter" class="text-sarcelle font-semibold typing-cursor"></span>
+                </h2>
+                <p class="text-gray-400 max-w-lg text-lg leading-relaxed reveal stagger-4 font-light">
+                    Étudiant en Licence STS Développement web mobile et applicatif. Actuellement en alternance chez Archiving Consulting FR, je transforme des idées complexes en interfaces fluides et performantes.
+                </p>
+                <div class="pt-6 reveal stagger-4">
+                    <a href="#realisations" class="group inline-flex items-center gap-2 bg-sarcelle text-vert-cardin px-8 py-4 rounded-none font-bold hover:bg-white transition-all duration-300 transform hover:scale-105 uppercase tracking-widest text-xs">
+                        Voir mes projets
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hero Visual -->
+            <div class="relative hidden md:flex justify-center items-center reveal stagger-3">
+                <div class="relative w-80 h-80">
+                    <div class="absolute inset-0 border border-sarcelle/20 rounded-full animate-[spin_10s_linear_infinite]"></div>
+                    <div class="absolute inset-4 border border-sarcelle/40 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+                    <div class="absolute inset-0 flex items-center justify-center animate-float">
+                        <div class="bg-vert-cardin-light p-6 rounded-none border border-white/10 shadow-2xl glow-box transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                            <div class="flex gap-2 mb-4">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="space-y-2 text-sm">
+                                <p><span class="text-purple-400">const</span> <span class="text-yellow-300">dev</span> = {</p>
+                                <p class="pl-4 text-gray-300">name: <span class="text-green-400">'Ugo'</span>,</p>
+                                <p class="pl-4 text-gray-300">role: <span class="text-green-400">'Web Developer'</span>,</p>
+                                <p class="pl-4 text-gray-300">age: <span class="text-orange-400">22</span>,</p>
+                                <p class="pl-4 text-gray-300">status: <span class="text-green-400">'Alternant'</span></p>
+                                <p class="text-gray-300">};</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Icons -->
+                    <div class="absolute top-0 right-0 bg-vert-cardin p-3 rounded-none border border-sarcelle/30 animate-float shadow-lg" style="animation-delay: 1s;">
+                        <i data-lucide="code-2" class="text-sarcelle w-6 h-6"></i>
+                    </div>
+                    <div class="absolute bottom-10 left-0 bg-vert-cardin p-3 rounded-none border border-sarcelle/30 animate-float shadow-lg" style="animation-delay: 2s;">
+                        <i data-lucide="smartphone" class="text-purple-400 w-6 h-6"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#realisations" class="text-gray-500 hover:text-sarcelle transition-colors">
+                <i data-lucide="chevron-down" class="w-8 h-8"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Réalisations (Projects) -->
+    <section id="realisations" class="py-20 px-4 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center gap-4 mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight"><span class="text-sarcelle">01.</span> Réalisations</h2>
+                <div class="h-px bg-white/20 flex-grow max-w-xs"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- ============= PROJETS STAGE ============= -->
+                
+                <!-- Project: Archiving Consulting -->
+                <div class="bg-vert-cardin-light rounded-none overflow-hidden border border-white/5 hover:border-sarcelle/50 transition-all duration-300 group reveal stagger-1 glow-box flex flex-col">
+                    <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
+                        <div class="absolute top-2 right-2 z-30">
+                            <span class="bg-blue-900/80 text-blue-200 text-xs font-bold px-2 py-1 uppercase tracking-wider border border-blue-700/50">Stage</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light to-transparent opacity-80 z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Projet Archiving" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6 relative z-20 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white group-hover:text-sarcelle transition-colors">Archiving Consulting FR</h3>
+                            <span class="text-gray-500" title="Code privé"><i data-lucide="lock" class="w-5 h-5"></i></span>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                            Site réalisé en 2024 (1er stage) et refonte en 2025 (2eme stage). Recréation du site web, intégration BDD (erreurs SAP), développement d'une suite applicative mobile/PC pour la gestion des réseaux sociaux.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="./SavoirPlus/ACFR.html"><button class="w-full py-2 border border-sarcelle/50 text-sarcelle hover:bg-sarcelle hover:text-vert-cardin transition-colors text-xs uppercase font-bold tracking-widest">En savoir plus</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============= PROJETS PERSONNELS ============= -->
+
+                <!-- Project: JDR Directory -->
+                <div class="bg-vert-cardin-light rounded-none overflow-hidden border border-white/5 hover:border-sarcelle/50 transition-all duration-300 group reveal stagger-2 glow-box flex flex-col">
+                    <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
+                         <div class="absolute top-2 right-2 z-30">
+                            <span class="bg-purple-900/80 text-purple-200 text-xs font-bold px-2 py-1 uppercase tracking-wider border border-purple-700/50">Perso</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light to-transparent opacity-80 z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&q=80&w=800" alt="JDR Personnages" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6 relative z-20 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white group-hover:text-sarcelle transition-colors">Personnages JDR</h3>
+                            <i data-lucide="dices" class="w-5 h-5 text-gray-400"></i>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                            Répertoire de mes personnages pour jeux de rôles (2024). Gestion de fiches et statistiques.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="./SavoirPlus/JDR.html"><button class="w-full py-2 border border-sarcelle/50 text-sarcelle hover:bg-sarcelle hover:text-vert-cardin transition-colors text-xs uppercase font-bold tracking-widest">En savoir plus</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Family Tree -->
+                <div class="bg-vert-cardin-light rounded-none overflow-hidden border border-white/5 hover:border-sarcelle/50 transition-all duration-300 group reveal stagger-3 glow-box flex flex-col">
+                    <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
+                         <div class="absolute top-2 right-2 z-30">
+                            <span class="bg-purple-900/80 text-purple-200 text-xs font-bold px-2 py-1 uppercase tracking-wider border border-purple-700/50">Perso</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light to-transparent opacity-80 z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&q=80&w=800" alt="Arbre Généalogique" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6 relative z-20 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white group-hover:text-sarcelle transition-colors">Site Généalogie</h3>
+                            <i data-lucide="network" class="w-5 h-5 text-gray-400"></i>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                            Site de généalogie créé pour ma famille (2024). Visualisation interactive des ancêtres.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="./SavoirPlus/Genealogy.html"><button class="w-full py-2 border border-sarcelle/50 text-sarcelle hover:bg-sarcelle hover:text-vert-cardin transition-colors text-xs uppercase font-bold tracking-widest">En savoir plus</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Catch Federation Manager (NEW) -->
+                <div class="bg-vert-cardin-light rounded-none overflow-hidden border border-white/5 hover:border-sarcelle/50 transition-all duration-300 group reveal stagger-1 glow-box flex flex-col">
+                    <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
+                        <div class="absolute top-2 right-2 z-30">
+                            <span class="bg-purple-900/80 text-purple-200 text-xs font-bold px-2 py-1 uppercase tracking-wider border border-purple-700/50">Perso</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light to-transparent opacity-80 z-10 flex items-center justify-center">
+                            <i data-lucide="trophy" class="w-16 h-16 text-white/20"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 relative z-20 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white group-hover:text-sarcelle transition-colors">Fédération de Catch</h3>
+                            <i data-lucide="gamepad-2" class="w-5 h-5 text-gray-400"></i>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                            Simulation de gestion d'une fédération de catch (2025). Gestion du roster, des shows et du budget.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="./SavoirPlus/wrestling.html"><button class="w-full py-2 border border-sarcelle/50 text-sarcelle hover:bg-sarcelle hover:text-vert-cardin transition-colors text-xs uppercase font-bold tracking-widest">En savoir plus</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Site Tour Program (NEW) -->
+                <div class="bg-vert-cardin-light rounded-none overflow-hidden border border-white/5 hover:border-sarcelle/50 transition-all duration-300 group reveal stagger-2 glow-box flex flex-col">
+                    <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
+                        <div class="absolute top-2 right-2 z-30">
+                            <span class="bg-purple-900/80 text-purple-200 text-xs font-bold px-2 py-1 uppercase tracking-wider border border-purple-700/50">Perso</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light to-transparent opacity-80 z-10 flex items-center justify-center">
+                            <i data-lucide="mouse-pointer-click" class="w-16 h-16 text-white/20"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 relative z-20 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white group-hover:text-sarcelle transition-colors">Visite du Site</h3>
+                            <i data-lucide="navigation" class="w-5 h-5 text-gray-400"></i>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                            Programme de visite guidée interactive du portfolio (2025). Découverte des fonctionnalités.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="./SavoirPlus/visite.html"><button class="w-full py-2 border border-sarcelle/50 text-sarcelle hover:bg-sarcelle hover:text-vert-cardin transition-colors text-xs uppercase font-bold tracking-widest">En savoir plus</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Music Player (NEW) -->
+                <div class="bg-vert-cardin-light rounded-none overflow-hidden border border-white/5 hover:border-sarcelle/50 transition-all duration-300 group reveal stagger-3 glow-box flex flex-col">
+                    <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
+                        <div class="absolute top-2 right-2 z-30">
+                            <span class="bg-purple-900/80 text-purple-200 text-xs font-bold px-2 py-1 uppercase tracking-wider border border-purple-700/50">Perso</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light to-transparent opacity-80 z-10 flex items-center justify-center">
+                            <i data-lucide="music" class="w-16 h-16 text-white/20"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 relative z-20 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white group-hover:text-sarcelle transition-colors">Lecteur de Musique</h3>
+                            <i data-lucide="headphones" class="w-5 h-5 text-gray-400"></i>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                            Lecteur de musique de ma création (2025). Playlist dynamique et contrôles audio avancés.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="./SavoirPlus/musique.html"><button class="w-full py-2 border border-sarcelle/50 text-sarcelle hover:bg-sarcelle hover:text-vert-cardin transition-colors text-xs uppercase font-bold tracking-widest">En savoir plus</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============= PROJETS FORMATION ============= -->
+
+                <!-- Project: Portfolio v1 (NEW) -->
+                <div class="bg-vert-cardin-light rounded-none overflow-hidden border border-white/5 hover:border-sarcelle/50 transition-all duration-300 group reveal stagger-1 glow-box flex flex-col">
+                    <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
+                        <div class="absolute top-2 right-2 z-30">
+                            <span class="bg-emerald-900/80 text-emerald-200 text-xs font-bold px-2 py-1 uppercase tracking-wider border border-emerald-700/50">Formation</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light to-transparent opacity-80 z-10 flex items-center justify-center">
+                            <i data-lucide="briefcase" class="w-16 h-16 text-white/20"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 relative z-20 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white group-hover:text-sarcelle transition-colors">Portfolio Version 1</h3>
+                            <i data-lucide="code" class="w-5 h-5 text-gray-400"></i>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                            Création de mon premier portfolio. Découverte du HTML/CSS et responsive design.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="./SavoirPlus/portfolio.html"><button class="w-full py-2 border border-sarcelle/50 text-sarcelle hover:bg-sarcelle hover:text-vert-cardin transition-colors text-xs uppercase font-bold tracking-widest">En savoir plus</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Album Photo (NEW) -->
+                <div class="bg-vert-cardin-light rounded-none overflow-hidden border border-white/5 hover:border-sarcelle/50 transition-all duration-300 group reveal stagger-2 glow-box flex flex-col">
+                    <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
+                        <div class="absolute top-2 right-2 z-30">
+                            <span class="bg-emerald-900/80 text-emerald-200 text-xs font-bold px-2 py-1 uppercase tracking-wider border border-emerald-700/50">Formation</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light to-transparent opacity-80 z-10 flex items-center justify-center">
+                            <i data-lucide="images" class="w-16 h-16 text-white/20"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 relative z-20 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white group-hover:text-sarcelle transition-colors">Album Photo</h3>
+                            <i data-lucide="camera" class="w-5 h-5 text-gray-400"></i>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                            Création d'une application d'albums photo. Upload, galerie et gestion des droits utilisateurs.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="./SavoirPlus/Albums.html"><button class="w-full py-2 border border-sarcelle/50 text-sarcelle hover:bg-sarcelle hover:text-vert-cardin transition-colors text-xs uppercase font-bold tracking-widest">En savoir plus</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Budget App (NEW) -->
+                <div class="bg-vert-cardin-light rounded-none overflow-hidden border border-white/5 hover:border-sarcelle/50 transition-all duration-300 group reveal stagger-3 glow-box flex flex-col">
+                    <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
+                        <div class="absolute top-2 right-2 z-30">
+                            <span class="bg-emerald-900/80 text-emerald-200 text-xs font-bold px-2 py-1 uppercase tracking-wider border border-emerald-700/50">Formation</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light to-transparent opacity-80 z-10 flex items-center justify-center">
+                            <i data-lucide="wallet" class="w-16 h-16 text-white/20"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 relative z-20 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white group-hover:text-sarcelle transition-colors">App Budget</h3>
+                            <i data-lucide="dollar-sign" class="w-5 h-5 text-gray-400"></i>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                            Création d'une application de gestion de budget. Suivi des dépenses et visualisation graphique.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="./SavoirPlus/Budget.html"><button class="w-full py-2 border border-sarcelle/50 text-sarcelle hover:bg-sarcelle hover:text-vert-cardin transition-colors text-xs uppercase font-bold tracking-widest">En savoir plus</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Kanban App (NEW) -->
+                <div class="bg-vert-cardin-light rounded-none overflow-hidden border border-white/5 hover:border-sarcelle/50 transition-all duration-300 group reveal stagger-1 glow-box flex flex-col">
+                    <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
+                        <div class="absolute top-2 right-2 z-30">
+                            <span class="bg-emerald-900/80 text-emerald-200 text-xs font-bold px-2 py-1 uppercase tracking-wider border border-emerald-700/50">Formation</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light to-transparent opacity-80 z-10 flex items-center justify-center">
+                            <i data-lucide="kanban" class="w-16 h-16 text-white/20"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 relative z-20 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white group-hover:text-sarcelle transition-colors">App Kanban</h3>
+                            <i data-lucide="layout" class="w-5 h-5 text-gray-400"></i>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                            Création d'une application de Kanban. Gestion de tâches par colonnes (Drag & Drop).
+                        </p>
+                        <div class="mt-auto">
+                            <a href="./SavoirPlus/kanban.html"><button class="w-full py-2 border border-sarcelle/50 text-sarcelle hover:bg-sarcelle hover:text-vert-cardin transition-colors text-xs uppercase font-bold tracking-widest">En savoir plus</button></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Expérience -->
+    <section id="experience" class="py-20 px-4 bg-vert-cardin-light/30">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center gap-4 mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight"><span class="text-sarcelle">02.</span> Expérience & Formation</h2>
+                <div class="h-px bg-white/20 flex-grow max-w-xs"></div>
+            </div>
+
+            <div class="relative border-l border-white/10 ml-3 md:ml-6 space-y-12">
+                <!-- Current Job -->
+                <div class="relative pl-8 md:pl-12 reveal stagger-1">
+                    <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-sarcelle shadow-[0_0_10px_#6ACFC7]"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-white">Développeur Web (Alternance)</h3>
+                        <span class="text-sarcelle font-medium text-sm tracking-wide">2025 - Présent</span>
+                    </div>
+                    <h4 class="text-lg text-gray-300 mb-4 font-medium">Archiving Consulting FR</h4>
+                    <p class="text-gray-400 leading-relaxed">
+                        Création du site web, intégration BDD (erreurs SAP), développement d'une suite applicative mobile/PC pour la gestion des réseaux sociaux.
+                    </p>
+                </div>
+
+                <!-- Licence STS -->
+                <div class="relative pl-8 md:pl-12 reveal stagger-2">
+                    <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-vert-cardin border border-sarcelle"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-white">Licence STS - Dév Web Mobile</h3>
+                        <span class="text-sarcelle font-medium text-sm tracking-wide">2025 - 2026</span>
+                    </div>
+                    <h4 class="text-lg text-gray-400 mb-2 font-medium">CaenSup Sainte-Ursule</h4>
+                    <p class="text-gray-400 leading-relaxed">Formation approfondie : Full-stack, architecture logicielle, mobile natif et hybride.</p>
+                </div>
+
+                <!-- BTS SIO -->
+                <div class="relative pl-8 md:pl-12 reveal stagger-3">
+                    <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-vert-cardin border border-gray-600"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-gray-300">BTS SIO (Option SLAM)</h3>
+                        <span class="text-gray-500 font-medium text-sm tracking-wide">2023 - 2025</span>
+                    </div>
+                    <h4 class="text-lg text-gray-400 mb-2 font-medium">CaenSup Sainte-Ursule</h4>
+                    <p class="text-gray-400 leading-relaxed">Solutions Logicielles et Applications Métiers.</p>
+                </div>
+
+                <!-- Licence Info (Abandon) -->
+                <div class="relative pl-8 md:pl-12 reveal stagger-3">
+                    <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-vert-cardin border border-gray-700"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-gray-400">Licence Informatique</h3>
+                        <span class="text-gray-500 font-medium text-sm tracking-wide">2021 - 2023</span>
+                    </div>
+                    <h4 class="text-lg text-gray-400 mb-2 font-medium">Université de Caen</h4>
+                    <p class="text-gray-500 italic">Parcours initial en informatique théorique.</p>
+                </div>
+
+                <!-- Lycée -->
+                <div class="relative pl-8 md:pl-12 reveal stagger-4">
+                    <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-vert-cardin border border-gray-700"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-gray-400">Baccalauréat Général</h3>
+                        <span class="text-gray-500 font-medium text-sm tracking-wide">2018 - 2021</span>
+                    </div>
+                    <h4 class="text-lg text-gray-400 mb-2 font-medium">Lycée Dumont d'Urville, Caen</h4>
+                    <p class="text-gray-500 leading-relaxed">
+                        Spécialités : Sciences de l'ingénieur, Mathématiques, Physique Chimie.<br>
+                        Option : Mathématiques Expertes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos (About) -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center gap-4 mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight"><span class="text-sarcelle">03.</span> À propos</h2>
+                <div class="h-px bg-white/20 flex-grow max-w-xs"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Bio & Passions -->
+                <div class="space-y-6 reveal stagger-1">
+                    <p class="text-gray-400 leading-relaxed text-lg">
+                        Moi c'est <strong class="text-sarcelle">Ugo Mathieu Colin Radiguet</strong>, j'ai 22 ans. Passionné par le numérique depuis mon adolescence, j'ai orienté mes études vers le développement pour comprendre comment fonctionne le web moderne.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed text-lg">
+                        L'alternance chez <span class="text-white font-medium">Archiving Consulting FR</span> me permet de confronter mes connaissances théoriques à la réalité du terrain.
+                    </p>
+                    
+                    <h3 class="text-xl font-bold text-white pt-6 mb-4">Mes Passions</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 rounded-none bg-vert-cardin-light border border-white/10 text-gray-300 hover:border-sarcelle hover:text-sarcelle transition-colors text-xs uppercase tracking-widest font-bold">Jeux Vidéo</span>
+                        <span class="px-4 py-2 rounded-none bg-vert-cardin-light border border-white/10 text-gray-300 hover:border-sarcelle hover:text-sarcelle transition-colors text-xs uppercase tracking-widest font-bold">Le Catch</span>
+                        <span class="px-4 py-2 rounded-none bg-vert-cardin-light border border-white/10 text-gray-300 hover:border-sarcelle hover:text-sarcelle transition-colors text-xs uppercase tracking-widest font-bold">Généalogie</span>
+                        <span class="px-4 py-2 rounded-none bg-vert-cardin-light border border-white/10 text-gray-300 hover:border-sarcelle hover:text-sarcelle transition-colors text-xs uppercase tracking-widest font-bold">Football</span>
+                        <span class="px-4 py-2 rounded-none bg-vert-cardin-light border border-white/10 text-gray-300 hover:border-sarcelle hover:text-sarcelle transition-colors text-xs uppercase tracking-widest font-bold">Badminton</span>
+                        <span class="px-4 py-2 rounded-none bg-vert-cardin-light border border-white/10 text-gray-300 hover:border-sarcelle hover:text-sarcelle transition-colors text-xs uppercase tracking-widest font-bold">Jeux de Rôles</span>
+                        <span class="px-4 py-2 rounded-none bg-vert-cardin-light border border-white/10 text-gray-300 hover:border-sarcelle hover:text-sarcelle transition-colors text-xs uppercase tracking-widest font-bold">Histoire</span>
+                        <span class="px-4 py-2 rounded-none bg-vert-cardin-light border border-white/10 text-gray-300 hover:border-sarcelle hover:text-sarcelle transition-colors text-xs uppercase tracking-widest font-bold">Mythologie</span>
+                        <span class="px-4 py-2 rounded-none bg-vert-cardin-light border border-white/10 text-gray-300 hover:border-sarcelle hover:text-sarcelle transition-colors text-xs uppercase tracking-widest font-bold">Manga</span>
+                        <span class="px-4 py-2 rounded-none bg-vert-cardin-light border border-white/10 text-gray-300 hover:border-sarcelle hover:text-sarcelle transition-colors text-xs uppercase tracking-widest font-bold">Programmation</span>
+                        <span class="px-4 py-2 rounded-none bg-vert-cardin-light border border-white/10 text-gray-300 hover:border-sarcelle hover:text-sarcelle transition-colors text-xs uppercase tracking-widest font-bold">Basketball</span>
+                        <span class="px-4 py-2 rounded-none bg-vert-cardin-light border border-white/10 text-gray-300 hover:border-sarcelle hover:text-sarcelle transition-colors text-xs uppercase tracking-widest font-bold">Formule 1</span>
+                    </div>
+                </div>
+
+                <!-- Skills & Socials -->
+                <div class="reveal stagger-2">
+                    <h3 class="text-xl font-bold text-white mb-6">Compétences Techniques</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                        <!-- Column 1 -->
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1 text-xs font-bold tracking-widest text-gray-400"><span>HTML</span><span>100%</span></div>
+                                <div class="h-1 bg-gray-800 rounded-none"><div class="h-full bg-sarcelle w-[100%] shadow-[0_0_8px_#6ACFC7]"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1 text-xs font-bold tracking-widest text-gray-400"><span>CSS</span><span>100%</span></div>
+                                <div class="h-1 bg-gray-800 rounded-none"><div class="h-full bg-sarcelle w-[100%] shadow-[0_0_8px_#6ACFC7]"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1 text-xs font-bold tracking-widest text-gray-400"><span>Javascript</span><span>90%</span></div>
+                                <div class="h-1 bg-gray-800 rounded-none"><div class="h-full bg-sarcelle w-[90%]"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1 text-xs font-bold tracking-widest text-gray-400"><span>PHP</span><span>75%</span></div>
+                                <div class="h-1 bg-gray-800 rounded-none"><div class="h-full bg-sarcelle w-[75%]"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1 text-xs font-bold tracking-widest text-gray-400"><span>SQL</span><span>75%</span></div>
+                                <div class="h-1 bg-gray-800 rounded-none"><div class="h-full bg-sarcelle w-[75%]"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- Column 2 -->
+                        <div class="space-y-4">
+                             <div>
+                                <div class="flex justify-between mb-1 text-xs font-bold tracking-widest text-gray-400"><span>Python</span><span>70%</span></div>
+                                <div class="h-1 bg-gray-800 rounded-none"><div class="h-full bg-sarcelle w-[70%]"></div></div>
+                            </div>
+                             <div>
+                                <div class="flex justify-between mb-1 text-xs font-bold tracking-widest text-gray-400"><span>React</span><span>65%</span></div>
+                                <div class="h-1 bg-gray-800 rounded-none"><div class="h-full bg-sarcelle w-[65%]"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1 text-xs font-bold tracking-widest text-gray-400"><span>Java</span><span>60%</span></div>
+                                <div class="h-1 bg-gray-800 rounded-none"><div class="h-full bg-sarcelle w-[60%]"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1 text-xs font-bold tracking-widest text-gray-400"><span>Kotlin</span><span>50%</span></div>
+                                <div class="h-1 bg-gray-800 rounded-none"><div class="h-full bg-sarcelle w-[50%]"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1 text-xs font-bold tracking-widest text-gray-400"><span>C</span><span>35%</span></div>
+                                <div class="h-1 bg-gray-800 rounded-none"><div class="h-full bg-sarcelle w-[35%]"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-10">
+                        <h3 class="text-xl font-bold text-white mb-4">Réseaux Sociaux</h3>
+                        <div class="flex gap-4">
+                            <a href="https://www.linkedin.com/in/ugo-radiguet-225487242/" class="p-3 bg-vert-cardin-light border border-white/10 text-gray-400 hover:text-sarcelle hover:bg-white hover:border-transparent transition-all hover:scale-110 hover:-translate-y-1">
+                                <i data-lucide="linkedin" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://github.com/Uradiguet" class="p-3 bg-vert-cardin-light border border-white/10 text-gray-400 hover:text-sarcelle hover:bg-white hover:border-transparent transition-all hover:scale-110 hover:-translate-y-1">
+                                <i data-lucide="github" class="w-6 h-6"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documents -->
+    <section id="documents" class="py-20 px-4 bg-vert-cardin-light/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <p class="text-sarcelle font-medium uppercase tracking-widest text-sm mb-4">04. Mes documents</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight">Certifications & CV</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+                <!-- CV -->
+                <a href="Asset/PDF/CV-UGO-RADIGUET (2).pdf" target="_blank" class="group glow-box bg-vert-cardin border border-white/10 p-6 hover:border-sarcelle/50 transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-sarcelle/10 text-sarcelle">
+                            <i data-lucide="file-user" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-bold group-hover:text-sarcelle transition-colors">Curriculum Vitae</h3>
+                            <p class="text-gray-400 text-sm">Mon CV actuel</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Attestation PIX -->
+                <a href="Asset/PDF/attestation-pix-20250305.pdf" target="_blank" class="group glow-box bg-vert-cardin border border-white/10 p-6 hover:border-sarcelle/50 transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-sarcelle/10 text-sarcelle">
+                            <i data-lucide="award" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-bold group-hover:text-sarcelle transition-colors">Certification PIX</h3>
+                            <p class="text-gray-400 text-sm">Compétences numériques</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Sens Cyber -->
+                <a href="Asset/PDF/Attestation Sens Cyber.pdf" target="_blank" class="group glow-box bg-vert-cardin border border-white/10 p-6 hover:border-sarcelle/50 transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-sarcelle/10 text-sarcelle">
+                            <i data-lucide="shield-check" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-bold group-hover:text-sarcelle transition-colors">Sens Cyber</h3>
+                            <p class="text-gray-400 text-sm">Sensibilisation cybersécurité</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- SecNumAcademie -->
+                <a href="Asset/PDF/Secnumacademie.pdf" target="_blank" class="group glow-box bg-vert-cardin border border-white/10 p-6 hover:border-sarcelle/50 transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-sarcelle/10 text-sarcelle">
+                            <i data-lucide="lock" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-bold group-hover:text-sarcelle transition-colors">SecNumAcadémie</h3>
+                            <p class="text-gray-400 text-sm">ANSSI - Cybersécurité</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Stage 2024 -->
+                <a href="Asset/PDF/BTS SIO - 2024 - Attestation de stage.pdf" target="_blank" class="group glow-box bg-vert-cardin border border-white/10 p-6 hover:border-sarcelle/50 transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-sarcelle/10 text-sarcelle">
+                            <i data-lucide="briefcase" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-bold group-hover:text-sarcelle transition-colors">Stage 2024</h3>
+                            <p class="text-gray-400 text-sm">Attestation BTS SIO</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Stage 2025 -->
+                <a href="Asset/PDF/BTS SIO - 2025 - Attestation de stage.pdf" target="_blank" class="group glow-box bg-vert-cardin border border-white/10 p-6 hover:border-sarcelle/50 transition-all duration-300">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-sarcelle/10 text-sarcelle">
+                            <i data-lucide="briefcase" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-bold group-hover:text-sarcelle transition-colors">Stage 2025</h3>
+                            <p class="text-gray-400 text-sm">Attestation BTS SIO</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24 px-4 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-vert-cardin-light/20 -z-10 transform skew-y-3 origin-bottom-right"></div>
+        
+        <div class="max-w-2xl mx-auto reveal">
+            <p class="text-sarcelle font-medium uppercase tracking-widest text-sm mb-4">05. Une question ?</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Contactez-moi</h2>
+            <p class="text-gray-400 text-lg mb-10 leading-relaxed">
+                Mon inbox est toujours ouverte, que ce soit pour une opportunité de freelance, une question sur mon parcours ou juste pour dire bonjour.
+            </p>
+            
+            <form class="space-y-4 max-w-md mx-auto text-left" onsubmit="event.preventDefault(); alert('Message envoyé (Simulation) !');">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" placeholder="Nom" class="w-full bg-vert-cardin border border-gray-700 rounded-none px-4 py-3 text-white focus:outline-none focus:border-sarcelle focus:ring-1 focus:ring-sarcelle transition-all">
+                    <input type="email" placeholder="Email" class="w-full bg-vert-cardin border border-gray-700 rounded-none px-4 py-3 text-white focus:outline-none focus:border-sarcelle focus:ring-1 focus:ring-sarcelle transition-all">
+                </div>
+                <input type="text" placeholder="Sujet" class="w-full bg-vert-cardin border border-gray-700 rounded-none px-4 py-3 text-white focus:outline-none focus:border-sarcelle focus:ring-1 focus:ring-sarcelle transition-all">
+                <textarea rows="4" placeholder="Votre message..." class="w-full bg-vert-cardin border border-gray-700 rounded-none px-4 py-3 text-white focus:outline-none focus:border-sarcelle focus:ring-1 focus:ring-sarcelle transition-all"></textarea>
+                
+                <button type="submit" class="w-full bg-transparent border border-sarcelle text-sarcelle px-8 py-4 rounded-none font-bold hover:bg-sarcelle/10 transition-all duration-300 hover:shadow-[0_0_15px_rgba(106,207,199,0.4)] uppercase tracking-widest text-xs">
+                    Envoyer le message
+                </button>
+            </form>
+
+            <div class="mt-16 text-gray-500 text-sm">
+                <p>&copy; 2026 Ugo Radiguet. Designé & Codé avec passion.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Loader Logic
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            // Hide loader after a short delay to ensure animation is seen
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                // Remove from DOM after transition
+                setTimeout(() => {
+                    loader.remove();
+                }, 500);
+            }, 1800);
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Typewriter Effect
+        const words = ["des applications web.", "des interfaces modernes.", "des solutions mobiles."];
+        let i = 0;
+        let timer;
+
+        function typeWriter() {
+            const element = document.getElementById("typewriter");
+            const word = words[i];
+            let currentText = element.textContent;
+
+            if (!element.getAttribute('data-deleting')) {
+                // Typing
+                element.textContent = word.substring(0, currentText.length + 1);
+                if (element.textContent === word) {
+                    element.setAttribute('data-deleting', 'true');
+                    setTimeout(typeWriter, 1500); // Wait before deleting
+                } else {
+                    setTimeout(typeWriter, 100);
+                }
+            } else {
+                // Deleting
+                element.textContent = word.substring(0, currentText.length - 1);
+                if (element.textContent === '') {
+                    element.removeAttribute('data-deleting');
+                    i = (i + 1) % words.length;
+                    setTimeout(typeWriter, 500);
+                } else {
+                    setTimeout(typeWriter, 50);
+                }
+            }
+        }
+        
+        // Start typewriter
+        document.addEventListener('DOMContentLoaded', typeWriter);
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 150;
+
+            revealElements.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Trigger once on load
+        revealOnScroll();
+
+        // Navbar Blur/Hide on Scroll
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.remove('-translate-y-full');
+            } else {
+                navbar.classList.add('shadow-lg');
+            }
+            lastScroll = currentScroll;
+        });
+
+    </script>
 </body>
-<footer>
-    <p>&copy; 2025 Ugo Radiguet</p>
-</footer>
 </html>
