@@ -65,6 +65,7 @@
         
         .slider {
             overflow: hidden;
+            position: relative;
         }
         .slides {
             display: flex;
@@ -72,8 +73,15 @@
         }
         .slides img {
             width: 100%;
-            max-width: 800px;
+            height: 400px;
+            object-fit: contain;
+            background: #0C1A1A;
             flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .slides img {
+                height: 250px;
+            }
         }
     </style>
 </head>
