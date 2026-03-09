@@ -179,13 +179,14 @@
             position: fixed;
             width: 30px;
             height: 30px;
-            image-rendering: pixelated;
             z-index: 9999;
             pointer-events: none;
-            animation: blockFall 3s linear forwards;
+            transition: transform 3s linear, opacity 3s linear;
+            transform: translateY(0) rotate(0deg);
+            opacity: 1;
         }
         @keyframes blockFall {
-            0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
             100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
         }
         
@@ -507,7 +508,7 @@
                 <div class="bg-vert-cardin-light rounded-none overflow-hidden border border-white/5 hover:border-sarcelle/50 transition-all duration-300 group reveal stagger-1 glow-box flex flex-col">
                     <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
                         <div class="absolute top-2 right-2 z-30">
-                            <span class="bg-emerald-900/80 text-emerald-200 text-xs font-bold px-2 py-1 uppercase tracking-wider border border-emerald-700/50">Formation</span>
+                            <span class="bg-emerald-900/80 text-emerald-200 text-xs font-bold px-2 py-1 uppercase tracking-widest border border-emerald-700/50">Formation</span>
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light to-transparent opacity-80 z-10"></div>
                         <img src="https://images.unsplash.com/photo-1545665277-5937489579f2?auto=format&fit=crop&q=80&w=800" alt="Portfolio Version 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -1429,16 +1430,24 @@
             cardMinecraft.addEventListener('click', () => {
                 showEasterEgg('MINECRAFT!', 'Attention aux creepers... 💣', '⛏️');
                 // Faire tomber des blocs
-                const blocks = ['🟫', '🟩', '⬛', '🪨', '💎'];
+                const blockColors = ['#8B4513', '#228B22', '#708090', '#BDBDBD', '#4682B4'];
                 for (let i = 0; i < 20; i++) {
                     setTimeout(() => {
                         const block = document.createElement('div');
                         block.className = 'falling-block';
                         block.style.left = Math.random() * 100 + 'vw';
-                        block.style.fontSize = '30px';
-                        block.textContent = blocks[Math.floor(Math.random() * blocks.length)];
+                        block.style.backgroundColor = blockColors[Math.floor(Math.random() * blockColors.length)];
+                        block.style.border = '2px solid black';
                         document.body.appendChild(block);
-                        setTimeout(() => block.remove(), 3000);
+
+                        // Trigger the fall after a short delay
+                        setTimeout(() => {
+                            block.style.transform = 'translateY(110vh) rotate(360deg)';
+                            block.style.opacity = '0';
+                        }, 50); // 50ms delay to ensure transition is applied
+
+                        // Remove the block after the animation
+                        setTimeout(() => block.remove(), 3050);
                     }, i * 100);
                 }
             });
@@ -1465,7 +1474,7 @@
         const cardOverwatch = document.getElementById('card-overwatch');
         if (cardOverwatch) {
             cardOverwatch.addEventListener('click', () => {
-                showEasterEgg('HEROES NEVER DIE!', 'Mercy main btw 😇', '🎯');
+                showEasterEgg('HAMMER DOWN!', 'Main Tank: Reinhardt, Sigma & Reaper.', '🛡️');
             });
         }
         
@@ -1629,9 +1638,9 @@
 
         // === SON DE CLOCHE CATCH ===
         function playBell() {
-            const audio = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_116b7b7b7b.mp3'); // Son de cloche libre
+            const audio = new Audio('Asset/Musique/WWE Ring Bell (No Crowd).mp3'); // Fichier local
             audio.volume = 0.5;
-            audio.play();
+            audio.play().catch(e => console.error("Le son a été bloqué par le navigateur.", e));
         }
         ['card-penta','card-ospreay','card-solruca','card-cmpunk','card-mysterio'].forEach(id => {
             const el = document.getElementById(id);
@@ -1639,7 +1648,7 @@
                 el.addEventListener('click', playBell);
             }
         });
-
+        
         // === TRIPLE CLIC SUR NOM ===
         const nomUgo = document.querySelector('h1 span.bg-clip-text');
         let clickCount = 0;
