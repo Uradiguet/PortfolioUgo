@@ -130,9 +130,104 @@
             opacity: 0;
             visibility: hidden;
         }
+
+        /* ========== EASTER EGGS STYLES ========== */
+        
+        /* Mode Rétro 8-bit */
+        body.retro-mode {
+            image-rendering: pixelated;
+            filter: contrast(1.1) saturate(1.3);
+        }
+        body.retro-mode * {
+            font-family: 'Courier New', monospace !important;
+            border-radius: 0 !important;
+        }
+        body.retro-mode img {
+            image-rendering: pixelated;
+            filter: contrast(1.2);
+        }
+        
+        /* Notification Easter Egg */
+        .easter-egg-notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: linear-gradient(135deg, #0C1A1A 0%, #162e2e 100%);
+            border: 3px solid #6ACFC7;
+            padding: 2rem 3rem;
+            z-index: 10000;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(106, 207, 199, 0.5);
+            animation: easterEggPop 0.5s ease forwards;
+        }
+        .easter-egg-notification.fade-out {
+            animation: easterEggFadeOut 0.5s ease forwards;
+        }
+        @keyframes easterEggPop {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+        @keyframes easterEggFadeOut {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+        }
+        
+        /* Falling blocks pour Minecraft */
+        .falling-block {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            image-rendering: pixelated;
+            z-index: 9999;
+            pointer-events: none;
+            animation: blockFall 3s linear forwards;
+        }
+        @keyframes blockFall {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+        
+        /* AFK Message */
+        .afk-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(12, 26, 26, 0.95);
+            z-index: 10001;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+        .afk-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Photo pixel art swap */
+        .photo-pixel-mode {
+            filter: contrast(1.5) saturate(0.8) !important;
+            image-rendering: pixelated !important;
+        }
     </style>
 </head>
 <body class="antialiased relative font-sans">
+
+    <!-- AFK Overlay -->
+    <div id="afk-overlay" class="afk-overlay">
+        <div class="text-center">
+            <i data-lucide="eye" class="w-20 h-20 text-sarcelle mx-auto mb-6 animate-pulse"></i>
+            <h2 class="text-4xl font-bold text-white mb-4">Tu es encore là ? 👀</h2>
+            <p class="text-gray-400 text-lg mb-8">Ça fait 10 minutes que tu n'as pas bougé...</p>
+            <button id="afk-dismiss" class="px-8 py-3 bg-sarcelle text-vert-cardin font-bold uppercase tracking-widest hover:bg-white transition-colors">
+                Je suis là !
+            </button>
+        </div>
+    </div>
 
     <!-- Loading Screen -->
     <div id="loader">
@@ -435,7 +530,7 @@
                 <div class="bg-vert-cardin-light rounded-none overflow-hidden border border-white/5 hover:border-sarcelle/50 transition-all duration-300 group reveal stagger-2 glow-box flex flex-col">
                     <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
                         <div class="absolute top-2 right-2 z-30">
-                            <span class="bg-emerald-900/80 text-emerald-200 text-xs font-bold px-2 py-1 uppercase tracking-wider border border-emerald-700/50">Formation</span>
+                            <span class="bg-emerald-900/80 text-emerald-200 text-xs font-bold px-2 py-1 uppercase tracking-widest border border-emerald-700/50">Formation</span>
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light to-transparent opacity-80 z-10"></div>
                         <img src="https://images.unsplash.com/photo-1528569937393-ee892b976859?auto=format&fit=crop&q=80&w=800" alt="Album Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -458,7 +553,7 @@
                 <div class="bg-vert-cardin-light rounded-none overflow-hidden border border-white/5 hover:border-sarcelle/50 transition-all duration-300 group reveal stagger-3 glow-box flex flex-col">
                     <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
                         <div class="absolute top-2 right-2 z-30">
-                            <span class="bg-emerald-900/80 text-emerald-200 text-xs font-bold px-2 py-1 uppercase tracking-wider border border-emerald-700/50">Formation</span>
+                            <span class="bg-emerald-900/80 text-emerald-200 text-xs font-bold px-2 py-1 uppercase tracking-widest border border-emerald-700/50">Formation</span>
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light to-transparent opacity-80 z-10"></div>
                         <img src="https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?ixlib=rb-4.0.3&ixid=jpqyfK7GB4w&auto=format&fit=crop&w=800&q=80" alt="App Budget" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -481,7 +576,7 @@
                 <div class="bg-vert-cardin-light rounded-none overflow-hidden border border-white/5 hover:border-sarcelle/50 transition-all duration-300 group reveal stagger-1 glow-box flex flex-col">
                     <div class="h-48 bg-gray-800 relative overflow-hidden shrink-0">
                         <div class="absolute top-2 right-2 z-30">
-                            <span class="bg-emerald-900/80 text-emerald-200 text-xs font-bold px-2 py-1 uppercase tracking-wider border border-emerald-700/50">Formation</span>
+                            <span class="bg-emerald-900/80 text-emerald-200 text-xs font-bold px-2 py-1 uppercase tracking-widest border border-emerald-700/50">Formation</span>
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light to-transparent opacity-80 z-10"></div>
                         <img src="https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?auto=format&fit=crop&q=80&w=800" alt="App Kanban" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -685,9 +780,9 @@
                 <div class="reveal stagger-2">
                     <!-- Photo de profil -->
                     <div class="mb-8 flex justify-center">
-                        <div class="relative w-64 h-64 group">
+                        <div id="photo-container" class="relative w-64 h-64 group">
                             <div class="absolute inset-0 bg-gradient-to-br from-sarcelle to-teal-200 rounded-none transform rotate-6 group-hover:rotate-12 transition-transform duration-500"></div>
-                            <img src="Asset/img/ugo.jpg" alt="Photo de Ugo Radiguet" class="relative w-full h-full object-cover rounded-none border-4 border-white/10 shadow-2xl transform group-hover:scale-105 transition-transform duration-500">
+                            <img id="photo-ugo" src="Asset/img/ugo.jpg" alt="Photo de Ugo Radiguet" class="relative w-full h-full object-cover rounded-none border-4 border-white/10 shadow-2xl transform group-hover:scale-105 transition-transform duration-500">
                         </div>
                     </div>
                     
@@ -750,23 +845,23 @@
                             Soft Skills
                         </h3>
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                            <div class="bg-vert-cardin border border-white/10 p-3 text-center hover:border-sarcelle/50 transition-colors group">
+                            <div class="bg-vert-cardin-light border border-white/5 p-3 text-center hover:border-sarcelle/50 transition-all duration-300 group glow-box">
                                 <i data-lucide="search" class="w-6 h-6 text-sarcelle mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
                                 <p class="text-gray-300 text-xs uppercase tracking-widest font-bold">Curieux</p>
                             </div>
-                            <div class="bg-vert-cardin border border-white/10 p-3 text-center hover:border-sarcelle/50 transition-colors group">
+                            <div class="bg-vert-cardin-light border border-white/5 p-3 text-center hover:border-sarcelle/50 transition-all duration-300 group glow-box">
                                 <i data-lucide="users" class="w-6 h-6 text-sarcelle mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
                                 <p class="text-gray-300 text-xs uppercase tracking-widest font-bold">Travail d'équipe</p>
                             </div>
-                            <div class="bg-vert-cardin border border-white/10 p-3 text-center hover:border-sarcelle/50 transition-colors group">
+                            <div class="bg-vert-cardin-light border border-white/5 p-3 text-center hover:border-sarcelle/50 transition-all duration-300 group glow-box">
                                 <i data-lucide="refresh-cw" class="w-6 h-6 text-sarcelle mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
                                 <p class="text-gray-300 text-xs uppercase tracking-widest font-bold">Adaptabilité</p>
                             </div>
-                            <div class="bg-vert-cardin border border-white/10 p-3 text-center hover:border-sarcelle/50 transition-colors group">
+                            <div class="bg-vert-cardin-light border border-white/5 p-3 text-center hover:border-sarcelle/50 transition-all duration-300 group glow-box">
                                 <i data-lucide="globe" class="w-6 h-6 text-sarcelle mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
                                 <p class="text-gray-300 text-xs uppercase tracking-widest font-bold">Ouvert d'esprit</p>
                             </div>
-                            <div class="bg-vert-cardin border border-white/10 p-3 text-center hover:border-sarcelle/50 transition-colors group">
+                            <div class="bg-vert-cardin-light border border-white/5 p-3 text-center hover:border-sarcelle/50 transition-all duration-300 group glow-box">
                                 <i data-lucide="shield-check" class="w-6 h-6 text-sarcelle mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
                                 <p class="text-gray-300 text-xs uppercase tracking-widest font-bold">Fiable</p>
                             </div>
@@ -860,7 +955,7 @@
                     <div class="bg-vert-cardin-light border border-white/10 p-6">
                         <p class="text-gray-400 text-sm mb-4">Ce que j'écoute en codant... 🎸</p>
                         <!-- Deezer Widget - Radio Voiture -->
-                        <div id="deezer-widget" class="w-full bg-vert-cardin border border-white/5 rounded-none overflow-hidden">
+                        <div id="deezer-widget" class="w-full bg-vert-cardin-light border border-white/5 overflow-hidden">
                             <iframe title="deezer-widget" src="https://widget.deezer.com/widget/dark/playlist/14666090581" width="100%" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe>
                         </div>
                         <p class="text-gray-500 text-xs mt-3 flex items-center gap-1">
@@ -889,38 +984,38 @@
                 </h3>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                     <!-- #1 Minecraft -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-minecraft" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-yellow-500 text-black text-xs font-bold px-2 py-0.5">#1</div>
                         <img src="Asset/img/minecraft.jpg" alt="Minecraft" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">Minecraft</p>
                     </div>
                     <!-- #2 AC4 Black Flag -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-ac4" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-gray-300 text-black text-xs font-bold px-2 py-0.5">#2</div>
                         <img src="Asset/img/assassinscreed4.jpg" alt="AC4 Black Flag" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">AC4 Black Flag</p>
                     </div>
                     <!-- #3 Overwatch -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-overwatch" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-amber-700 text-white text-xs font-bold px-2 py-0.5">#3</div>
                         <img src="Asset/img/overwatch.jpg" alt="Overwatch" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">Overwatch</p>
                     </div>
                     <!-- #4 Lethal Company / Repo -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-lethal" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-gray-600 text-white text-xs font-bold px-2 py-0.5">#4</div>
                         <img src="Asset/img/LethalCompany.jpg" alt="Lethal Company" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">Lethal Company</p>
                     </div>
                     <!-- #5 Hearts of Iron IV -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-hoi4" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-gray-600 text-white text-xs font-bold px-2 py-0.5">#5</div>
                         <img src="Asset/img/hearofironiv.jpg" alt="Hearts of Iron IV" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">Hearts of Iron IV</p>
                     </div>
                 </div>
@@ -934,45 +1029,45 @@
                 </h3>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                     <!-- #1 Penta -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-penta" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-yellow-500 text-black text-xs font-bold px-2 py-0.5">#1</div>
                         <img src="Asset/img/penta.jpg" alt="Penta" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">Penta</p>
                     </div>
                     <!-- #2 Will Ospreay -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-ospreay" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-gray-300 text-black text-xs font-bold px-2 py-0.5">#2</div>
                         <img src="Asset/img/willospreay.jpg" alt="Will Ospreay" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">Will Ospreay</p>
                     </div>
                     <!-- #3 Sol Ruca -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-solruca" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-amber-700 text-white text-xs font-bold px-2 py-0.5">#3</div>
                         <img src="Asset/img/solruca.jpg" alt="Sol Ruca" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">Sol Ruca</p>
                     </div>
                     <!-- #4 CM Punk -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-cmpunk" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-gray-600 text-white text-xs font-bold px-2 py-0.5">#4</div>
                         <img src="Asset/img/cmpunk.jpg" alt="CM Punk" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">CM Punk</p>
                     </div>
                     <!-- #5 Rey Mysterio -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-mysterio" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-gray-600 text-white text-xs font-bold px-2 py-0.5">#5</div>
                         <img src="Asset/img/reymysterio.jpg" alt="Rey Mysterio" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">Rey Mysterio</p>
                     </div>
                 </div>
                 <!-- Fédérations & Matchs -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                     <!-- Fédérations -->
-                    <div class="bg-vert-cardin border border-white/10 p-5">
+                    <div class="bg-vert-cardin-light border border-white/5 p-5 hover:border-sarcelle/50 transition-all duration-300 glow-box">
                         <p class="text-sarcelle text-xs uppercase tracking-widest font-bold mb-4">Fédérations préférées</p>
                         <div class="space-y-3">
                             <div class="flex items-center gap-3 group">
@@ -990,7 +1085,7 @@
                         </div>
                     </div>
                     <!-- Matchs légendaires -->
-                    <div class="bg-vert-cardin border border-white/10 p-5">
+                    <div class="bg-vert-cardin-light border border-white/5 p-5 hover:border-sarcelle/50 transition-all duration-300 glow-box">
                         <p class="text-sarcelle text-xs uppercase tracking-widest font-bold mb-4">Matchs légendaires</p>
                         <div class="space-y-3 text-sm">
                             <div class="group">
@@ -1018,38 +1113,38 @@
                 </h3>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                     <!-- #1 One Piece -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-onepiece" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-yellow-500 text-black text-xs font-bold px-2 py-0.5">#1</div>
                         <img src="Asset/img/onepiece.jpg" alt="One Piece" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">One Piece</p>
                     </div>
                     <!-- #2 Kingdom -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-kingdom" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-gray-300 text-black text-xs font-bold px-2 py-0.5">#2</div>
                         <img src="Asset/img/kingdom.jpg" alt="Kingdom" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">Kingdom</p>
                     </div>
                     <!-- #3 Bleach -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-bleach" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-amber-700 text-white text-xs font-bold px-2 py-0.5">#3</div>
                         <img src="Asset/img/bleach.jpg" alt="Bleach" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">Bleach</p>
                     </div>
                     <!-- #4 20th Century Boys -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-20thcentury" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-gray-600 text-white text-xs font-bold px-2 py-0.5">#4</div>
                         <img src="Asset/img/20thcenturyboys.jpg" alt="20th Century Boys" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">20th Century Boys</p>
                     </div>
                     <!-- #5 L'Attaque des Titans -->
-                    <div class="group relative bg-vert-cardin border border-white/10 overflow-hidden hover:border-sarcelle/50 transition-all aspect-[3/4]">
+                    <div id="card-aot" class="group relative bg-vert-cardin-light border border-white/5 overflow-hidden hover:border-sarcelle/50 transition-all duration-300 aspect-[3/4] glow-box cursor-pointer">
                         <div class="absolute top-2 left-2 z-20 bg-gray-600 text-white text-xs font-bold px-2 py-0.5">#5</div>
                         <img src="Asset/img/attaquedestitans.jpg" alt="L'Attaque des Titans" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-vert-cardin-light via-transparent to-transparent"></div>
                         <p class="absolute bottom-2 left-2 right-2 text-white text-sm font-bold">L'Attaque des Titans</p>
                     </div>
                 </div>
@@ -1063,7 +1158,7 @@
                 </h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Football -->
-                    <div class="bg-vert-cardin border border-white/10 p-5 hover:border-sarcelle/50 transition-all group">
+                    <div class="bg-vert-cardin-light border border-white/5 p-5 hover:border-sarcelle/50 transition-all duration-300 group glow-box">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="p-2 bg-sarcelle/10 text-sarcelle">
                                 <i data-lucide="circle-dot" class="w-5 h-5"></i>
@@ -1074,7 +1169,7 @@
                         <p class="text-gray-500 text-xs mt-1">🔴🔵 Allez Malherbe !</p>
                     </div>
                     <!-- Basketball -->
-                    <div class="bg-vert-cardin border border-white/10 p-5 hover:border-sarcelle/50 transition-all group">
+                    <div class="bg-vert-cardin-light border border-white/5 p-5 hover:border-sarcelle/50 transition-all duration-300 group glow-box">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="p-2 bg-sarcelle/10 text-sarcelle">
                                 <i data-lucide="circle" class="w-5 h-5"></i>
@@ -1088,7 +1183,7 @@
                         </div>
                     </div>
                     <!-- Formule 1 -->
-                    <div class="bg-vert-cardin border border-white/10 p-5 hover:border-sarcelle/50 transition-all group">
+                    <div class="bg-vert-cardin-light border border-white/5 p-5 hover:border-sarcelle/50 transition-all duration-300 group glow-box">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="p-2 bg-sarcelle/10 text-sarcelle">
                                 <i data-lucide="flag" class="w-5 h-5"></i>
@@ -1256,6 +1351,352 @@
             lastScroll = currentScroll;
         });
 
+        // ========== EASTER EGGS STYLES ==========
+        
+        // Helper: Afficher notification Easter Egg
+        function showEasterEgg(title, subtitle, emoji = '🎉') {
+            const notification = document.createElement('div');
+            notification.className = 'easter-egg-notification';
+            notification.innerHTML = `
+                <p class="text-5xl mb-4">${emoji}</p>
+                <h3 class="text-2xl font-bold text-white mb-2">${title}</h3>
+                <p class="text-gray-400">${subtitle}</p>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('fade-out');
+                setTimeout(() => notification.remove(), 500);
+            }, 2500);
+        }
+        
+        // 1. Code secret simple: taper "retro" pour mode 8-bit
+        let secretCode = '';
+        const secretCodes = {
+            'retro': () => {
+                document.body.classList.toggle('retro-mode');
+                const isRetro = document.body.classList.contains('retro-mode');
+                showEasterEgg(
+                    isRetro ? 'MODE RÉTRO ACTIVÉ!' : 'MODE NORMAL',
+                    isRetro ? 'Bienvenue en 1985! 🕹️' : 'Retour dans le futur!',
+                    isRetro ? '👾' : '🚀'
+                );
+            },
+            'caen': () => {
+                showEasterEgg('ALLEZ MALHERBE!', 'Fier d\'être Caennais! 🔴🔵', '🏟️');
+                // Confettis aux couleurs de Caen
+                const colors = ['🔴', '🔵', '⚪'];
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        const confetti = document.createElement('div');
+                        confetti.className = 'falling-block';
+                        confetti.style.left = Math.random() * 100 + 'vw';
+                        confetti.style.fontSize = '25px';
+                        confetti.textContent = colors[Math.floor(Math.random() * colors.length)];
+                        document.body.appendChild(confetti);
+                        setTimeout(() => confetti.remove(), 3000);
+                    }, i * 80);
+                }
+            }
+        };
+        
+        document.addEventListener('keydown', (e) => {
+            secretCode += e.key.toLowerCase();
+            if (secretCode.length > 10) {
+                secretCode = secretCode.slice(-10);
+            }
+            // Vérifier tous les codes secrets
+            for (const [code, action] of Object.entries(secretCodes)) {
+                if (secretCode.endsWith(code)) {
+                    action();
+                    secretCode = '';
+                    break;
+                }
+            }
+        });
+        
+        // 2. Clic sur Penta → CERO MIEDO
+        const cardPenta = document.getElementById('card-penta');
+        if (cardPenta) {
+            cardPenta.addEventListener('click', () => {
+                showEasterEgg('CERO MIEDO!', 'Zero Fear! 🖤💀', '🖤');
+            });
+        }
+        
+        // 3. Clic sur Minecraft → Blocs qui tombent
+        const cardMinecraft = document.getElementById('card-minecraft');
+        if (cardMinecraft) {
+            cardMinecraft.addEventListener('click', () => {
+                showEasterEgg('MINECRAFT!', 'Attention aux creepers... 💣', '⛏️');
+                // Faire tomber des blocs
+                const blocks = ['🟫', '🟩', '⬛', '🪨', '💎'];
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const block = document.createElement('div');
+                        block.className = 'falling-block';
+                        block.style.left = Math.random() * 100 + 'vw';
+                        block.style.fontSize = '30px';
+                        block.textContent = blocks[Math.floor(Math.random() * blocks.length)];
+                        document.body.appendChild(block);
+                        setTimeout(() => block.remove(), 3000);
+                    }, i * 100);
+                }
+            });
+        }
+        
+        // 4. Clic sur One Piece → Message Luffy
+        const cardOnePiece = document.getElementById('card-onepiece');
+        if (cardOnePiece) {
+            cardOnePiece.addEventListener('click', () => {
+                showEasterEgg('海賊王に俺はなる!', 'Je serai le Roi des Pirates!', '🏴‍☠️');
+            });
+        }
+        
+        // 5. Clic sur AC4 Black Flag → Pirate
+        const cardAC4 = document.getElementById('card-ac4');
+        if (cardAC4) {
+            cardAC4.addEventListener('click', () => {
+                showEasterEgg('ASSASSIN\'S CREED IV', '"In a world without gold, we might have been heroes." - Edward Kenway', '🏴‍☠️');
+            });
+        }
+        
+        // === JEUX VIDÉO ===
+        // Overwatch
+        const cardOverwatch = document.getElementById('card-overwatch');
+        if (cardOverwatch) {
+            cardOverwatch.addEventListener('click', () => {
+                showEasterEgg('HEROES NEVER DIE!', 'Mercy main btw 😇', '🎯');
+            });
+        }
+        
+        // Lethal Company
+        const cardLethal = document.getElementById('card-lethal');
+        if (cardLethal) {
+            cardLethal.addEventListener('click', () => {
+                showEasterEgg('MEET THE QUOTA!', '3 jours restants... 💀', '👻');
+            });
+        }
+        
+        // Hearts of Iron IV
+        const cardHoi4 = document.getElementById('card-hoi4');
+        if (cardHoi4) {
+            cardHoi4.addEventListener('click', () => {
+                showEasterEgg('HEARTS OF IRON IV', 'Un joueur HOI4... Ça fait peur! 🗺️', '⚔️');
+            });
+        }
+        
+        // === CATCHEURS ===
+        // Will Ospreay
+        const cardOspreay = document.getElementById('card-ospreay');
+        if (cardOspreay) {
+            cardOspreay.addEventListener('click', () => {
+                showEasterEgg('AERIAL ASSASSIN!', 'Best bout machine! ✈️', '🦅');
+            });
+        }
+        
+        // Sol Ruca
+        const cardSolruca = document.getElementById('card-solruca');
+        if (cardSolruca) {
+            cardSolruca.addEventListener('click', () => {
+                showEasterEgg('SOL SNATCHER!', 'Future Women\'s Champion! ☀️', '🌟');
+            });
+        }
+        
+        // CM Punk
+        const cardCmpunk = document.getElementById('card-cmpunk');
+        if (cardCmpunk) {
+            cardCmpunk.addEventListener('click', () => {
+                showEasterEgg('IT\'S CLOBBERIN\' TIME!', 'Best in the World! 💪', '⚡');
+            });
+        }
+        
+        // Rey Mysterio
+        const cardMysterio = document.getElementById('card-mysterio');
+        if (cardMysterio) {
+            cardMysterio.addEventListener('click', () => {
+                showEasterEgg('619!', 'Booyaka Booyaka! 🎭', '🦸');
+            });
+        }
+        
+        // === MANGAS ===
+        // Kingdom
+        const cardKingdom = document.getElementById('card-kingdom');
+        if (cardKingdom) {
+            cardKingdom.addEventListener('click', () => {
+                showEasterEgg('KINGDOM', '天下の大将軍 - Grand Général sous les Cieux!', '⚔️');
+            });
+        }
+        
+        // Bleach
+        const cardBleach = document.getElementById('card-bleach');
+        if (cardBleach) {
+            cardBleach.addEventListener('click', () => {
+                showEasterEgg('BANKAI!', 'Ichigo Kurosaki - Substitute Shinigami', '🗡️');
+            });
+        }
+        
+        // 20th Century Boys
+        const card20th = document.getElementById('card-20thcentury');
+        if (card20th) {
+            card20th.addEventListener('click', () => {
+                showEasterEgg('20TH CENTURY BOYS', 'Ami est-il vraiment le méchant? 🤔', '🎸');
+            });
+        }
+        
+        // L'Attaque des Titans
+        const cardAot = document.getElementById('card-aot');
+        if (cardAot) {
+            cardAot.addEventListener('click', () => {
+                showEasterEgg('SHINZOU WO SASAGEYO!', 'Offrez vos cœurs! 💔', '⚔️');
+            });
+        }
+        
+        // 6. Hover 10 secondes sur la photo → Mode pixel
+        const photoContainer = document.getElementById('photo-container');
+        const photoUgo = document.getElementById('photo-ugo');
+        let photoHoverTimer = null;
+        
+        if (photoContainer && photoUgo) {
+            photoContainer.addEventListener('mouseenter', () => {
+                photoHoverTimer = setTimeout(() => {
+                    photoUgo.classList.toggle('photo-pixel-mode');
+                    const isPixel = photoUgo.classList.contains('photo-pixel-mode');
+                    showEasterEgg(
+                        isPixel ? 'MODE PIXEL!' : 'MODE NORMAL',
+                        isPixel ? 'Tu as trouvé un secret! 🎮' : 'Photo restaurée!',
+                        isPixel ? '🕹️' : '📸'
+                    );
+                }, 10000); // 10 secondes
+            });
+            
+            photoContainer.addEventListener('mouseleave', () => {
+                if (photoHoverTimer) {
+                    clearTimeout(photoHoverTimer);
+                    photoHoverTimer = null;
+                }
+            });
+        }
+        
+        // 7. AFK 10 minutes → Message
+        let afkTimer = null;
+        const afkOverlay = document.getElementById('afk-overlay');
+        const afkDismiss = document.getElementById('afk-dismiss');
+        const AFK_TIME = 10 * 60 * 1000; // 10 minutes en ms
+        
+        function resetAfkTimer() {
+            if (afkTimer) clearTimeout(afkTimer);
+            afkTimer = setTimeout(() => {
+                if (afkOverlay) {
+                    afkOverlay.classList.add('active');
+                    lucide.createIcons(); // Réinitialiser les icônes
+                }
+            }, AFK_TIME);
+        }
+        
+        // Reset sur toute activité
+        ['mousemove', 'keydown', 'scroll', 'click', 'touchstart'].forEach(event => {
+            document.addEventListener(event, resetAfkTimer);
+        });
+        
+        // Bouton pour fermer AFK
+        if (afkDismiss && afkOverlay) {
+            afkDismiss.addEventListener('click', () => {
+                afkOverlay.classList.remove('active');
+                resetAfkTimer();
+            });
+        }
+        
+        // Démarrer le timer AFK
+        resetAfkTimer();
+        
+        // === PARTY MODE ===
+        let partyActive = false;
+        function startPartyMode() {
+            if (partyActive) return;
+            partyActive = true;
+            let partyInterval = setInterval(() => {
+                document.body.style.background = `linear-gradient(135deg, hsl(${Math.random()*360},80%,20%) 0%, hsl(${Math.random()*360},80%,30%) 100%)`;
+            }, 200);
+            showEasterEgg('PARTY TIME!', 'Mode disco activé!', '🎉');
+            setTimeout(() => {
+                clearInterval(partyInterval);
+                document.body.style.background = '';
+                partyActive = false;
+                showEasterEgg('Party terminé!', 'Retour à la normale.', '🕺');
+            }, 6000);
+        }
+        secretCodes['party'] = startPartyMode;
+
+        // === SON DE CLOCHE CATCH ===
+        function playBell() {
+            const audio = new Audio('https://cdn.pixabay.com/audio/2022/03/15/audio_116b7b7b7b.mp3'); // Son de cloche libre
+            audio.volume = 0.5;
+            audio.play();
+        }
+        ['card-penta','card-ospreay','card-solruca','card-cmpunk','card-mysterio'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('click', playBell);
+            }
+        });
+
+        // === TRIPLE CLIC SUR NOM ===
+        const nomUgo = document.querySelector('h1 span.bg-clip-text');
+        let clickCount = 0;
+        if (nomUgo) {
+            nomUgo.addEventListener('click', () => {
+                clickCount++;
+                if (clickCount === 3) {
+                    clickCount = 0;
+                    // Calcul âge
+                    const birth = new Date('2003-11-10');
+                    const now = new Date();
+                    let years = now.getFullYear() - birth.getFullYear();
+                    let months = now.getMonth() - birth.getMonth();
+                    let days = now.getDate() - birth.getDate();
+                    if (days < 0) { months--; days += 30; }
+                    if (months < 0) { years--; months += 12; }
+                    showEasterEgg('Âge en temps réel', `${years} ans, ${months} mois, ${days} jours`, '🎂');
+                }
+                setTimeout(() => { clickCount = 0; }, 1500);
+            });
+        }
+
+        // === CLIC DROIT DÉSACTIVÉ ===
+        document.addEventListener('contextmenu', e => {
+            e.preventDefault();
+            showEasterEgg('Nice try!', 'Le clic droit est désactivé 😏', '🖱️');
+        });
+
+        // === ANNIVERSAIRE ===
+        function checkAnniversaire() {
+            const now = new Date();
+            if (now.getMonth() === 10 && now.getDate() === 10) {
+                showEasterEgg('Joyeux anniversaire Ugo!', 'Confettis automatiques 🎉', '🎂');
+                for (let i = 0; i < 40; i++) {
+                    setTimeout(() => {
+                        const confetti = document.createElement('div');
+                        confetti.className = 'falling-block';
+                        confetti.style.left = Math.random() * 100 + 'vw';
+                        confetti.style.fontSize = '30px';
+                        confetti.textContent = ['🎉','🎂','🎈','🟦','🟥','🟨'][Math.floor(Math.random()*6)];
+                        document.body.appendChild(confetti);
+                        setTimeout(() => confetti.remove(), 3000);
+                    }, i * 60);
+                }
+            }
+        }
+        checkAnniversaire();
+
+        console.log('%c🎮 Easter Eggs disponibles!', 'color: #6ACFC7; font-size: 14px; font-weight: bold;');
+        console.log('%cTape "retro" ou "caen" pour des secrets...', 'color: #888; font-size: 12px;');
+        console.log('%cClique sur les Top 5 pour des surprises!', 'color: #888; font-size: 12px;');
+
     </script>
 </body>
 </html>
+
+
+
+
+
