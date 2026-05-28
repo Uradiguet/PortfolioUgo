@@ -14,6 +14,11 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <!-- Three.js and GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -21,8 +26,8 @@
             theme: {
                 extend: {
                     colors: {
-                        'vert-cardin': '#0C1A1A',
-                        'vert-cardin-light': '#162e2e',
+                        'vert-cardin': 'rgba(12, 26, 26, 0.6)',
+                        'vert-cardin-light': 'rgba(22, 46, 46, 0.6)',
                         'sarcelle': '#6ACFC7',
                         'sarcelle-dark': '#4ba6a0',
                     },
@@ -52,9 +57,26 @@
     <style>
         /* Custom Styles & Utilities */
         body {
-            background-color: #0C1A1A;
+            background-color: transparent;
             color: #e5e7eb;
             overflow-x: hidden;
+        }
+
+        /* Glassmorphism for cards and sections */
+        .bg-vert-cardin, .bg-vert-cardin-light {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        #webgl-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -10;
+            pointer-events: none;
+            background-color: #0C1A1A; /* Fallback background */
         }
 
         /* Scrollbar customisation */
@@ -216,7 +238,10 @@
         }
     </style>
 </head>
-<body class="antialiased relative font-sans">
+<body class="antialiased relative font-sans bg-transparent">
+
+    <!-- 3D Canvas -->
+    <canvas id="webgl-canvas"></canvas>
 
     <!-- AFK Overlay -->
     <div id="afk-overlay" class="afk-overlay">
@@ -359,7 +384,7 @@
                 <div class="h-px bg-white/20 flex-grow max-w-xs"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="projects-container" class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
                 <!-- ============= PROJETS STAGE ============= -->
                 
                 <!-- Project: Archiving Consulting -->
@@ -1702,6 +1727,9 @@
         console.log('%cClique sur les Top 5 pour des surprises!', 'color: #888; font-size: 12px;');
 
     </script>
+    
+    <!-- 3D Scene Initialization -->
+    <script src="Asset/js/scene.js"></script>
 </body>
 </html>
 
