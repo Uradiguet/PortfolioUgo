@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalEvents | Portfolio Ugo Radiguet</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'vert-cardin': '#0C1A1A',
+                        'vert-cardin-light': '#162e2e',
+                        'sarcelle': '#6ACFC7',
+                        'sarcelle-dark': '#4ba6a0',
+                    },
+                    fontFamily: { sans: ['Space Grotesk', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+
+    <link rel="icon" type="image/png" href="../Asset/img/logo-removebg-preview.png">
+
+    <style>
+        body { background-color: #0C1A1A; color: #e5e7eb; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0C1A1A; }
+        ::-webkit-scrollbar-thumb { background: #162e2e; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6ACFC7; }
+        .blob { position: fixed; filter: blur(80px); z-index: -1; opacity: 0.4; animation: float 10s infinite alternate; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .glow-box:hover { box-shadow: 0 0 25px rgba(106, 207, 199, 0.15); border-color: #6ACFC7; }
+    </style>
+</head>
+<body class="antialiased relative font-sans">
+
+    <div class="blob bg-sarcelle w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="blob bg-rose-900 w-80 h-80 rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3"></div>
+
+    <nav class="fixed w-full z-50 top-0 bg-vert-cardin/90 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer group">
+                    <a href="../index.html" class="flex items-center">
+                        <img src="../Asset/img/logo-removebg-preview.png" alt="Logo" class="w-10 h-10 group-hover:scale-110 transition-transform">
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="../index.html" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">Accueil</a>
+                        <a href="../realisation.html" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">Réalisations</a>
+                        <a href="../experience.html" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">Expérience</a>
+                        <a href="../apropos.html" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">À propos</a>
+                        <a href="../contact.html" class="px-4 py-2 border border-sarcelle text-sarcelle text-sm font-medium hover:bg-sarcelle hover:text-vert-cardin transition-all duration-300 uppercase tracking-widest">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-vert-cardin border-b border-white/10 absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="../index.html" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">Accueil</a>
+                <a href="../realisation.html" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">Réalisations</a>
+                <a href="../experience.html" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">Expérience</a>
+                <a href="../apropos.html" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">À propos</a>
+                <a href="../contact.html" class="text-sarcelle font-bold block px-3 py-2 text-base">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-16 px-4">
+        <div class="max-w-7xl mx-auto">
+
+            <a href="../realisation.html" class="inline-flex items-center gap-2 text-sarcelle hover:text-white transition-colors mb-8">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                Retour aux réalisations
+            </a>
+
+            <div class="flex items-center gap-4 mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                    <span class="text-sarcelle">Projet.</span> LocalEvents
+                </h1>
+                <div class="h-px bg-white/20 flex-grow max-w-xs hidden md:block"></div>
+            </div>
+
+            <div class="mb-12 flex flex-wrap gap-3">
+                <span class="bg-emerald-900/80 text-emerald-200 text-xs font-bold px-3 py-1.5 uppercase tracking-wider border border-emerald-700/50">Formation</span>
+                <span class="bg-vert-cardin-light text-gray-300 text-xs font-bold px-3 py-1.5 uppercase tracking-wider border border-white/10">Fullstack</span>
+                <span class="bg-vert-cardin-light text-gray-300 text-xs font-bold px-3 py-1.5 uppercase tracking-wider border border-white/10">2026</span>
+            </div>
+
+            <!-- INTRO -->
+            <div class="bg-vert-cardin-light border border-white/5 p-6 md:p-8 mb-12">
+                <p class="text-gray-300 text-base leading-relaxed">
+                    <span class="text-sarcelle font-semibold">LocalEvents</span> est une plateforme web fullstack
+                    permettant de <span class="text-white">découvrir, créer et rejoindre des événements près de chez soi</span>.
+                    Les utilisateurs peuvent s'inscrire, publier leurs propres événements, participer à ceux des autres,
+                    consulter la liste des participants et laisser une évaluation notée. Le projet a été conçu en
+                    suivant une analyse fonctionnelle complète (user stories, endpoints REST et diagrammes UML en PlantUML)
+                    avant le développement.
+                </p>
+            </div>
+
+            <!-- 3 CARDS -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+                <div class="bg-vert-cardin-light border border-white/5 p-6 hover:border-sarcelle/50 transition-all glow-box">
+                    <div class="w-12 h-12 bg-vert-cardin border border-rose-500/30 flex items-center justify-center mb-4">
+                        <i data-lucide="calendar-heart" class="text-rose-400 w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Le projet</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Application de gestion d'événements locaux développée dans le cadre de ma Licence au CNAM :
+                        authentification, CRUD d'événements, participations et système de notation.
+                    </p>
+                </div>
+
+                <div class="bg-vert-cardin-light border border-white/5 p-6 hover:border-sarcelle/50 transition-all glow-box">
+                    <div class="w-12 h-12 bg-vert-cardin border border-blue-500/30 flex items-center justify-center mb-4">
+                        <i data-lucide="code-2" class="text-blue-500 w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Stack technique</h3>
+                    <p class="text-gray-400 text-sm mb-3">Front-end :</p>
+                    <ul class="text-gray-400 text-sm space-y-1 mb-4">
+                        <li class="flex items-center gap-2"><span class="text-sarcelle">▹</span> Next.js 16 (App Router)</li>
+                        <li class="flex items-center gap-2"><span class="text-sarcelle">▹</span> React 19 &middot; TypeScript</li>
+                        <li class="flex items-center gap-2"><span class="text-sarcelle">▹</span> Tailwind CSS 4 &middot; shadcn/ui</li>
+                    </ul>
+                    <p class="text-gray-400 text-sm mb-3">Back-end :</p>
+                    <ul class="text-gray-400 text-sm space-y-1">
+                        <li class="flex items-center gap-2"><span class="text-sarcelle">▹</span> Fastify 5 &middot; TypeScript</li>
+                        <li class="flex items-center gap-2"><span class="text-sarcelle">▹</span> Prisma 7 &middot; PostgreSQL</li>
+                        <li class="flex items-center gap-2"><span class="text-sarcelle">▹</span> JWT &amp; cookies &middot; bcrypt &middot; Zod</li>
+                    </ul>
+                </div>
+
+                <div class="bg-vert-cardin-light border border-white/5 p-6 hover:border-sarcelle/50 transition-all glow-box">
+                    <div class="w-12 h-12 bg-vert-cardin border border-sarcelle/30 flex items-center justify-center mb-4">
+                        <i data-lucide="users" class="text-sarcelle w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Travail en mode projet</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-3">
+                        Projet réalisé en équipe avec :
+                    </p>
+                    <ul class="text-gray-400 text-sm space-y-1">
+                        <li class="flex items-center gap-2"><span class="text-sarcelle">▹</span> Ugo Radiguet</li>
+                        <li class="flex items-center gap-2"><span class="text-sarcelle">▹</span> Kevin Camus</li>
+                        <li class="flex items-center gap-2"><span class="text-sarcelle">▹</span> Mathieu Mouchard</li>
+                    </ul>
+                    <p class="text-gray-400 text-sm leading-relaxed mt-3">
+                        Analyse fonctionnelle, user stories et diagrammes UML (PlantUML) puis développement et versionnage Git.
+                    </p>
+                </div>
+            </div>
+
+            <!-- FONCTIONNALITES -->
+            <div class="bg-vert-cardin-light border border-white/5 p-6 md:p-8 mb-12">
+                <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                    <i data-lucide="list-checks" class="text-sarcelle w-6 h-6"></i>
+                    Fonctionnalités principales
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3 text-sm text-gray-400">
+                    <div class="flex items-start gap-2"><span class="text-sarcelle mt-0.5">▹</span> Inscription / connexion sécurisée (JWT, mots de passe hachés bcrypt)</div>
+                    <div class="flex items-start gap-2"><span class="text-sarcelle mt-0.5">▹</span> Création, édition et suppression d'événements (CRUD)</div>
+                    <div class="flex items-start gap-2"><span class="text-sarcelle mt-0.5">▹</span> Recherche par titre et filtres par catégorie</div>
+                    <div class="flex items-start gap-2"><span class="text-sarcelle mt-0.5">▹</span> Participation : rejoindre / quitter un événement</div>
+                    <div class="flex items-start gap-2"><span class="text-sarcelle mt-0.5">▹</span> Liste des participants (pseudonymes)</div>
+                    <div class="flex items-start gap-2"><span class="text-sarcelle mt-0.5">▹</span> Évaluations notées (note + commentaire) par événement</div>
+                    <div class="flex items-start gap-2"><span class="text-sarcelle mt-0.5">▹</span> Espaces « Mes événements » et « Mes participations »</div>
+                    <div class="flex items-start gap-2"><span class="text-sarcelle mt-0.5">▹</span> Pages de profil utilisateur avec coordonnées et adresse</div>
+                </div>
+            </div>
+
+            <!-- ARCHITECTURE -->
+            <div class="bg-vert-cardin-light border border-white/5 p-6 md:p-8 mb-12">
+                <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                    <i data-lucide="layers" class="text-sarcelle w-6 h-6"></i>
+                    Architecture
+                </h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    L'API REST suit une architecture en couches claire : <span class="text-white">routes → contrôleurs → services → Prisma</span>,
+                    avec validation des entrées via Zod et gestion centralisée des erreurs. Le modèle de données repose sur
+                    les entités <span class="text-sarcelle">User</span>, <span class="text-sarcelle">Event</span>,
+                    <span class="text-sarcelle">Participation</span> et <span class="text-sarcelle">Evaluation</span>,
+                    avec contraintes d'unicité (un utilisateur ne peut rejoindre ou évaluer un même événement qu'une seule fois).
+                </p>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <span class="bg-vert-cardin border border-white/10 px-3 py-1.5 text-gray-300">REST API</span>
+                    <span class="bg-vert-cardin border border-white/10 px-3 py-1.5 text-gray-300">Architecture en couches</span>
+                    <span class="bg-vert-cardin border border-white/10 px-3 py-1.5 text-gray-300">Prisma ORM &amp; migrations</span>
+                    <span class="bg-vert-cardin border border-white/10 px-3 py-1.5 text-gray-300">Auth JWT + cookies</span>
+                    <span class="bg-vert-cardin border border-white/10 px-3 py-1.5 text-gray-300">UML / PlantUML</span>
+                </div>
+            </div>
+
+            <!-- GALERIE -->
+            <div class="bg-vert-cardin-light border border-white/5 p-6 md:p-8">
+                <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                    <i data-lucide="image" class="text-sarcelle w-6 h-6"></i>
+                    Aperçu de l'application
+                </h3>
+
+                <div class="space-y-8">
+                    <figure>
+                        <img src="../Asset/img/LocalEvent1.png" alt="Accueil — liste des événements locaux" class="w-full border border-white/10">
+                        <figcaption class="text-gray-500 text-sm mt-2 text-center">Accueil : liste des événements avec recherche et filtres par catégorie</figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="../Asset/img/LocalEvent2.png" alt="Détail d'un événement" class="w-full border border-white/10">
+                        <figcaption class="text-gray-500 text-sm mt-2 text-center">Page d'un événement : description, participants, évaluations et participation</figcaption>
+                    </figure>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <figure>
+                            <img src="../Asset/img/LocalEvent5.png" alt="Mes événements" class="w-full border border-white/10">
+                            <figcaption class="text-gray-500 text-sm mt-2 text-center">Mes événements</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="../Asset/img/LocalEvent4.png" alt="Mes participations" class="w-full border border-white/10">
+                            <figcaption class="text-gray-500 text-sm mt-2 text-center">Mes participations</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <figure>
+                            <img src="../Asset/img/LocalEvent7.png" alt="Page de connexion" class="w-full border border-white/10">
+                            <figcaption class="text-gray-500 text-sm mt-2 text-center">Connexion</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="../Asset/img/LocalEvent8.png" alt="Page d'inscription" class="w-full border border-white/10">
+                            <figcaption class="text-gray-500 text-sm mt-2 text-center">Inscription</figcaption>
+                        </figure>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-vert-cardin-light/30 border-t border-white/5 py-8 text-center">
+        <p class="text-gray-500 text-sm">&copy; 2026 Ugo Radiguet. Designé &amp; Codé avec passion.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    </script>
+</body>
+</html>
