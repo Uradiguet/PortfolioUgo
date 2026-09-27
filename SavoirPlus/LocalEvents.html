@@ -7,7 +7,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Megrim&display=swap" rel="stylesheet">
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,12 +16,12 @@
             theme: {
                 extend: {
                     colors: {
-                        'vert-cardin': '#0C1A1A',
-                        'vert-cardin-light': '#162e2e',
-                        'sarcelle': '#6ACFC7',
-                        'sarcelle-dark': '#4ba6a0',
+                        'vert-cardin': '#363537',
+                        'vert-cardin-light': '#444347',
+                        'sarcelle': '#DCED31',
+                        'sarcelle-dark': '#0CCE6B',
                     },
-                    fontFamily: { sans: ['Space Grotesk', 'sans-serif'] },
+                    fontFamily: { sans: ['Josefin Sans', 'sans-serif'] },
                 }
             }
         }
@@ -30,15 +30,16 @@
     <link rel="icon" type="image/png" href="../Asset/img/logo-removebg-preview.png">
 
     <style>
-        body { background-color: #0C1A1A; color: #e5e7eb; overflow-x: hidden; }
+        body { background-color: #363537; color: #e5e7eb; overflow-x: hidden; }
         ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #0C1A1A; }
-        ::-webkit-scrollbar-thumb { background: #162e2e; border-radius: 5px; }
-        ::-webkit-scrollbar-thumb:hover { background: #6ACFC7; }
+        ::-webkit-scrollbar-track { background: #363537; }
+        ::-webkit-scrollbar-thumb { background: #444347; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #DCED31; }
         .blob { position: fixed; filter: blur(80px); z-index: -1; opacity: 0.4; animation: float 10s infinite alternate; }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-        .glow-box:hover { box-shadow: 0 0 25px rgba(106, 207, 199, 0.15); border-color: #6ACFC7; }
+        .glow-box:hover { box-shadow: 0 0 25px rgba(220, 237, 49, 0.15); border-color: #DCED31; }
     </style>
+    <link rel="stylesheet" href="../Asset/style/project-2026.css">
 </head>
 <body class="antialiased relative font-sans">
 
@@ -56,10 +57,10 @@
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="../index.html" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">Accueil</a>
-                        <a href="../realisation.html" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">Réalisations</a>
-                        <a href="../experience.html" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">Expérience</a>
-                        <a href="../apropos.html" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">À propos</a>
-                        <a href="../contact.html" class="px-4 py-2 border border-sarcelle text-sarcelle text-sm font-medium hover:bg-sarcelle hover:text-vert-cardin transition-all duration-300 uppercase tracking-widest">Contact</a>
+                        <a href="../index.html#projets" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">Réalisations</a>
+                        <a href="../index.html#parcours" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">Expérience</a>
+                        <a href="../index.html#apropos" class="hover:text-sarcelle px-3 py-2 text-sm font-medium transition-colors uppercase tracking-widest">À propos</a>
+                        <a href="../index.html#contact" class="px-4 py-2 border border-sarcelle text-sarcelle text-sm font-medium hover:bg-sarcelle hover:text-vert-cardin transition-all duration-300 uppercase tracking-widest">Contact</a>
                     </div>
                 </div>
                 <div class="md:hidden flex items-center">
@@ -72,10 +73,10 @@
         <div id="mobile-menu" class="md:hidden hidden bg-vert-cardin border-b border-white/10 absolute w-full">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="../index.html" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">Accueil</a>
-                <a href="../realisation.html" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">Réalisations</a>
-                <a href="../experience.html" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">Expérience</a>
-                <a href="../apropos.html" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">À propos</a>
-                <a href="../contact.html" class="text-sarcelle font-bold block px-3 py-2 text-base">Contact</a>
+                <a href="../index.html#projets" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">Réalisations</a>
+                <a href="../index.html#parcours" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">Expérience</a>
+                <a href="../index.html#apropos" class="text-gray-300 hover:text-sarcelle block px-3 py-2 text-base font-medium">À propos</a>
+                <a href="../index.html#contact" class="text-sarcelle font-bold block px-3 py-2 text-base">Contact</a>
             </div>
         </div>
     </nav>
@@ -83,7 +84,7 @@
     <main class="pt-32 pb-16 px-4">
         <div class="max-w-7xl mx-auto">
 
-            <a href="../realisation.html" class="inline-flex items-center gap-2 text-sarcelle hover:text-white transition-colors mb-8">
+            <a href="../index.html#projets" class="inline-flex items-center gap-2 text-sarcelle hover:text-white transition-colors mb-8">
                 <i data-lucide="arrow-left" class="w-4 h-4"></i>
                 Retour aux réalisations
             </a>
